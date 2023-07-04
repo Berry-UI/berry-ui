@@ -61,4 +61,3 @@
     #5046e5 
     #4338ca
 ```
-![Alt text](image.png)
