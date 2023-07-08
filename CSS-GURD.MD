@@ -1,5 +1,5 @@
 关于CSS书写规范、顺序和命名规则
-一、CSS书写顺序123456
+一、CSS书写顺序12345678
 
 1.位置属性(position, top, right, z-index, display, float等)
 2.大小(width, height, padding, margin)
