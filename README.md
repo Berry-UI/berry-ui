@@ -10,6 +10,13 @@
 # node
 
 # node -v 18.16.1
+
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:5173
+npm run dev
+
 ```
 ---
 ## Git Config
