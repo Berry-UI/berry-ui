@@ -1,3 +1,24 @@
+```
+berry-ui
+|-- node_modules // 项目依赖包
+|-- examples // 项目测试文件夹
+|-- berry // 组件存放处
+  -| component // 存放组件
+    |- Button 组件文件夹 一个组件一个文件夹
+      |- src
+        |- xxx.ts
+        |- xxx.scss
+        └─ xxx.vue    
+   └─ installer.ts 用于全局注册组件
+|- hooks // hook函数
+|- sytles // 全局样式
+|- typeings // 自定义类型接口
+|- utils // 工具类
+
+```
+
+
+
 # A project for BerryUI 
 *** 
 ---
@@ -92,7 +113,7 @@ npm run dev
 ## 需求清单
 ```
 - [X] Icon 图标 `level max`
-- [ ] Button 按钮
+- [X] Button 按钮  // 
 - [ ] Button Group 按钮组
 - [ ] Input 输入框
 - [ ] Radio 单选框

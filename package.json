@@ -8,6 +8,9 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
+  "workspaces": [
+    "berry/**"
+  ],
   "dependencies": {
     "vue": "^3.2.47"
   },
