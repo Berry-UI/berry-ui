@@ -11,10 +11,9 @@ const kls = computed(() => {
 </script>
 
 <template>
-  <button ref="container" v-bind="$attrs" :class="kls">
-    <slot></slot>
-    
-  </button>
+    <button ref="container" v-bind="$attrs" :class="kls">
+        <slot></slot>
+    </button>
 </template>
 
 <style lang="scss" scoped></style>
