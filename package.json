@@ -3,19 +3,29 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "workspaces": [
+    "berry/**"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "berry:build": "vite build --config lib.config.js",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
+    "vitepress": "^1.0.0-rc.25",
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "fast-glob": "^3.3.2",
     "sass": "^1.63.6",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue-tsc": "^1.4.2"
   }
