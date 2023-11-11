@@ -25,7 +25,7 @@ berry-ui
 
 ## Project Environment
 
-```
+```js
 # npm
 
 # npm -v 9.5.1
@@ -41,7 +41,7 @@ npm install
 npm run dev
 
 ### install plugin
-npm install vite-plugin-svg-icons fast-glob -D
+npm install vite-plugin-svg-icons fast-glob -D  // [!code ++]
 
 ```
 
