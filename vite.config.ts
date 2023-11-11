@@ -10,7 +10,7 @@ export default defineConfig({
   VueSetupExtend(),
   createSvgIconsPlugin({
     // 指定目录
-    iconDirs: [path.resolve(process.cwd(), "public/assets/icons")],
+    iconDirs: [path.resolve(process.cwd(), "berry/assets/svgs")],
     // 使用svg图标的格式
     symbolId: "berry-[dir]-[name]",
   }),
