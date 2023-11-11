@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/berry-ui/index.ts"],
+  "sourcesContent": ["import { Component } from \"vue\"\r\nimport BerryIcon from \"./Icon/Icon.vue\"\r\n\r\nconst componentArr: Array<Component> = [BerryIcon,]\r\nconst BerryUI = function (Vue: any) {\r\n    componentArr.forEach((itemComponent: Component) => {\r\n        Vue.component(itemComponent.name as string, itemComponent)\r\n    })\r\n}\r\nexport { BerryIcon, }\r\nexport default BerryUI"],
+  "mappings": ";AACA,OAAO,eAAe;AAEtB,IAAM,eAAiC,CAAC,SAAU;AAClD,IAAM,UAAU,SAAU,KAAU;AAChC,eAAa,QAAQ,CAAC,kBAA6B;AAC/C,QAAI,UAAU,cAAc,MAAgB,aAAa;AAAA,EAC7D,CAAC;AACL;AAEA,IAAO,mBAAQ;",
+  "names": []
+}
