@@ -14,6 +14,7 @@ const kls = computed(() => {
 <template>
   <button ref="container" v-bind="$attrs" :class="kls">
     <slot></slot>
+    
   </button>
 </template>
 
