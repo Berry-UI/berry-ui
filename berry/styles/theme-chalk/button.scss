@@ -1,0 +1,7 @@
+@mixin berry-primary {
+  background-color: $primary;
+}
+
+.berry-button {
+  @include berry-primary
+}

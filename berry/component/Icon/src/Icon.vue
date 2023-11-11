@@ -1,3 +1,8 @@
+<!--
+@Project: Berry
+@author: Rain
+@createDate: 2023
+-->
 <script setup lang="ts">
 import { computed } from "vue"
 defineOptions({
@@ -35,7 +40,7 @@ const iconName = computed(() => `#berry-${props.name}`)
     height: v-bind(size);
     vertical-align: -0.15em;
     fill: currentColor;
-    display:inline-block;
+    display: inline-block;
 
     overflow: hidden;
 }
