@@ -13,7 +13,7 @@
     <BerryIcon name="bill"></BerryIcon>
     <BerryIcon name="bill" color="#715718" size="48px"></BerryIcon>
 
-    <BerryButton> 123123 4</BerryButton>
+     <berry-button type="pimary" variant="ghost" status="round">Default</berry-button>
   </div>
 </template>
 

@@ -1,5 +1,4 @@
 <script setup>
-import { BerryIcon } from 'berry-ui'
 </script>
 
 # Icon

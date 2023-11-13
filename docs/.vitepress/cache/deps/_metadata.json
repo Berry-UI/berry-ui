@@ -1,29 +1,23 @@
 {
-  "hash": "8ea3e7b3",
-  "browserHash": "02ab21c6",
+  "hash": "bb2845e1",
+  "browserHash": "9dac9278",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "71063ef5",
+      "fileHash": "f3f591ca",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "71e799b2",
+      "fileHash": "51446565",
       "needsInterop": false
     },
     "@theme/index": {
       "src": "../../../../node_modules/vitepress/dist/client/theme-default/index.js",
       "file": "@theme_index.js",
-      "fileHash": "6b6894cc",
-      "needsInterop": false
-    },
-    "berry-ui": {
-      "src": "../../../../node_modules/berry-ui/index.ts",
-      "file": "berry-ui.js",
-      "fileHash": "f993ef51",
+      "fileHash": "d6ae7ad1",
       "needsInterop": false
     }
   },

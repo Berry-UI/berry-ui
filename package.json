@@ -20,6 +20,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@types/node": "^20.9.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "fast-glob": "^3.3.2",
     "sass": "^1.63.6",
