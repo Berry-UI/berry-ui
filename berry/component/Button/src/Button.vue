@@ -4,6 +4,9 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
+defineOptions({
+  name: 'BerryButton'
+})
 import { computed } from "vue";
 const kls = computed(() => {
 
@@ -13,7 +16,7 @@ const kls = computed(() => {
 <template>
   <button ref="container" v-bind="$attrs" :class="kls">
     <slot></slot>
-    
+
   </button>
 </template>
 

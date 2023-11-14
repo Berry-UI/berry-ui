@@ -1,5 +1,5 @@
 <script setup>
-import { BerryIcon } from 'berry-ui'
+// import { BerryIcon } from 'berry-ui'
 </script>
 
 # Icon
@@ -15,3 +15,5 @@ Icon Component not displayed
 
 <BerryIcon name="aiming" color="#715718" size="48px"></BerryIcon>
 <BerryIcon name="bill"></BerryIcon>
+
+<BerryButton>xxxx</BerryButton>
