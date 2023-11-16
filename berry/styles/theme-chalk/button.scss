@@ -6,29 +6,27 @@
   $typeList: primary, success, info, warning, danger, cyan;
   $themeList: ghost, fantasy, empty;
 
-  & {
-    & {
-      --ber-button-bg-color : var(--ber-button-bg-color)
-    }
 
-    @include useFlexRCC;
-    @include useSizeDft(0);
-    @include useBorderBox();
-    @include useBorderRadius(6);
+  $abc: var(--ber-button-bg-color);
 
-    cursor: pointer;
-    transition: all .15s;
-    user-select: none;
-    border: solid 1px;
-    outline: none;
+  @include useFlexRCC;
+  @include useSizeDft(0);
+  @include useBorderBox();
+  @include useBorderRadius(3);
 
-    color: initial;
-    background-color: --ber-button-bg-color;
-    border-color: --ber-button-bg-color;
+  cursor: pointer;
+  transition: all .15s;
+  user-select: none;
+  border: solid 1px;
+  outline: none;
 
-    &:hover {
-      --ber-button-bg-color: var(--ber-color-parmary);
-      color: var(--ber-color-parmary)
-    }
+  color: initial;
+  background-color: --ber-button-bg-color;
+  color: $abc;
+
+  &:hover {
+    --ber-button-bg-color: var(--ber-color-parmary);
+    $abc: pink;
   }
+
 }
