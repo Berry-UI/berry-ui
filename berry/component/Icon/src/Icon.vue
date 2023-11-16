@@ -5,43 +5,33 @@
 -->
 <script setup lang="ts">
 import { computed } from "vue"
+import "../../../assets/iconfont"
+import { useNS } from "berry-ui/hooks/useNS"
+import { IconProps } from './Icon'
+
 defineOptions({
     name: 'BerryIcon'
 })
 
-const props = defineProps({
-    name: {
-        type: String,
-        required: true,
-    },
-    size: {
-        type: String,
-        required: false,
-        default: '2rem',
-    },
-    color: {
-        type: String,
-        required: false,
-    }
-
-})
+const ns = useNS('icon')
+const props = defineProps({ ...IconProps })
 const iconName = computed(() => `#berry-${props.name}`)
+
+const rotate = computed(()=>{
+    return props.rotate===!!props.rotate ? props.rotate : false
+})
+const kls = computed(() => {
+    return [
+        ns.namespace,
+        ns.m(rotate.value ? "rotate" : ''),
+    ]
+})
 </script>
 
 <template>
-    <svg class="icon" aria-hidden="true" :style="{ color: props.color }">
+    <svg :class="kls" aria-hidden="true" :style="{ 'color': props.color, '--icon-size': props.size }">
         <use :xlink:href="iconName"></use>
     </svg>
 </template>
 
-<style lang="scss" scoped>
-.icon {
-    width: v-bind(size);
-    height: v-bind(size);
-    vertical-align: -0.15em;
-    fill: currentColor;
-    display: inline-block;
-
-    overflow: hidden;
-}
-</style>
+<style lang="scss" scoped></style>

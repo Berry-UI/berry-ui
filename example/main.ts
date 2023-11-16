@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import BerryUI from 'berry-ui'
-import "virtual:svg-icons-register";
+import BerryUI from 'berry-ui'
 
-createApp(App).mount('#app')
+createApp(App).use(BerryUI).mount('#app')

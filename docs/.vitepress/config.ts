@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress';
-
 // .vitepress/config.js
 export default defineConfig({
     lang: 'zh-cn',
@@ -40,4 +39,5 @@ export default defineConfig({
             },
         ],
     },
+
 })
