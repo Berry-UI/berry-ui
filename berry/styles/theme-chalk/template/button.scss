@@ -1,32 +1,61 @@
 @import '../../mixin/';
 
 
+$ns : #{$componentPrefix}-button;
+$clns: #{$componentPrefix}-color;
+$typeList: primary, tertiary, primary, warning, info, success, warning, error;
+$themeList: ghost, fantasy, empty;
+
+@function getClrVar($type) {
+  @return var(--#{$clns}-#{$type})
+}
+
+@function getClrLignVar($type) {
+  @return var(--#{$clns}-#{$type}-lignter)
+}
+
 .#{$componentPrefix}-button {
-  $ns : #{$componentPrefix}-button;
-  $typeList: primary, success, info, warning, danger, cyan;
-  $themeList: ghost, fantasy, empty;
+  $primary-color: #4338ca;
 
+  //base
+  & {
+    @include useFlexRCC;
+    @include useSizeDft(0);
+    @include useBorderBox();
+    @include useBorderRadius(3);
 
-  $abc: var(--ber-button-bg-color);
+    cursor: pointer;
+    transition: all .15s;
+    user-select: none;
+    border: solid 1px;
+    outline: none;
 
-  @include useFlexRCC;
-  @include useSizeDft(0);
-  @include useBorderBox();
-  @include useBorderRadius(3);
+    // background-color: darken(#7cdda9,15%);
+    color: var(--ber-black-color-bg);
+    background-color: var(--ber-color-bg);
+    border-color: var(--ber-color-gray);
 
-  cursor: pointer;
-  transition: all .15s;
-  user-select: none;
-  border: solid 1px;
-  outline: none;
+    &:hover,
+    &:focus {
+      color: var(--ber-color-primary)
+    }
 
-  color: initial;
-  background-color: --ber-button-bg-color;
-  color: $abc;
+    &:hover {
+      border-color: var(--ber-color-primary)
+    }
+  }
+}
 
-  &:hover {
-    --ber-button-bg-color: var(--ber-color-parmary);
-    $abc: pink;
+@each $type in $typeList {
+  .#{$ns}-#{$type} {
+    color: inherit;
+    background-color: getClrVar($type);
+
+    &:hover {
+      color: white;
+      border-color: getClrLignVar($type);
+      background-color: getClrLignVar($type);
+    }
   }
 
 }
