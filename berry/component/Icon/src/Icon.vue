@@ -25,7 +25,6 @@ const props = defineProps({
         type: String,
         required: false,
     }
-
 })
 const iconName = computed(() => `#berry-${props.name}`)
 </script>
