@@ -21,7 +21,7 @@ export const useNS = function (name: string) {
   }
 
   const m = (modifier: string | number) => {
-    return modifier ? `${namespace}--${modifier}` : '';
+    return modifier ? `${namespace}-${modifier}` : '';
   }
 
   const is: IS = (status?: boolean | string, s?: string | boolean) => {

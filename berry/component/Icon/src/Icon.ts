@@ -1,27 +1,25 @@
 import { PropType } from "vue"
-import { ElementSize, ElementTypes } from 'berry-ui/typings'
+import { RGB, RGBA, HEX } from 'berry-ui/typings'
+type actionTypes = false | true
 
-type iconTypes = ElementTypes | 'primary' | 'cyan';
-const iconNativeTypes = ['icon', 'submit', 'reset'] as const;
-
-export const iconProps = {
+export const IconProps = {
     /**
-     * @description 按钮的类型 主要控制颜色
+     * @description 字体图标的名称 主要控制字体图标
      */
-    type: String as PropType<iconTypes>,
+    name: String,
     /**
-     * @description 按钮的原生形态
-     */
-    nativeType: {
-        type: String as PropType<(typeof iconNativeTypes)[number]>,
-        default: iconNativeTypes[0]
-    },
-    /**
-     * @description 按钮的主题 主要在交互上表现 
+     * @description 字体图标的大小 主要在显示大小
      * */
-    variant: String as PropType<'ghost' | 'fantasy' | 'empty'>,
+    size: String,
     /**
-     * @description 按钮的状态 主要控制外观
+     * @description 字体图标的颜色 主要控制外观
      */
-    status: String as PropType<'round' | 'circel'>
+    color: String as PropType<RGB | RGBA | HEX>,
+    /**
+     * @description 字体图标的动作 主要控制旋转
+     */
+    rotate: {
+        type: Boolean as PropType<actionTypes>,
+        default: false
+    }
 }

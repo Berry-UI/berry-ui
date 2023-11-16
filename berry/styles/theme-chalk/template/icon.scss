@@ -1,0 +1,32 @@
+@import '../../mixn/';
+
+
+.#{$componentPrefix}-icon {
+    $ns : #{$componentPrefix}-icon;
+    $icon-size: var(--icon-size);
+
+    & {
+        width: $icon-size;
+        height: $icon-size;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        display: inline-block;
+
+        overflow: hidden;
+    }
+}
+
+.#{$componentPrefix}-icon-rotate {
+    transform-origin:center;
+    animation: rotate 1s infinite linear ;
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
