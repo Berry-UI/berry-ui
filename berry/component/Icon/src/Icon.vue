@@ -4,6 +4,8 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
+import "../../../assets/iconfont"
+
 import { computed } from "vue"
 defineOptions({
     name: 'BerryIcon'

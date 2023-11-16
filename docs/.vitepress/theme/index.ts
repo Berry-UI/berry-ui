@@ -6,7 +6,7 @@ import BerryUI from 'berry-ui'
 export default {
     extends: DefaultTheme,
     async enhanceApp({ app }) {
-    // register your custom global components
+        // register your custom global components
         // app.component('MyGlobalComponent' /* ... */)
         app.use(BerryUI)
     }

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../node_modules/berry-ui/component/Button/index.ts", "../../../node_modules/berry-ui/component/Icon/index.ts", "../../../node_modules/berry-ui/component/installer.ts", "../../../node_modules/berry-ui/index.ts"],
+  "sourcesContent": ["import Button from './src/Button.vue'\r\nimport { App } from 'vue'\r\n\r\nButton.install = function (Vue: App) {\r\n    Vue.component('BerryButton', Button)\r\n}\r\n\r\nexport default Button", "import Icon from './src/Icon.vue'\r\nimport { App } from 'vue'\r\n\r\nIcon.install = function (Vue: App) {\r\n    Vue.component('BerryIcon', Icon)\r\n}\r\n\r\nexport default Icon", "import { App } from \"vue\";\r\nimport BerryButton from \"./Button\";\r\nimport BerryIcon from \"./Icon\";\r\n\r\nconst comps = [\r\n  BerryButton,\r\n  BerryIcon\r\n]\r\n\r\nexport default function (Vue: App) {\r\n  for (let key in comps) {\r\n    const comp = Reflect.get(comps, key)\r\n    Vue.use(comp)\r\n  }\r\n}", "import { App } from 'vue'\r\nimport installer from './component/installer'\r\n\r\nexport default installer\r\n"],
+  "mappings": ";AAAA,OAAO,YAAY;AAGnB,OAAO,UAAU,SAAU,KAAU;AACjC,MAAI,UAAU,eAAe,MAAM;AACvC;AAEA,IAAO,iBAAQ;;;ACPf,OAAO,UAAU;AAGjB,KAAK,UAAU,SAAU,KAAU;AAC/B,MAAI,UAAU,aAAa,IAAI;AACnC;AAEA,IAAO,eAAQ;;;ACHf,IAAM,QAAQ;AAAA,EACZ;AAAA,EACA;AACF;AAEe,SAAR,kBAAkB,KAAU;AACjC,WAAS,OAAO,OAAO;AACrB,UAAM,OAAO,QAAQ,IAAI,OAAO,GAAG;AACnC,QAAI,IAAI,IAAI;AAAA,EACd;AACF;;;ACXA,IAAO,mBAAQ;",
+  "names": []
+}

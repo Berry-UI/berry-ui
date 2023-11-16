@@ -1,7 +1,34 @@
-@mixin berry-primary {
-  background-color: $primary;
-}
+@import '../mixn/';
 
-.berry-button {
-  @include berry-primary
+
+.#{$componentPrefix}-button {
+  $ns : #{$componentPrefix}-button;
+  $typeList: primary, success, info, warning, danger, cyan;
+  $themeList: ghost, fantasy, empty;
+
+  & {
+    & {
+      --ber-button-bg-color : var(--ber-button-bg-color)
+    }
+
+    @include useFlexRCC;
+    @include useSizeDft(0);
+    @include useBorderBox();
+    @include useBorderRadius(3);
+
+    cursor: pointer;
+    transition: all .15s;
+    user-select: none;
+    border: solid 1px;
+    outline: none;
+
+    color: initial;
+    background-color: --ber-button-bg-color;
+    border-color: --ber-button-bg-color;
+
+    &:hover {
+      --ber-button-bg-color: var(--ber-color-parmary);
+      color: var(--ber-color-parmary)
+    }
+  }
 }

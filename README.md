@@ -8,7 +8,7 @@ berry-ui
       |- src
         |- xxx.ts
         |- xxx.scss
-        └─ xxx.vue    
+        └─ xxx.vue
    └─ installer.ts 用于全局注册组件
 |- hooks // hook函数
 |- sytles // 全局样式
@@ -17,14 +17,15 @@ berry-ui
 
 ```
 
+# A project for BerryUI
 
+---
 
-# A project for BerryUI 
-*** 
 ---
 
 ## Project Environment
-```
+
+```js
 # npm
 
 # npm -v 9.5.1
@@ -39,21 +40,32 @@ npm install
 # serve with hot reload at localhost:5173
 npm run dev
 
+### install plugin
+npm install vite-plugin-svg-icons fast-glob -D
+
 ```
+
 ---
+
 ## Git Config
 
-  * git remote add origin git@github.com:Berry-UI/berry-ui.git // 将本地工程和远程仓库关联
-     > ***
-     > git config --global user.name "yourname" 
-     > git config --global user.email "youemail" 
-     > ***
-  * 生成SSH密钥
-    > ***
-    >ssh-keygen -t rsa -C "这里换上你的邮箱"
-    >cd ~/.ssh 里面有一个文件名为id_rsa.pub,把里面的内容复制到git库的我的SSHKEYs中
-    > ***
+- git remote add origin git@github.com:Berry-UI/berry-ui.git // 将本地工程和远程仓库关联
+  > ***
+  >
+  > git config --global user.name "yourname"
+  > git config --global user.email "youemail"
+  >
+  > ***
+- 生成 SSH 密钥
+  > ***
+  >
+  > ssh-keygen -t rsa -C "这里换上你的邮箱"
+  > cd ~/.ssh 里面有一个文件名为 id_rsa.pub,把里面的内容复制到 git 库的我的 SSHKEYs 中
+  >
+  > ***
+
 ## Git Commit Setup
+
 ```
 # git add . // 添加你的所有文件
 
@@ -61,10 +73,12 @@ npm run dev
 
 # git pull  // 拉取线上代码库代码 -- 后面可跟 origin （分支名）
 
-# git push  // 提交代码到线上仓库 
+# git push  // 提交代码到线上仓库
 ---
 ```
+
 ## Git Common Commands // 常用命令
+
 ```
 # git status // 查看文件的状态
     Changes not staged for commit
@@ -111,9 +125,14 @@ npm run dev
 ```
 
 ## 需求清单
+
 ```
 - [X] Icon 图标 `level max`
+<<<<<<< HEAD
 - [X] Button 按钮  // 
+=======
+- [X] Button 按钮  //
+>>>>>>> db18de4b3508b58b4d1382bc0aafb2cc18550721
 - [ ] Button Group 按钮组
 - [ ] Input 输入框
 - [ ] Radio 单选框
@@ -151,7 +170,7 @@ npm run dev
 - [ ] Affix 固钉 `level max`
 - [ ] Loading Bar 加载条 `level max`
 - [ ] Memu 菜单 `level max`
-- [ ] Pagination 分页 
+- [ ] Pagination 分页
 - [ ] Steps 步骤 `level max`
 - [ ] Tabs 标签页 `level max`
 - [ ] Alert 警示信息/警告信息 `level max`
@@ -159,14 +178,15 @@ npm run dev
 - [ ] Dialog 对话框 `level max`
 - [ ] Drawer 抽屉 `level max`
 - [ ] Message 信息 `level max`
-- [ ] Progress 进度 
+- [ ] Progress 进度
 - [ ] Skeleton 骨架屏 `level max`
 - [ ] Spin 加载 `level max`
 - [ ] Scrollbar 滚动条 `level max`
 ```
+
 ## 主题色
+
 ```
-    #5046e5 
+    #5046e5
     #4338ca
 ```
-

@@ -1,7 +1,3 @@
-<script setup>
-// import { BerryIcon } from 'berry-ui'
-</script>
-
 # Icon
 
 ::: danger 注意
@@ -14,6 +10,12 @@ Icon Component not displayed
 ```
 
 <BerryIcon name="aiming" color="#715718" size="48px"></BerryIcon>
-<BerryIcon name="bill"></BerryIcon>
+<BerryIcon name="jubao" color="#715718"></BerryIcon>
 
 <BerryButton>xxxx</BerryButton>
+
+
+
+  <div
+    style="width:100px;height:100px;background:url('../../assets/berry.png')"
+  ></div>
