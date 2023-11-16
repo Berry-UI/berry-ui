@@ -8,7 +8,6 @@ const comps = [
 ]
 
 
-
 export default function (Vue: App) {
   for (let key in comps) {
     const comp = Reflect.get(comps, key)
