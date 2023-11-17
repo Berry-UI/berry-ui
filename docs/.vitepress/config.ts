@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
 // .vitepress/config.js
 export default defineConfig({
     lang: 'zh-cn',
@@ -39,5 +40,15 @@ export default defineConfig({
             },
         ],
     },
-
+    markdown: {
+        theme: {
+            light: 'vitesse-light',
+            dark: 'vitesse-dark'
+        },
+        lineNumbers: true,
+        config(md) {
+            md.use(componentPreview)
+            md.use(containerPreview)
+        }
+    }
 })
