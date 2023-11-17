@@ -7,11 +7,11 @@ $typeList: primary, tertiary, primary, warning, info, success, warning, error;
 $themeList: ghost, fantasy, empty;
 
 @function getClrVar($type) {
-  @return var(--#{$clns}-#{$type})
+  @return var(--#{$clns}-#{$type});
 }
 
 @function getClrLignVar($type) {
-  @return var(--#{$clns}-#{$type}-lignter)
+  @return var(--#{$clns}-#{$type}-lignter);
 }
 
 .#{$componentPrefix}-button {

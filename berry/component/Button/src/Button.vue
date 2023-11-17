@@ -12,7 +12,7 @@ defineOptions({
 import { computed } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { ButtonProps } from './Button'
-
+import BerryIcon from '../../Icon'
 const ns = useNS('button')
 
 const props = defineProps({ ...ButtonProps })
@@ -30,7 +30,10 @@ const kls = computed(() => {
 
 <template>
   <button ref="container" :title="ns.namespace" v-bind="$attrs" :class="kls" :type="(props.nativeType)">
+    <BerryIcon v-if="loading" name="rotate" color="rgb(15,15,15)" size="16px" :rotate="props.loading"></BerryIcon>
+    <BerryIcon v-if="!loading" :name="props.prefixIcon" color="rgb(15,15,15)" size="16px" :rotate="props.loading"></BerryIcon>
     <slot></slot>
+    <BerryIcon v-if="!loading" :name="props.suffixIcon" color="rgb(15,15,15)" size="16px" :rotate="props.loading"></BerryIcon>
   </button>
 </template>
 
