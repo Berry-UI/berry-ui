@@ -23,5 +23,17 @@ export const ButtonProps = {
   /**
    * @description 按钮的状态 主要控制外观
    */
-  status: String as PropType<'round' | 'circel'>
+  status: String as PropType<'round' | 'circel'>,
+  /**
+   * @description 是否为加载状态 
+   */
+  loading: Boolean,
+  /**
+   * @description 按钮前缀的图标
+   */
+  prefixIcon: String,
+  /**
+   * @description 代码后缀图标
+   */
+  suffixIcon: String
 }

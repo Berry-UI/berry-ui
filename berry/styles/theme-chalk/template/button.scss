@@ -1,16 +1,24 @@
 @import '../../mixin/';
 
 
+$ns : #{$componentPrefix}-button;
+$clns: #{$componentPrefix}-color;
+$typeList: primary, tertiary, primary, warning, info, success, warning, error;
+$themeList: ghost, fantasy, empty;
+
+@function getClrVar($type) {
+  @return var(--#{$clns}-#{$type});
+}
+
+@function getClrLignVar($type) {
+  @return var(--#{$clns}-#{$type}-lignter);
+}
+
 .#{$componentPrefix}-button {
-  $ns : #{$componentPrefix}-button;
-  $typeList: primary, success, info, warning, danger, cyan;
-  $themeList: ghost, fantasy, empty;
+  $primary-color: #4338ca;
 
+  //base
   & {
-    & {
-      --ber-button-bg-color : var(--ber-button-bg-color)
-    }
-
     @include useFlexRCC;
     @include useSizeDft(0);
     @include useBorderBox();
@@ -22,13 +30,32 @@
     border: solid 1px;
     outline: none;
 
-    color: initial;
-    background-color: --ber-button-bg-color;
-    border-color: --ber-button-bg-color;
+    // background-color: darken(#7cdda9,15%);
+    color: var(--ber-black-color-bg);
+    background-color: var(--ber-color-bg);
+    border-color: var(--ber-color-gray);
+
+    &:hover,
+    &:focus {
+      color: var(--ber-color-primary)
+    }
 
     &:hover {
-      --ber-button-bg-color: var(--ber-color-parmary);
-      color: var(--ber-color-parmary)
+      border-color: var(--ber-color-primary)
     }
   }
+}
+
+@each $type in $typeList {
+  .#{$ns}-#{$type} {
+    color: inherit;
+    background-color: getClrVar($type);
+
+    &:hover {
+      color: white;
+      border-color: getClrLignVar($type);
+      background-color: getClrLignVar($type);
+    }
+  }
+
 }

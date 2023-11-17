@@ -1,4 +1,4 @@
-export type ElementTypes = "success" | "info" | "wraning" | "danger";
+export type ElementTypes = "success" | "info" | "wraning" | "danger" | "error";
 export type ElementSize = "small" | "normal" | "large";
 
 // 颜色断言
