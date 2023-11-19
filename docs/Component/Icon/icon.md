@@ -6,4 +6,16 @@
   <BerryIcon name="jubao" color="#715718" size="48px" rotate="true"></BerryIcon>// [!code ++]
 ``` -->
 
-<preview path="./Icon.vue" title="基本使用" description="xxxxx"></preview>
+## 演示
+
+<preview path="./Icon.vue" title="基本使用" description=""></preview>
+
+## API
+
+### Icon Props
+
+| 名称  | 类型     | 默认值         | 说明             |
+| ----- | -------- | -------------- | ---------------- |
+| name  | `string` | `undefined`    | 要展示的图标组件 |
+| color | `string` | `currentColor` | 图标颜色(支持rgb、rgba以及16进制颜色格式)         |
+| size  | `string` | `24px`         | 图标大小         |

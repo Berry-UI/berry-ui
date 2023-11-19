@@ -5,6 +5,7 @@ import BerryUI from 'berry-ui'
 import { AntDesignContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
 
+
 export default {
     extends: DefaultTheme,
     async enhanceApp({ app }) {

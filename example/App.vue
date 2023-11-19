@@ -16,7 +16,7 @@
       <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate">Info</BerryButton>
       <BerryButton type="success" variant="ghost" status="round" suffixIcon="rotate">Success</BerryButton>
       <BerryButton type="warning" variant="ghost" status="round">Warning</BerryButton>
-      <BerryButton type="error" variant="ghost" status="round">Error</BerryButton>
+      <BerryButton type="error" variant="ghost" status="round">Error</BerryButton> 
     </div>
 
   </div>
