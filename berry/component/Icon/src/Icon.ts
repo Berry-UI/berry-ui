@@ -10,7 +10,10 @@ export const IconProps = {
     /**
      * @description 字体图标的大小 主要在显示大小
      * */
-    size: String,
+    size: {
+        type: String,
+        default: "24px"
+    },
     /**
      * @description 字体图标的颜色 主要控制外观
      */
