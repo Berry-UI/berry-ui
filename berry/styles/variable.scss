@@ -2,7 +2,7 @@
   --ber-button-font-color: '';
   --ber-button-bg-color: #fff;
   --ber-button-br-color: #ccc;
-  
+
 
   --ber-component-height-large: 40px;
   --ber-component-height: 32px;
@@ -11,21 +11,24 @@
 
 
   --ber-color-primary: #4338ca;
-  --ber-color-primary-lignter: #7c74da;
-  --ber-color-primary-darken: #2e268f;
+  --ber-color-primary-lignter: #594fd0;
+  --ber-color-primary-darken: #4e44cd;
 
   --ber-color-info: #70c0e8;
-  --ber-color-info-lignter: #8acbec;
-  --ber-color-info-darken: #2e268f;
+  --ber-color-info-lignter: #89cbec;
+  --ber-color-info-darken: #78c4e9;
 
   --ber-color-success: #63e2b7;
   --ber-color-success-lignter: #7fe7c4;
+  --ber-color-success-darken: #5acea7;
 
   --ber-color-warning: #f2c97d;
   --ber-color-warning-lignter: #f5d599;
+  --ber-color-warning-darken: #f3cc85;
 
   --ber-color-error: #e88080;
   --ber-color-error-lignter: #e98b8b;
+  --ber-color-error-darken: #e98787;
 
   --ber-color-bg: #fff;
   --ber-black-color-bg: #000;
@@ -36,7 +39,11 @@
   --ber-color-gray-fade: rgb(235, 235, 235);
   --ber-color-gray-deep-fade: rgb(240, 242, 245);
 
-  --ber-black-color-typeList: #000;
+  --ber-color-lignter: rgb(52, 52, 56);
+  --ber-color-black: rgb(23, 23, 23);
+  --ber-color-black-darken: rgb(42, 42, 46);
 
+  --ber-size-small: 12px;
+  --ber-size-middle: 16px;
+  --ber-size-large: 20px;
 }
-

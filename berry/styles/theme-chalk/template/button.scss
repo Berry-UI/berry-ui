@@ -2,9 +2,10 @@
 
 
 $ns : #{$componentPrefix}-button;
-$clns: #{$componentPrefix}-color;
-$typeList: primary, tertiary, primary, warning, info, success, warning, error;
+$clns: #{$componentPrefix}-color;  
+$typeList: primary, tertiary, primary, info, success, warning, error;
 $themeList: ghost, fantasy, empty;
+$sizeList: small, middle, large;
 
 @function getClrVar($type) {
   @return var(--#{$clns}-#{$type});
@@ -13,6 +14,11 @@ $themeList: ghost, fantasy, empty;
 @function getClrLignVar($type) {
   @return var(--#{$clns}-#{$type}-lignter);
 }
+
+@function getClrDarken($type) {
+  @return var(--#{$clns}-#{$type}-darken)
+}
+
 
 .#{$componentPrefix}-button {
   $primary-color: #4338ca;
@@ -29,9 +35,9 @@ $themeList: ghost, fantasy, empty;
     user-select: none;
     border: solid 1px;
     outline: none;
+    gap: 5px;
 
-    // background-color: darken(#7cdda9,15%);
-    color: var(--ber-black-color-bg);
+    color: initial;
     background-color: var(--ber-color-bg);
     border-color: var(--ber-color-gray);
 
@@ -44,18 +50,68 @@ $themeList: ghost, fantasy, empty;
       border-color: var(--ber-color-primary)
     }
   }
+
+
 }
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.is-loading {
+  animation: fade .8s ease-out;
+}
+
 
 @each $type in $typeList {
   .#{$ns}-#{$type} {
-    color: inherit;
+    color: var(--ber-color-black);
     background-color: getClrVar($type);
 
-    &:hover {
-      color: white;
+    &:hover,
+    &:focus {
+      color: initial;
       border-color: getClrLignVar($type);
       background-color: getClrLignVar($type);
     }
+
+    &:active {
+      color: initial;
+      border-color: getClrDarken($type);
+      background-color: getClrDarken($type);
+    }
+  }
+}
+
+@each $type in $typeList {
+  .#{$ns}-#{variant}-#{$type} {
+    color: getClrVar($type);
+  }
+}
+
+.#{$ns}-#{ghost} {
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: var(--ber-color-gray);
+  }
+  &:active {
+    border-color: transparent;
   }
 
+}
+
+@each $size in $sizeList {
+  .#{$ns}-#{$size}--icon {
+    width: getClrVar($size);
+    // transition: all .5s;
+  }
 }
