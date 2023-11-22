@@ -5,7 +5,7 @@ type buttonTypes = ElementTypes | 'primary' | 'cyan';
 const buttonNativeTypes = ['button', 'submit', 'reset'] as const;
 
 export const ButtonProps = {
-  /**
+  /**b
    * @description 按钮的类型 主要控制颜色
    */
   type: String as PropType<buttonTypes>,
@@ -28,6 +28,10 @@ export const ButtonProps = {
    * @description 是否为加载状态 
    */
   loading: Boolean,
+  /**
+   * @description 按钮的大小
+   */
+  size: String as PropType<ElementSize>,
   /**
    * @description 按钮前缀的图标
    */

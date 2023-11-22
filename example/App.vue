@@ -11,11 +11,12 @@
   <div>
     
     <div style="width: 40%; display: flex;flex-direction: row;justify-content: space-around;">
-      <BerryButton type="primary" status="round" >Default</BerryButton>
-      <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate" loading>Info</BerryButton>
-      <BerryButton type="success" variant="ghost" status="round" suffixIcon="rotate">Success</BerryButton>
-      <BerryButton type="warning" variant="ghost" status="round">Warning</BerryButton>
-      <BerryButton type="error" variant="ghost" status="round">Error</BerryButton> 
+      <BerryButton type="primary" status="round" size="small" variant="ghost" suffixIcon="jubao">Default</BerryButton>
+      <BerryButton type="info" variant="ghost" status="round" size="normal" prefixIcon="jubao">Default</BerryButton>
+      <BerryButton type="info" variant="ghost" status="round" size="large">Default</BerryButton>
+      <BerryButton type="success" status="round" size="small">Success</BerryButton>
+      <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
+      <BerryButton type="success" variant="ghost" status="round" size="large">Success</BerryButton> 
     </div>
 
   </div>
