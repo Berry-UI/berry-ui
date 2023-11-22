@@ -6,7 +6,7 @@ interface IS {
 
   (status?: string, f?: boolean): string,
 
-  (status: boolean, s: string): string
+  (status?: boolean, s?: string): string
 }
 
 export const useNS = function (name: string) {
@@ -23,24 +23,28 @@ export const useNS = function (name: string) {
   const m = (modifier: string | number) => {
     return modifier ? `${namespace}-${modifier}` : '';
   }
-
+  
+  const mt = (type: string) => {
+    return type ? `${namespace}-variant-${type}` : ''
+  }
   const is: IS = (status?: boolean | string, s?: string | boolean) => {
-    if (typeof status === 'string'){
-      if(typeof s === 'boolean') {
+    if (typeof status === 'string') {
+      if (typeof s === 'boolean') {
         return `${statusPrefix}-${status}`
       }
     }
     if (typeof status === 'boolean' && status) {
       return `${statusPrefix}-${s}`
-    } 
+    }
     return ''
   }
-  
+
 
   return {
     namespace,
     b,
     m,
     is,
+    mt
   }
 }
