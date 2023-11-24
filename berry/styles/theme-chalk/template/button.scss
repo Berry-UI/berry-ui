@@ -10,7 +10,6 @@ $sizeList: small, middle, large;
 
 @mixin with ($type) {
   &.#{$ns}-#{$type} {
-    font-weight: bold; // 
     color: getClrVar($type);
     border-color: getClrVar($type);
 
@@ -57,7 +56,6 @@ $sizeList: small, middle, large;
     gap: 5px;
 
     color: initial;
-    background-color: var(--ber-color-bg);
     border-color: var(--ber-color-gray);
 
     &:hover,
@@ -87,18 +85,18 @@ $sizeList: small, middle, large;
 @each $type in $typeList {
   .#{$ns}-#{$type} {
     // color: getClrDarken($type);
-    color: #222;
+    color: var(--ber-color-black);
     border-color: getClrVar($type);
     background-color: getClrVar($type);
 
     &:hover,
     &:focus {
-      color: initial;
+      color: var(--ber-color-black);
       border-color: getClrLignVar($type);
       background-color: getClrLignVar($type);
     }
     &:active {
-      color: initial;
+      color: var(--ber-color-black);
       border-color: getClrDarken($type);
       background-color: getClrDarken($type);
     }
@@ -107,7 +105,6 @@ $sizeList: small, middle, large;
 }
 
 .#{$ns}-#{ghost} {
-
   background-color: transparent;
   @each $type in $typeList {
     @include with ($type);
@@ -115,8 +112,7 @@ $sizeList: small, middle, large;
 }
 
 @each $size in $sizeList {
-  .#{$ns}-#{$size}--icon {
-    width: getClrVar($size);
-    // transition: all .5s;
+  .#{$ns}-#{$size} {
+    @include useSizeThat($size)
   }
 }

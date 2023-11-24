@@ -7,22 +7,45 @@ $componentPrefix: "ber";
   align-items: center;
   align-content: center;
 }
+
 @mixin filter-overflow() {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@mixin useSizeDft($a:9,$b:5.5,$u:px){
+
+@mixin useSizeDft($a: 9, $b: 5.5, $u: px) {
   min-height: var(--ber-component-height);
   font-size: 16px;
   padding: #{$a}#{$u} #{$b}#{$u};
 }
+
 @mixin useBorderBox() {
   box-sizing: border-box;
+
   & * {
     box-sizing: border-box;
   }
 }
-@mixin useBorderRadius($num,$unit:px){
+
+@mixin useBorderRadius($num, $unit: px) {
   border-radius: #{$num}#{$unit};
+}
+
+@mixin useSizeThat($type) {
+  @if($type =='small') {
+    height: var(--ber-height-small);
+    font-size: var(--ber-size-small);
+    padding: 6px 9.5px;
+  }
+
+  @if($type =='large') {
+    height: var(--ber-height-large);
+    font-size: var(--ber-size-large);
+    padding: 12px 19.5px;
+  }
+
+  @if($type =='normal') {
+    @include useSizeDft(0)
+  }
 }

@@ -8,7 +8,6 @@ import { computed, ref } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { ButtonProps } from './Button'
 import BerryIcon from '../../Icon'
-import { convertToObject } from "typescript";
 const ns = useNS('button')
 
 defineOptions({
@@ -25,6 +24,7 @@ const kls = computed(() => {
     ns.m(props.type as string),
     ns.m(props.variant as string),
     ns.m(props.status as string),
+    ns.m(props.size as string)
   ]
 })
 
