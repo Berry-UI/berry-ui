@@ -8,8 +8,7 @@
 </script>
 
 <template>
-  <div>
-    
+  <!-- <div>
     <div style="width: 40%; display: flex;flex-direction: row;justify-content: space-around;">
       <BerryButton type="primary" status="round" >Default</BerryButton>
       <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate" loading>Info</BerryButton>
@@ -17,8 +16,9 @@
       <BerryButton type="warning" variant="ghost" status="round">Warning</BerryButton>
       <BerryButton type="error" variant="ghost" status="round">Error</BerryButton> 
     </div>
-
-  </div>
+  </div> -->
+  <!-- <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate" loading>Info</BerryButton> -->
+  <BerryInput icon="prefix"></BerryInput>
 </template>
 
 <style scoped lang="scss"></style>

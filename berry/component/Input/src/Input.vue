@@ -11,19 +11,28 @@ import { InputProps } from './Input'
 defineOptions({
     name: 'BerryInput'
 })
-const ns = useNS('icon')
+const ns = useNS('input')
 const props = defineProps({ ...InputProps })
+console.log(props.icon)
 
-
-const kls = computed(() => {
+const ber_input = computed(() => {
     return [
         ns.namespace,
     ]
 })
+const ber_input_el = computed(() => {
+    return [
+        ns.m('el'),
+    ]
+})
+
+
 </script>
 
 <template>
-    <input type="text" :class="kls">
+    <div :class="ber_input">
+        <input :class="ber_input_el" :type="props.type" >
+    </div>
 </template>
 
 <style lang="scss" scoped>

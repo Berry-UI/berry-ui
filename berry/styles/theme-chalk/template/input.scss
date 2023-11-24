@@ -1,0 +1,16 @@
+@import '../../mixin/';
+$ns : #{$componentPrefix}-input;
+
+.#{$ns} {
+    width: fit-content;
+
+    input {
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+        height: 34px;
+        line-height: 34px;
+        padding: 4px 8px;
+        background-color: orangered;
+    }
+}

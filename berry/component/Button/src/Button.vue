@@ -4,17 +4,17 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-defineOptions({
-  inheritAttrs: false,
-  name: 'BerryButton'
-})
-
 import { computed, ref } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { ButtonProps } from './Button'
 import BerryIcon from '../../Icon'
 import { convertToObject } from "typescript";
 const ns = useNS('button')
+
+defineOptions({
+  inheritAttrs: false,
+  name: 'BerryButton'
+})
 
 const props = defineProps({ ...ButtonProps })
 console.log(props.prefixIcon)

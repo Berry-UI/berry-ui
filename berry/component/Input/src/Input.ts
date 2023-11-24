@@ -1,26 +1,51 @@
 import { PropType } from "vue"
 import { ElementSize } from 'berry-ui/typings'
-type actionTypes = false | true
+type defaultTypes = false | true
+type inputTypes = 'text' | 'password' | 'textarea'
+type iconTypes = 'pre' | 'suf'
+type iconAddress<T extends iconTypes> = `${T}fix`
 
 export const InputProps = {
     /**
-     * @description 字体图标的名称 主要控制字体图标
+     * @description 输入框类型，如text、password、textarea
      */
-    type: String,
+    type: {
+        type: String as PropType<inputTypes>,
+        default: 'text'
+    },
     /**
-     * @description 字体图标的大小 主要在显示大小
+     * @description 输入框大小
      * */
-    size: String as PropType<ElementSize>,
+    size: {
+        type: String as PropType<ElementSize>,
+        default: 'normal'
+    },
     /**
-     * @description 字体图标的动作 主要控制旋转
+     * @description 输入框圆角
      */
     raidus: Number,
     /**
-     * @description 字体图标的动作 主要控制旋转
+    * @description 输入框校验规则
+    */
+    rule: String,
+    /**
+     * @description 是否一键清空
      */
-    disabled: {
-        type: Boolean as PropType<actionTypes>,
+    clearable: {
+        type: Boolean as PropType<defaultTypes>,
         default: false
+    },
+    /**
+    * @description 是否可点击
+    */
+    disabled: {
+        type: Boolean as PropType<defaultTypes>,
+        default: false
+    },
+    /**
+    * @description 前后图标
+    */
+    icon: {
+        type: String as PropType<iconAddress<iconTypes>>,
     }
-
 }

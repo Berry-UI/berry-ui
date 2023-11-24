@@ -1,0 +1,35 @@
+:root {
+    --vp-header-anchor-symbol: '⩒';
+}
+
+.vp-doc table {
+    display: table;
+    width: 100%;
+}
+
+.vp-doc tr:nth-child(2n) {
+    background-color: transparent;
+}
+
+.vp-doc tr {
+    border-left: 1px solid var(--vp-c-divider);
+    border-right: 1px solid var(--vp-c-divider);
+    border-top: none;
+
+    &:nth-child(1) {
+        border-top: 1px solid var(--vp-c-divider);
+    }
+
+    &:last-child {
+        border-bottom: 1px solid var(--vp-c-divider);
+    }
+}
+
+.vp-doc th,
+.vp-doc td {
+    border: none;
+}
+
+.vp-doc th {
+    background-color: #fafafa;
+}
