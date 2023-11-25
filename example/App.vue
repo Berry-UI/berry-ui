@@ -19,7 +19,9 @@
     </div>
   </div> -->
   <!-- <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate" loading>Info</BerryButton> -->
-  <BerryInput icon="prefix"></BerryInput>
+  <BerryInput icon="prefix" size="small" disabled></BerryInput>
+  <BerryInput icon="prefix" ></BerryInput>
+  <BerryInput icon="prefix" size="large"></BerryInput>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss" ></style>

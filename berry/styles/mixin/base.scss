@@ -36,16 +36,20 @@ $componentPrefix: "ber";
   @if($type =='small') {
     height: var(--ber-height-small);
     font-size: var(--ber-size-small);
-    padding: 6px 9.5px;
+    padding: 6px 8px;
   }
 
   @if($type =='large') {
     height: var(--ber-height-large);
     font-size: var(--ber-size-large);
-    padding: 12px 19.5px;
+    padding: 10px 12px;
   }
 
   @if($type =='normal') {
-    @include useSizeDft(0)
+    // @include useSizeDft(0)
+
+    height: var(--ber-height-normal);
+    font-size: var(--ber-size-normal);
+    padding: 8px 10px;
   }
 }

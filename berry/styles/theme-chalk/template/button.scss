@@ -5,7 +5,7 @@ $ns : #{$componentPrefix}-button;
 $clns: #{$componentPrefix}-color;
 $typeList: primary, tertiary, primary, info, success, warning, error;
 $themeList: ghost, fantasy, empty;
-$sizeList: small, middle, large;
+// $sizeList: small, middle, large;
 
 
 @mixin with ($type) {

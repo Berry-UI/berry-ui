@@ -6,18 +6,16 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
-import { ButtonProps } from './Button'
-import BerryIcon from '../../Icon'
-const ns = useNS('button')
+import { ButtonProps } from "./Button"
+import BerryIcon from "../../Icon"
+const ns = useNS("button")
 
 defineOptions({
   inheritAttrs: false,
-  name: 'BerryButton'
+  name: "BerryButton"
 })
 
 const props = defineProps({ ...ButtonProps })
-console.log(props.prefixIcon)
-console.log(props.suffixIcon)
 const kls = computed(() => {
   return [
     ns.namespace,

@@ -1,16 +1,44 @@
 @import '../../mixin/';
+
 $ns : #{$componentPrefix}-input;
+// 
+// $sizeList: small, middle, large;
 
 .#{$ns} {
-    width: fit-content;
+    margin: 4px 8px;
+    display: inline-flex;
+    flex-grow: 1;
+
 
     input {
         outline: none;
         border: none;
         box-sizing: border-box;
-        height: 34px;
-        line-height: 34px;
-        padding: 4px 8px;
-        background-color: orangered;
+        width: 100%;
+        border-radius: 2px;
+        border: 1px solid #e0e0e6;
+        overflow: hidden;
+
+
+        &:hover:not(.ber-input-disabled) {
+            border-color: var(--ber-color-primary);
+            transition: border-color .3s ease;
+        }
+
+        &:focus:not(.ber-input-disabled) {
+            border-color: var(--ber-color-primary);
+            box-shadow: 0 0 2px var(--ber-color-primary);
+            transition: border-color .3s ease;
+        }
+    }
+
+    @each $item in $sizeList {
+        .#{$ns}-#{$item} {
+            @include useSizeThat($item);
+        }
+    }
+
+    .#{$ns}-disabled {
+        cursor: no-drop;
     }
 }
