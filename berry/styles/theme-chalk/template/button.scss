@@ -14,12 +14,12 @@ $themeList: ghost, fantasy, empty;
     border-color: getClrVar($type);
 
     &:hover,
-    &:focus  {
+    &:focus:not(.is-loading)  {
       color: getClrLignVar($type);
       border-color: getClrLignVar($type);
       background-color: transparent;
     }
-    &:active {
+    &:active:not(.is-loading) {
       color: getClrDarken($type);
       border-color: getClrDarken($type);
       background-color: transparent;
@@ -59,10 +59,10 @@ $themeList: ghost, fantasy, empty;
     border-color: var(--ber-color-gray);
 
     &:hover,
-    &:focus {
+    &:focus:not(.is-disabled) {
       color: var(--ber-color-primary)
     }
-    &:hover {
+    &:hover:not(.is-disabled) {
       border-color: var(--ber-color-primary)
     }
   }
@@ -80,8 +80,8 @@ $themeList: ghost, fantasy, empty;
   .is-loading {
     animation: fade .8s ease-out;
   }
+ 
 }
-
 @each $type in $typeList {
   .#{$ns}-#{$type} {
     // color: getClrDarken($type);
@@ -90,12 +90,12 @@ $themeList: ghost, fantasy, empty;
     background-color: getClrVar($type);
 
     &:hover,
-    &:focus {
+    &:focus:not(.is-loading) {
       color: var(--ber-color-black);
       border-color: getClrLignVar($type);
       background-color: getClrLignVar($type);
     }
-    &:active {
+    &:active:not(.is-loading) {
       color: var(--ber-color-black);
       border-color: getClrDarken($type);
       background-color: getClrDarken($type);
