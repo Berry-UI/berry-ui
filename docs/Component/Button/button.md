@@ -22,6 +22,10 @@
 使用 `variant` 设置透明背景
 <preview path="./src/ghost.vue" title="基本使用" description=""></preview>
 
+## 禁用
+按钮可以使用 `disabled` 禁用
+<preview path="./src/disabled.vue" title="基本使用" description=""></preview>
+
 # API
 
 ## Button Props
@@ -31,6 +35,7 @@
 | nativeType | `button` \| `submit` \| `reset` | `button` | `按钮DOM默认属性`  |
 | variant    | `ghost`                         | `ghost`  | `按钮的透明主题`   |
 | loading    | `Boolean`                       | `false`  | `按钮是否可以加载` |
+| disabled    | `Boolean`                       | `false`  | `按钮是否被禁用` |
 | perfixIcon | `String`                        | `---`    | `按钮的前缀图标`   |
 | suffixIcon | `String`                        | `---`    | `按钮的后缀图标`   |
 | size       | `normal` \| `small` \| `large`  | `normal` | `按钮大小`         |

@@ -29,6 +29,10 @@ export const ButtonProps = {
    */
   loading: Boolean,
   /**
+   * @description 按钮是否为禁用状态
+   */
+  disabled: Boolean,
+  /**
    * @description 按钮的大小
    */
   size: String as PropType<ElementSize>,
@@ -40,6 +44,12 @@ export const ButtonProps = {
    * @description 代码后缀图标
    */
   suffixIcon: String
+} as const
 
-  
+export const ButtonEmits = {
+  /**
+   * @description 点击按钮之后触发的事件
+   * @param evt
+   */
+  click: (evt: MouseEvent) => evt instanceof Event
 }

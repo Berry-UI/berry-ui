@@ -9,17 +9,29 @@ $themeList: ghost, fantasy, empty;
     border-color: getClrVar($type);
 
     &:hover,
-    &:focus  {
+    &:focus:not(.is-loading)  {
       color: getClrLignVar($type);
       border-color: getClrLignVar($type);
       background-color: transparent;
     }
-    &:active {
+    &:active:not(.is-loading) {
       color: getClrDarken($type);
       border-color: getClrDarken($type);
       background-color: transparent;
     }
   }
+}
+
+@mixin notAllowedMinin($color,$bg,$br) {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color;
+    background-color: $bg;
+    border-color: $br;
+  }
+  
 }
 
 @function getClrVar($type) {
@@ -75,12 +87,12 @@ $themeList: ghost, fantasy, empty;
   .is-loading {
     animation: fade .8s ease-out;
   }
+ 
 }
-
 @each $type in $typeList {
   .#{$ns_button}-#{$type} {
     // color: getClrDarken($type);
-    color: var(--ber-color-black);
+    color: initial;
     border-color: getClrVar($type);
     background-color: getClrVar($type);
 
@@ -110,4 +122,9 @@ $themeList: ghost, fantasy, empty;
   .#{$ns_button}-#{$size} {
     @include useSizeThat($size)
   }
+}
+
+.is-disabled {
+  cursor: not-allowed!important;
+  @include notAllowedMinin(getClrVar('black'), getClrVar('gray'),getClrVar('gray') )
 }

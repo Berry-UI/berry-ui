@@ -46,8 +46,6 @@ $componentPrefix: "ber";
   }
 
   @if($type =='normal') {
-    // @include useSizeDft(0)
-
     height: var(--ber-height-normal);
     font-size: var(--ber-size-normal);
     padding: 8px 10px;
