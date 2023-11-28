@@ -20,7 +20,7 @@
       <BerryButton type="success" variant="ghost" status="round" size="large">Success</BerryButton> 
     </div>
   </div> -->
-  <BerryButton disabled>Default</BerryButton>
+  <BerryButton type="primary">Default</BerryButton>
 
   <BerryInput icon="prefix" size="small" disabled></BerryInput>
   <BerryInput icon="prefix" ></BerryInput>
