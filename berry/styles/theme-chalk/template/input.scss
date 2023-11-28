@@ -1,44 +1,45 @@
 @import '../../mixin/';
 
-$ns : #{$componentPrefix}-input;
-// 
-// $sizeList: small, middle, large;
-
-.#{$ns} {
-    margin: 4px 8px;
+.#{$ns_input} {
+    width: 200px;
     display: inline-flex;
     flex-grow: 1;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e6;
+    border-radius: 2px;
+    margin: 4px 8px;
 
-
-    input {
+    .#{$ns_input}-el {
         outline: none;
         border: none;
-        box-sizing: border-box;
+        box-sizing: inherit;
         width: 100%;
-        border-radius: 2px;
-        border: 1px solid #e0e0e6;
         overflow: hidden;
+    }
 
+    &:hover:not(.#{$ns_input}-disabled),
+    &:focus:not(.#{$ns_input}-disabled) {
+        border-color: var(--ber-color-primary);
+        transition: border-color .3s ease;
+    }
 
-        &:hover:not(.ber-input-disabled) {
-            border-color: var(--ber-color-primary);
-            transition: border-color .3s ease;
-        }
+    &:focus:not(.#{$ns_input}-disabled) {
+        box-shadow: 0 0 2px var(--ber-color-primary);
+    }
 
-        &:focus:not(.ber-input-disabled) {
-            border-color: var(--ber-color-primary);
-            box-shadow: 0 0 2px var(--ber-color-primary);
-            transition: border-color .3s ease;
+    &.#{$ns_input}-disabled {
+        cursor: no-drop;
+
+        .#{$ns_input}-el {
+            z-index: -1;
         }
     }
 
+    // 设置input大小
     @each $item in $sizeList {
-        .#{$ns}-#{$item} {
+        .#{$ns_input}-#{$item} {
             @include useSizeThat($item);
         }
-    }
-
-    .#{$ns}-disabled {
-        cursor: no-drop;
     }
 }

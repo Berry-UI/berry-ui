@@ -20,8 +20,14 @@
   </div> -->
   <!-- <BerryButton type="info" variant="ghost" status="round" prefixIcon="rotate" loading>Info</BerryButton> -->
   <BerryInput icon="prefix" size="small" disabled></BerryInput>
-  <BerryInput icon="prefix" ></BerryInput>
-  <BerryInput icon="prefix" size="large"></BerryInput>
+  <BerryInput icon="prefix" >
+    <template #header>
+      <BerryIcon name="rotate" color="rgb(15,15,15)" :rotate="true"></BerryIcon>
+    </template>
+  </BerryInput>
+  <BerryInput icon="prefix" size="large">
+    
+  </BerryInput>
 </template>
 
 <style scoped lang="scss" ></style>

@@ -1,5 +1,6 @@
 :root {
     --vp-header-anchor-symbol: '⩒';
+    --vp-layout-max-width: 1660px;
 }
 
 .vp-doc table {
@@ -32,4 +33,20 @@
 
 .vp-doc th {
     background-color: #fafafa;
+}
+
+.dark {
+    .vp-doc th {
+        background-color: #26262a;
+    }
+}
+
+/* 修改 layout 最大宽度 */
+.container {
+    max-width: var(--vp-layout-max-width) !important;
+}
+
+.content-container,
+.content {
+    max-width: 100% !important;
 }

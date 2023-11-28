@@ -1,15 +1,10 @@
 @import '../../mixin/';
 
-
-$ns : #{$componentPrefix}-button;
 $clns: #{$componentPrefix}-color;
-$typeList: primary, tertiary, primary, info, success, warning, error;
 $themeList: ghost, fantasy, empty;
-// $sizeList: small, middle, large;
-
 
 @mixin with ($type) {
-  &.#{$ns}-#{$type} {
+  &.#{$ns_button}-#{$type} {
     color: getClrVar($type);
     border-color: getClrVar($type);
 
@@ -83,7 +78,7 @@ $themeList: ghost, fantasy, empty;
 }
 
 @each $type in $typeList {
-  .#{$ns}-#{$type} {
+  .#{$ns_button}-#{$type} {
     // color: getClrDarken($type);
     color: var(--ber-color-black);
     border-color: getClrVar($type);
@@ -104,7 +99,7 @@ $themeList: ghost, fantasy, empty;
   }
 }
 
-.#{$ns}-#{ghost} {
+.#{$ns_button}-#{ghost} {
   background-color: transparent;
   @each $type in $typeList {
     @include with ($type);
@@ -112,7 +107,7 @@ $themeList: ghost, fantasy, empty;
 }
 
 @each $size in $sizeList {
-  .#{$ns}-#{$size} {
+  .#{$ns_button}-#{$size} {
     @include useSizeThat($size)
   }
 }
