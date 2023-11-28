@@ -27,6 +27,18 @@ $themeList: ghost, fantasy, empty;
   }
 }
 
+@mixin notAllowedMinin($color,$bg,$br) {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color;
+    background-color: $bg;
+    border-color: $br;
+  }
+  
+}
+
 @function getClrVar($type) {
   @return var(--#{$clns}-#{$type});
 }
@@ -115,4 +127,9 @@ $themeList: ghost, fantasy, empty;
   .#{$ns}-#{$size} {
     @include useSizeThat($size)
   }
+}
+
+.is-disabled {
+  cursor: not-allowed!important;
+  @include notAllowedMinin(getClrVar('black'), getClrVar('gray'),getClrVar('gray') )
 }
