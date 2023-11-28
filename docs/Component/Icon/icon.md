@@ -8,13 +8,27 @@
   <BerryIcon name="jubao" color="#715718" size="48px" rotate="true"></BerryIcon>// [!code ++]
 ``` -->
 
-### 演示
+## 演示
 
-<preview path="./Icon.vue" title="基本使用" description=""></preview>
+### 基础
 
-### API
+<preview path="./src/basic.vue" title="基本使用" description=""></preview>
 
-#### Icon Props
+### 自定义大小
+
+<preview path="./src/size.vue" title="基本使用" description=""></preview>
+
+### 自定义颜色、
+
+<preview path="./src/color.vue" title="基本使用" description=""></preview>
+
+### 旋转
+
+<preview path="./src/rotate.vue" title="基本使用" description=""></preview>
+
+# API
+
+## Icon Props
 
 | 名称  | 类型     | 默认值         | 说明                                          |
 | ----- | -------- | -------------- | --------------------------------------------- |
