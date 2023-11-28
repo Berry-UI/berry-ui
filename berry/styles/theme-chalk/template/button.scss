@@ -97,7 +97,7 @@ $themeList: ghost, fantasy, empty;
 @each $type in $typeList {
   .#{$ns}-#{$type} {
     // color: getClrDarken($type);
-    color: var(--ber-color-black);
+    color: initial;
     border-color: getClrVar($type);
     background-color: getClrVar($type);
 
