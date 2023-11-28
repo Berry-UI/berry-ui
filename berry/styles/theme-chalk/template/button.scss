@@ -71,10 +71,10 @@ $themeList: ghost, fantasy, empty;
     border-color: var(--ber-color-gray);
 
     &:hover,
-    &:focus:not(.is-disabled) {
+    &:focus {
       color: var(--ber-color-primary)
     }
-    &:hover:not(.is-disabled) {
+    &:hover {
       border-color: var(--ber-color-primary)
     }
   }
@@ -102,12 +102,12 @@ $themeList: ghost, fantasy, empty;
     background-color: getClrVar($type);
 
     &:hover,
-    &:focus:not(.is-loading) {
+    &:focus {
       color: var(--ber-color-black);
       border-color: getClrLignVar($type);
       background-color: getClrLignVar($type);
     }
-    &:active:not(.is-loading) {
+    &:active {
       color: var(--ber-color-black);
       border-color: getClrDarken($type);
       background-color: getClrDarken($type);
