@@ -36,6 +36,7 @@ export default defineConfig({
                 items: [
                     { text: 'Icon', link: '/Component/Icon/icon.md' },
                     { text: 'Button', link: '/Component/Button/button.md' },
+                    { text: 'ButtonGroup', link: '/Component/ButtonGroup/buttongroup.md' },
                 ],
             },
         ],

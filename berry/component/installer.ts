@@ -2,11 +2,13 @@ import { App } from "vue";
 import BerryButton from "./Button";
 import BerryIcon from "./Icon";
 import BerryInput from "./Input";
+import BerryButtonGroup from "./ButtonGroup";
 
 const comps = [
   BerryButton,
   BerryIcon,
-  BerryInput
+  BerryInput,
+  BerryButtonGroup
 ]
 
 export default function (Vue: App) {

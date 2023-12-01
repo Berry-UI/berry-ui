@@ -1,0 +1,54 @@
+@import '../../mixin';
+
+
+.#{$ns_button_group} {
+  &:before,&:after {
+    display: table;
+    content: "";
+  }
+  & {
+    display: inline-block;
+    vertical-align: middle;
+
+    &>.#{$ns_button} {
+      float: left;
+      position: relative;
+
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+    }
+
+    @each $type in $typeList {
+      &>.#{$ns_button}-#{$type}:not(.#{$ns_button}-ghost) {
+        float: left;
+        position: relative;
+        margin-right: 1px;
+        
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

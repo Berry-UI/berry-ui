@@ -5,9 +5,9 @@
 -->
 <script setup lang="ts">
 // import { BerryButton, BerryIcon } from 'berry-ui'
-  const cli = () => {
-    console.log(123)
-  }
+const cli = () => {
+  console.log(123)
+}
 </script>
 
 <template>
@@ -20,17 +20,24 @@
       <BerryButton type="success" variant="ghost" status="round" size="large">Success</BerryButton> 
     </div>
   </div> -->
-  <BerryButton type="primary">Default</BerryButton>
+  <!-- <BerryButton type="primary">Default</BerryButton>
 
   <BerryInput icon="prefix" size="small" disabled></BerryInput>
-  <BerryInput icon="prefix" >
+  <BerryInput icon="prefix">
     <template #header>
       <BerryIcon name="rotate" color="rgb(15,15,15)" :rotate="true"></BerryIcon>
     </template>
   </BerryInput>
   <BerryInput icon="prefix" size="large">
-    
-  </BerryInput>
+  </BerryInput> -->
+
+
+  <!-- <berry-button-group>
+    <BerryButton type="primary">Default</BerryButton>
+    <BerryButton type="primary">Default</BerryButton>
+  </berry-button-group> -->
 </template>
 
-<style scoped lang="scss" ></style>
+<style scoped lang="scss" >
+
+</style> 

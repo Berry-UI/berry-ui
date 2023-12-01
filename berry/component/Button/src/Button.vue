@@ -8,7 +8,6 @@ import { computed, ref } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { ButtonProps, ButtonEmits } from "./Button"
 import BerryIcon from "../../Icon"
-import { emit } from "process";
 const ns = useNS("button")
 
 defineOptions({
@@ -45,7 +44,6 @@ const handleClick = (evt: MouseEvent) => {
     return true
   } 
 }
-console.log(props)
 </script>
 
 <template>
