@@ -128,10 +128,10 @@ npm install vite-plugin-svg-icons fast-glob -D
 
 ```
 - [√] Icon 图标 `level max`
-- [ ] Button 按钮  //
-- [ ] Button Group 按钮组
-- [ ] Input 输入框
-- [ ] Radio 单选框
+- [√] Button 按钮  //
+- [√] Button Group 按钮组
+- [*] Input 输入框
+- [*] Radio 单选框
 - [ ] Checkbox 复选框
 - [ ] Input Group 输入框组
 - [ ] Select 选择器
