@@ -10,12 +10,22 @@ import { reactive } from "vue"
 const state = reactive ({
   options: [
     {
-      label: '男',
-      value: '0'
+      label: 'aom',
+      value: '0',
+      disabled: true
     },
     {
-      label: '女',
-      value: '1'
+      label: 'tom',
+      value: '1',
+      disabled: true
+    },
+    {
+      label: 'tim',
+      value: '2'
+    },
+    {
+      label: 'see',
+      value: '3'
     }
   ]
 })

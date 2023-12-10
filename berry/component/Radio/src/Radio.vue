@@ -24,20 +24,30 @@ const radioCls = computed(() => {
     ns.is(props.checked, 'checked')
   ]
 })
-let event = ref(0)
+let radioIndex = ref(0)
 console.log(props.options)
-const onclick = (evt: MouseEvent) => {
-
+const change = (item,index) => {
+  if(!item.disabled) {
+  radioIndex.value = index
+  console.log(index)
+}
 }
 </script>
 
 <template>
   <div :class="ns.namespace">
-    <div :class="radioCls" class="active" v-for="(item, index) in options" :key="index">
-      <span :class="ns.e('label')" class="active">
+    <label 
+      v-for="(item, index) in options" 
+      :key="index" 
+      @click="change(item,index)" 
+      :class="[
+       ns.e('item'),
+       ns.is(item.disabled, 'disabled'),
+    ]">
+      <span :class="radioIndex === index ? 'active' : ''">
       </span>
       {{ item.label }}
-    </div>
+    </label>
   </div>
 </template>
 

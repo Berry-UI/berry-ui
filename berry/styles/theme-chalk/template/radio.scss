@@ -2,8 +2,10 @@
 
 .#{$ns_radio} {
   width: 100%;
-  cursor: pointer;
   height: auto;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
 
   & .#{$ns_radio}__item {
     width: auto;
@@ -12,27 +14,32 @@
     align-items: center;
     position: relative;
     cursor: pointer;
+    margin-right: 15px;
     user-select: none;
     // border: 1px solid var(--ber-color-primary);
 
-    & .ber-radio__label {
+    & span {
       width: 14px;
       height: 14px;
       display: inline-block;
       position: relative;
+      margin:3px 8px 0 0;
       background-color: transparent;
       box-shadow: var(--ber-shadow);
       border-radius: 50%;
       transition: tranfrom .15s ease-in;
-      
-      
+
+
     }
-    & .ber-radio__label:hover {
+
+    & span:hover {
       box-shadow: var(--ber-shadow-hover);
       transition: all .3s linear;
       // border: 1px solid pink;
     }
-    & .ber-radio__label.active {
+
+    & span.active {
+      box-shadow: var(--ber-shadow-active);
       background-color: var(--ber-color-primary);
       &::after {
         content: "";
@@ -43,11 +50,29 @@
         height: 4px;
         background-color: var(--ber-color-bg);
         border-radius: 50%;
-        // border-right: 1px solid pink;
-        // border-bottom: 1px solid blue;
         transition: all 1s;
       }
     }
-   
+  }
+  .is-disabled {
+    cursor: no-drop;
+    color: var(--ber-color-gray);
+    & span:hover {
+      box-shadow: var(--ber-shadow);
+    }
+    span {
+      background-color: var(--ber-color-gray)!important;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 4px;
+        height: 4px;
+        background-color: var(--ber-color-bg);
+        border-radius: 50%;
+        transition: all 1s;
+      }
+    }
   }
 }

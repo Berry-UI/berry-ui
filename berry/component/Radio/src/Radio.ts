@@ -1,8 +1,9 @@
 import { Prop, PropType } from 'vue'
 
 interface optionsType {
-  label: string | number | boolean
-  value: string | number | boolean
+  label: string | number | boolean,
+  value: string | number | boolean,
+  disabled: boolean,
 }
 type options = optionsType[]
 export const RodioProps = {
@@ -21,16 +22,4 @@ export const RodioProps = {
     type: Boolean as PropType<boolean>,
     default: false
   },
-  /**
-   * @descript 按钮是否禁用
-   */
-  disabled: Boolean,
-  /**
-   * @descript 原生ID属性
-   */
-  id: String,
-  /**
-   * @descirpt 原生name属性
-   */
-  name: String
 } as const

@@ -27,9 +27,9 @@ $themeList: ghost, fantasy, empty;
   &:hover,
   &:focus,
   &:active {
-    color: $color;
-    background-color: $bg;
-    border-color: $br;
+    color: $color!important;
+    background-color: $bg!important;
+    border-color: $br!important;
   }
   
 }
@@ -75,6 +75,12 @@ $themeList: ghost, fantasy, empty;
       border-color: var(--ber-color-primary)
     }
   }
+  &.is-disabled {
+    cursor: not-allowed;
+    @include notAllowedMinin(getClrVar('black'), getClrVar('gray'),getClrVar('gray') )
+  }
+
+  
 
   @keyframes fade {
     0% {
@@ -88,9 +94,9 @@ $themeList: ghost, fantasy, empty;
 
   .is-loading {
     animation: fade .8s ease-out;
-  }
- 
+  } 
 }
+
 @each $type in $typeList {
   .#{$ns_button}-#{$type} {
     // color: getClrDarken($type);
@@ -126,7 +132,3 @@ $themeList: ghost, fantasy, empty;
   }
 }
 
-.is-disabled {
-  cursor: not-allowed!important;
-  @include notAllowedMinin(getClrVar('black'), getClrVar('gray'),getClrVar('gray') )
-}
