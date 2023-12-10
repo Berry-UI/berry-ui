@@ -3,12 +3,14 @@ import BerryButton from "./Button";
 import BerryIcon from "./Icon";
 import BerryInput from "./Input";
 import BerryButtonGroup from "./ButtonGroup";
+import BerryRadio from "./Radio"
 
 const comps = [
   BerryButton,
   BerryIcon,
   BerryInput,
-  BerryButtonGroup
+  BerryButtonGroup,
+  BerryRadio
 ]
 
 export default function (Vue: App) {

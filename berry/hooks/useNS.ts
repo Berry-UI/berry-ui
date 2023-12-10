@@ -19,11 +19,15 @@ export const useNS = function (name: string) {
   const b = (block: string | number) => {
     return block ? `${namespace}-${block}` : '';
   }
-
+  const e = (element: string | number) => {
+    return element ? `${namespace}__${element}` : '';
+  }
   const m = (modifier: string | number) => {
     return modifier ? `${namespace}-${modifier}` : '';
   }
-  
+  const ew = (modifier: string) => {
+    return modifier ? `${namespace}-${modifier}` : '';
+  }
   const mt = (type: string) => {
     return type ? `${namespace}-variant-${type}` : ''
   }
@@ -43,8 +47,10 @@ export const useNS = function (name: string) {
   return {
     namespace,
     b,
+    e,
     m,
     is,
+    ew,
     mt
   }
 }

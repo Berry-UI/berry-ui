@@ -1,0 +1,53 @@
+@import '../../mixin/';
+
+.#{$ns_radio} {
+  width: 100%;
+  cursor: pointer;
+  height: auto;
+
+  & .#{$ns_radio}__item {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    // border: 1px solid var(--ber-color-primary);
+
+    & .ber-radio__label {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      position: relative;
+      background-color: transparent;
+      box-shadow: var(--ber-shadow);
+      border-radius: 50%;
+      transition: tranfrom .15s ease-in;
+      
+      
+    }
+    & .ber-radio__label:hover {
+      box-shadow: var(--ber-shadow-hover);
+      transition: all .3s linear;
+      // border: 1px solid pink;
+    }
+    & .ber-radio__label.active {
+      background-color: var(--ber-color-primary);
+      &::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 4px;
+        height: 4px;
+        background-color: var(--ber-color-bg);
+        border-radius: 50%;
+        // border-right: 1px solid pink;
+        // border-bottom: 1px solid blue;
+        transition: all 1s;
+      }
+    }
+   
+  }
+}

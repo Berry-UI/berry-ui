@@ -5,8 +5,10 @@
 -->
 <script setup lang="ts">
 // import { BerryButton, BerryIcon } from 'berry-ui'
-const cli = () => {
-  console.log(123)
+import { ref } from 'vue'
+const dis = ref(true)
+const click = (ent: MouseEvent) => {
+  dis.value = !dis.value
 }
 </script>
 
@@ -17,10 +19,10 @@ const cli = () => {
       <BerryButton type="info" variant="ghost" status="round" size="normal" prefixIcon="jubao">Default</BerryButton>
       <BerryButton type="success" status="round" size="small">Success</BerryButton>
       <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
-      <BerryButton type="success" variant="ghost" status="round" size="large">Success</BerryButton> 
+     
     </div>
   </div> -->
-  <!-- <BerryButton type="primary">Default</BerryButton>
+  <BerryButton type="primary">Default</BerryButton>
 
   <BerryInput icon="prefix" size="small" disabled></BerryInput>
   <BerryInput icon="prefix">
@@ -29,15 +31,9 @@ const cli = () => {
     </template>
   </BerryInput>
   <BerryInput icon="prefix" size="large">
-  </BerryInput> -->
+  </BerryInput>
 
 
-  <!-- <berry-button-group>
-    <BerryButton type="primary">Default</BerryButton>
-    <BerryButton type="primary">Default</BerryButton>
-  </berry-button-group> -->
 </template>
 
-<style scoped lang="scss" >
-
-</style> 
+<style scoped lang="scss" ></style> 
