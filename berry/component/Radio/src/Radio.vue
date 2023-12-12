@@ -17,20 +17,29 @@ defineOptions({
 const ns = useNS("radio");
 const props = defineProps({ ...RodioProps })
 
-const radioCls = computed(() => {
-  return [
-    ns.e('item'),
-    ns.is(props.disabled, 'disabled'),
-    ns.is(props.checked, 'checked')
-  ]
+let radioIndex = ref(-1)
+
+const scl = computed(() => {
+  console.log(props.vertical)
+  const vertical = props.vertical ? 'flex' : 'inlen-flex'
+  if (props.costomColor !== undefined) {
+    return {
+      display: vertical,
+      '--costom-color': props.costomColor,
+      '--costom-color-hover': `inset 0 0 0 1px ${props.costomColor}`
+    }
+  } else {
+    return {
+      display: vertical,
+    }
+  }
+
 })
-let radioIndex = ref(0)
-console.log(props.options)
-const change = (item,index) => {
-  if(!item.disabled) {
-  radioIndex.value = index
-  console.log(index)
-}
+const change = (item, index) => {
+  if (!item.disabled) {
+    radioIndex.value = index
+  }
+
 }
 </script>
 
@@ -38,11 +47,11 @@ const change = (item,index) => {
   <div :class="ns.namespace">
     <label 
       v-for="(item, index) in options" 
-      :key="index" 
-      @click="change(item,index)" 
+      :key="index" @click="change(item, index)" 
+      :style="scl" 
       :class="[
-       ns.e('item'),
-       ns.is(item.disabled, 'disabled'),
+      ns.e('item'),
+      ns.is(item.disabled, 'disabled'),
     ]">
       <span :class="radioIndex === index ? 'active' : ''">
       </span>

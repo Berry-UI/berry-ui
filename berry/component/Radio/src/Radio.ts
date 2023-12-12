@@ -1,5 +1,12 @@
-import { Prop, PropType } from 'vue'
+import { PropType } from 'vue'
+import { ElementSize,ElementColors } from 'berry-ui/typings'
 
+/**
+ * @description radio的options设置
+ * label 单选框默认的label值 可以创建自定义属性从新创建关联
+ * value 单选框默认的value值 可以创建自定义属性从新创建关联
+ * disabled 当前单选框是否禁用
+ */
 interface optionsType {
   label: string | number | boolean,
   value: string | number | boolean,
@@ -8,18 +15,19 @@ interface optionsType {
 type options = optionsType[]
 export const RodioProps = {
   /**
-   * @descript 单选框的值
+   * @descript radio 大小
    */
+  size: String as PropType<ElementSize>,
+  vertical: {
+    type: Boolean,
+    default: false
+  },
   options: {
     type: Array as PropType<options>,
     default: () => []
   },
-  value: [String, Number, Boolean] as PropType<string | number | boolean>,
   /**
-   * @descript 按钮的选中状态
+   * @desciript Radio 的自定义颜色
    */
-  checked: {
-    type: Boolean as PropType<boolean>,
-    default: false
-  },
+  costomColor: String as PropType<ElementColors>
 } as const

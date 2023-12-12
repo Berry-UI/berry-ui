@@ -1,6 +1,10 @@
 @import '../../mixin/';
 
 .#{$ns_radio} {
+  
+  --costom-color: var(--ber-color-primary);
+  --costom-color-hover: inset 0 0 0 1px #4338ca;
+   
   width: 100%;
   height: auto;
   cursor: pointer;
@@ -10,7 +14,6 @@
   & .#{$ns_radio}__item {
     width: auto;
     height: auto;
-    display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
@@ -33,14 +36,14 @@
     }
 
     & span:hover {
-      box-shadow: var(--ber-shadow-hover);
+      box-shadow: var(--costom-color-hover);
       transition: all .3s linear;
       // border: 1px solid pink;
     }
 
     & span.active {
       box-shadow: var(--ber-shadow-active);
-      background-color: var(--ber-color-primary);
+      background-color: var(--costom-color);
       &::after {
         content: "";
         position: absolute;

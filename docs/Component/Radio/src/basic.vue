@@ -33,7 +33,7 @@ const { options } = state
 </script>
 
 <template>
-  <BerryRadio :options="options">1</BerryRadio>
+  <BerryRadio :options="options" vertical costomColor="#09b63d">1</BerryRadio>
 </template>
 
 <style lang="scss" scoped></style>
