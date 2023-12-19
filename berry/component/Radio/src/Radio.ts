@@ -1,5 +1,5 @@
-import { PropType } from 'vue'
-import { ElementSize,ElementColors } from 'berry-ui/typings'
+import { Prop, PropType } from 'vue'
+import { ElementSize, ElementColors } from 'berry-ui/typings'
 
 /**
  * @description radio的options设置
@@ -13,11 +13,19 @@ interface optionsType {
   disabled: boolean,
 }
 type options = optionsType[]
-export const RodioProps = {
+export const RadioProps = {
+  modelValue: [String, Number] as PropType <string | number>,
   /**
    * @descript radio 大小
    */
   size: String as PropType<ElementSize>,
+  /**
+   * @descript radio 的主题  <ghost> <button>
+   */
+  variant: String as PropType< 'ghost'| 'button'>,
+  /**
+   * @descript 按钮组默认排列方式
+   */
   vertical: {
     type: Boolean,
     default: false
@@ -31,3 +39,10 @@ export const RodioProps = {
    */
   costomColor: String as PropType<ElementColors>
 } as const
+
+export const RadioEmits = {
+  /**
+   * @descipt 按钮发生改变的时候触发
+   */
+  change: (value: string) => value
+}

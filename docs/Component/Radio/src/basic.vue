@@ -5,7 +5,7 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-import { reactive } from "vue"
+import { ref,reactive } from "vue"
 
 const state = reactive ({
   options: [
@@ -29,11 +29,17 @@ const state = reactive ({
     }
   ]
 })
+const radioVal = ref('test')
+const chan = (item) => {
+  console.log(item)
+}
 const { options } = state
 </script>
 
 <template>
-  <BerryRadio :options="options" vertical costomColor="#09b63d">1</BerryRadio>
+  <BerryRadio :options="options" vertical costomColor="#C2185B" @change="chan" model-value="radioVal" variant="ghost">1</BerryRadio>
+
+  <BerryRadio :options="options" vertical costomColor="#09b63d" @change="chan" model-value="radioVal">1</BerryRadio>
 </template>
 
 <style lang="scss" scoped></style>

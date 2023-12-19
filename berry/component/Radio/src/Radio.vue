@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import { useNS } from 'berry-ui/hooks/useNS'
-import { RodioProps } from './Radio'
+import { RadioProps,RadioEmits } from './Radio'
 import { computed, defineProps, ref } from 'vue'
 
 defineOptions({
@@ -15,12 +15,12 @@ defineOptions({
 })
 
 const ns = useNS("radio");
-const props = defineProps({ ...RodioProps })
+const props = defineProps({ ...RadioProps })
+const emits = defineEmits({ ...RadioEmits })
 
 let radioIndex = ref(-1)
 
 const scl = computed(() => {
-  console.log(props.vertical)
   const vertical = props.vertical ? 'flex' : 'inlen-flex'
   if (props.costomColor !== undefined) {
     return {
@@ -38,6 +38,7 @@ const scl = computed(() => {
 const change = (item, index) => {
   if (!item.disabled) {
     radioIndex.value = index
+    emits('change',item)
   }
 
 }
@@ -52,6 +53,7 @@ const change = (item, index) => {
       :class="[
       ns.e('item'),
       ns.is(item.disabled, 'disabled'),
+      ns.b(props.variant as string)
     ]">
       <span :class="radioIndex === index ? 'active' : ''">
       </span>

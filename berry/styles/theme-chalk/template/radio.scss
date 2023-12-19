@@ -1,17 +1,14 @@
 @import '../../mixin/';
 
 .#{$ns_radio} {
-  
+
   --costom-color: var(--ber-color-primary);
   --costom-color-hover: inset 0 0 0 1px #4338ca;
-   
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  vertical-align: middle;
-  line-height: 1;
 
-  & .#{$ns_radio}__item {
+  --ber-radio-dft-width: 14px;
+  --ber-radio-dft-height: 14px;
+
+  @mixin useRadioDft {
     width: auto;
     height: auto;
     align-items: center;
@@ -19,20 +16,32 @@
     cursor: pointer;
     margin-right: 15px;
     user-select: none;
+  }
+
+  @mixin useRadioDot {
+    width: var(--ber-radio-dft-width);
+    height: var(--ber-radio-dft-height);
+    display: inline-block;
+    position: relative;
+    margin: 3px 8px 0 0;
+    background-color: transparent;
+    box-shadow: var(--ber-shadow);
+    border-radius: 50%;
+    transition: tranfrom .15s ease-in;
+  }
+
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+
+  & .#{$ns_radio}__item {
+    @include useRadioDft;
+
     // border: 1px solid var(--ber-color-primary);
-
     & span {
-      width: 14px;
-      height: 14px;
-      display: inline-block;
-      position: relative;
-      margin:3px 8px 0 0;
-      background-color: transparent;
-      box-shadow: var(--ber-shadow);
-      border-radius: 50%;
-      transition: tranfrom .15s ease-in;
-
-
+      @include useRadioDot;
     }
 
     & span:hover {
@@ -44,11 +53,11 @@
     & span.active {
       box-shadow: var(--ber-shadow-active);
       background-color: var(--costom-color);
+      position: relative;
+
       &::after {
+        @include useBlockCenter;
         content: "";
-        position: absolute;
-        left: 5px;
-        top: 5px;
         width: 4px;
         height: 4px;
         background-color: var(--ber-color-bg);
@@ -57,14 +66,47 @@
       }
     }
   }
+
+  & .#{$ns_radio}-ghost {
+    @include useRadioDft;
+
+    & span {
+      @include useRadioDot;
+    }
+
+    & span:hover {
+      box-shadow: var(--costom-color-hover);
+      transition: all .3s linear;
+    }
+
+    & span.active {
+      box-shadow: var(--costom-color-hover);
+      // background-color: var(--costom-color);
+      background-color: #0000;
+      // filter: drop-shadow(0 0 0.75rem pink);
+      position: relative;
+
+       &::after {
+        @include useBlockCenter;
+        content: "";
+        width: 8px;
+        height: 8px;
+        background-color: var(--costom-color);
+      }
+    }
+  }
+
   .is-disabled {
     cursor: no-drop;
     color: var(--ber-color-gray);
+
     & span:hover {
       box-shadow: var(--ber-shadow);
     }
+
     span {
-      background-color: var(--ber-color-gray)!important;
+      background-color: var(--ber-color-gray) !important;
+
       &::after {
         content: "";
         position: absolute;
