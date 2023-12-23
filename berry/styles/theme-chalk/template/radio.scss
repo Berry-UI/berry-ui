@@ -8,7 +8,12 @@
   --ber-radio-dft-width: 14px;
   --ber-radio-dft-height: 14px;
 
+  --ber-radio-button-checked-bg-color: var(--ber-parmary-color);
+  --ber-radio-button-active-color: var(--ber-color-bg);
+  --ber-radio-disabled-color : #6c6e71;
+
   @mixin useRadioDft {
+    display: inline-flex;
     width: auto;
     height: auto;
     align-items: center;
@@ -58,13 +63,14 @@
       &::after {
         @include useBlockCenter;
         content: "";
-        width: 4px;
-        height: 4px;
+        width: calc(var(--ber-radio-dft-width) / 3);
+        height: calc(var(--ber-radio-dft-height) / 3);
         background-color: var(--ber-color-bg);
         border-radius: 50%;
         transition: all 1s;
       }
     }
+
   }
 
   & .#{$ns_radio}-ghost {
@@ -81,24 +87,58 @@
 
     & span.active {
       box-shadow: var(--costom-color-hover);
-      // background-color: var(--costom-color);
       background-color: #0000;
-      // filter: drop-shadow(0 0 0.75rem pink);
       position: relative;
 
-       &::after {
+      &::after {
         @include useBlockCenter;
         content: "";
-        width: 8px;
-        height: 8px;
+        width: calc(var(--ber-radio-dft-width) - 6px);
+        height: calc(var(--ber-radio-dft-height) - 6px);
         background-color: var(--costom-color);
       }
     }
   }
 
+  & .#{$ns_radio}-button {
+    @include useSizeDft(0);
+    @include useBorderRadius(0);
+    @include useBorderBox;
+
+    // min-height: var(--ber-compontion-height);
+    margin-right: -1px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    line-height: 1;
+    vertical-align: middle;
+
+    border: var(--ber-solid);
+
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    &.radio-button-active {
+      transition: all .3s;
+      color: var(--ber-radio-button-active-color);
+      background-color: var(--ber-color-primary);
+    }
+
+
+    & span {
+      display: none;
+    }
+  }
+  
   .is-disabled {
     cursor: no-drop;
-    color: var(--ber-color-gray);
+    color: var(--ber-radio-disabled-color);
 
     & span:hover {
       box-shadow: var(--ber-shadow);
@@ -106,18 +146,16 @@
 
     span {
       background-color: var(--ber-color-gray) !important;
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 5px;
-        width: 4px;
-        height: 4px;
-        background-color: var(--ber-color-bg);
-        border-radius: 50%;
-        transition: all 1s;
-      }
+      // &::after {
+      //   @include useBlockCenter;
+      //   content: "";
+      //   width: 4px;
+      //   height: 4px;
+      //   background-color: var(--ber-color-bg);
+      //   border-radius: 50%;
+      //   transition: all 1s;
+      // }
     }
   }
+
 }

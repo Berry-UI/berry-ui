@@ -10,19 +10,16 @@ import { ref,reactive } from "vue"
 const state = reactive ({
   options: [
     {
-      label: 'tim',
-      value: '2'
+      label: 'aom',
+      value: '0',
+      disabled: true
     },
     {
-      label: 'see',
-      value: '3'
-    }
+      label: 'tom',
+      value: '1',
+    },
   ]
 })
-const radioVal = ref('test')
-const chan = (item) => {
-  console.log(item)
-}
 const { options } = state
 </script>
 

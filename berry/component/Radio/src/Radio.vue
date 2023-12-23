@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import { useNS } from 'berry-ui/hooks/useNS'
-import { RadioProps,RadioEmits } from './Radio'
+import { RadioProps, RadioEmits } from './Radio'
 import { computed, defineProps, ref } from 'vue'
 
 defineOptions({
@@ -22,11 +22,11 @@ let radioIndex = ref(-1)
 
 const scl = computed(() => {
   const vertical = props.vertical ? 'flex' : 'inlen-flex'
-  if (props.costomColor !== undefined) {
+  if (props.customColor !== undefined) {
     return {
       display: vertical,
-      '--costom-color': props.costomColor,
-      '--costom-color-hover': `inset 0 0 0 1px ${props.costomColor}`
+      '--costom-color': props.customColor,
+      '--costom-color-hover': `inset 0 0 0 1px ${props.customColor}`
     }
   } else {
     return {
@@ -38,7 +38,7 @@ const scl = computed(() => {
 const change = (item, index) => {
   if (!item.disabled) {
     radioIndex.value = index
-    emits('change',item)
+    emits('change', item)
   }
 
 }
@@ -46,18 +46,15 @@ const change = (item, index) => {
 
 <template>
   <div :class="ns.namespace">
-    <label 
-      v-for="(item, index) in options" 
-      :key="index" @click="change(item, index)" 
-      :style="scl" 
-      :class="[
+    <label v-for="(item, index) in options" :key="index" @click="change(item, index)" :style="scl" :class="[
       ns.e('item'),
       ns.is(item.disabled, 'disabled'),
-      ns.b(props.variant as string)
+      ns.b(props.variant as string),
+      radioIndex === index ? 'radio-button-active' : ''
     ]">
       <span :class="radioIndex === index ? 'active' : ''">
       </span>
-      {{ item.label }}
+      <div :class="ns.e('label')"> {{ item.label }}</div>
     </label>
   </div>
 </template>

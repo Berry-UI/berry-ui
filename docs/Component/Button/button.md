@@ -2,11 +2,11 @@
 
 ## 基础
 
-按钮的`type` 分别为 `default` 、`primary` 、`success` 、 `info` 、`warning` 、`error` 。
+* 按钮的`type` 分别为 `default` 、`primary` 、`success` 、 `info` 、`warning` 、`error` 
 <preview path="./src/basic.vue" title="基本使用" description=""></preview>
 
 ## 加载中
-按钮有加载状态
+* 按钮有加载状态
 <preview path="./src/loading.vue" title="基本使用" description=""></preview>
 
 ## 图标
@@ -15,15 +15,15 @@
 <preview path="./src/icon.vue" title="基本使用" description=""></preview>
 
 ## 尺寸
-有`normal` 、`small` 、`large` 三种大小
+* 有`normal` 、`small` 、`large` 三种大小
 <preview path="./src/size.vue" title="基本使用" description=""></preview>
 
 ## 透明背景
-使用 `variant` 设置透明背景
+* 使用 `variant` 设置透明背景
 <preview path="./src/ghost.vue" title="基本使用" description=""></preview>
 
 ## 禁用
-按钮可以使用 `disabled` 禁用
+* 按钮可以使用 `disabled` 禁用
 <preview path="./src/disabled.vue" title="基本使用" description=""></preview>
 
 # API

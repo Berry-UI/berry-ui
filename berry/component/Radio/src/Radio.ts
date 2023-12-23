@@ -37,7 +37,7 @@ export const RadioProps = {
   /**
    * @desciript Radio 的自定义颜色
    */
-  costomColor: String as PropType<ElementColors>
+  customColor: String as PropType<ElementColors>
 } as const
 
 export const RadioEmits = {
