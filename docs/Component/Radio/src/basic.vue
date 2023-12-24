@@ -11,23 +11,23 @@ const state = reactive ({
   options: [
     {
       label: 'tim',
-      value: '2'
+      value: 'tim'
     },
     {
       label: 'see',
-      value: '3'
+      value: 'see'
     }
   ]
 })
-const radioVal = ref('test')
+const radioVal = ref('tim')
 const chan = (item) => {
-  console.log(item)
+  // console.log(radioVal.value,'radioVal.value')
 }
 const { options } = state
 </script>
 
 <template>
-  <BerryRadio :options="options">1</BerryRadio>
+  <BerryRadio :options="options" v-model="radioVal" @change="chan">1</BerryRadio>
 </template>
 
 <style lang="scss" scoped></style>

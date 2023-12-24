@@ -8,6 +8,7 @@
 import { useNS } from 'berry-ui/hooks/useNS'
 import { RadioProps, RadioEmits } from './Radio'
 import { computed, defineProps, ref } from 'vue'
+import { Console } from 'console';
 
 defineOptions({
   name: 'BerryRadio',
@@ -18,8 +19,7 @@ const ns = useNS("radio");
 const props = defineProps({ ...RadioProps })
 const emits = defineEmits({ ...RadioEmits })
 
-let radioIndex = ref(-1)
-
+let radioIndex = ref(0)
 const scl = computed(() => {
   const vertical = props.vertical ? 'flex' : 'inlen-flex'
   if (props.customColor !== undefined) {
@@ -35,9 +35,10 @@ const scl = computed(() => {
   }
 
 })
+// console.log(props.mode,'props.mode')
 const change = (item, index) => {
   if (!item.disabled) {
-    radioIndex.value = index
+    emits('update:modelValue',item.value)
     emits('change', item)
   }
 
@@ -45,14 +46,14 @@ const change = (item, index) => {
 </script>
 
 <template>
-  <div :class="ns.namespace">
+  <div :class="ns.namespace" :value="modelValue">
     <label v-for="(item, index) in options" :key="index" @click="change(item, index)" :style="scl" :class="[
       ns.e('item'),
       ns.is(item.disabled, 'disabled'),
       ns.b(props.variant as string),
-      radioIndex === index ? 'radio-button-active' : ''
+      modelValue === item.value ? 'radio-button-active' : ''
     ]">
-      <span :class="radioIndex === index ? 'active' : ''">
+      <span :class="modelValue === item.value ? 'active' : ''">
       </span>
       <div :class="ns.e('label')"> {{ item.label }}</div>
     </label>

@@ -5,26 +5,27 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-import { ref,reactive } from "vue"
+import { ref, reactive } from "vue"
 
-const state = reactive ({
+const state = reactive({
   options: [
     {
-      label: 'aom',
-      value: '0',
+      label: 'tim',
+      value: 'tim',
       disabled: true
     },
     {
-      label: 'tom',
-      value: '1',
-    },
+      label: 'see',
+      value: 'see'
+    }
   ]
 })
+const radioVal = ref('tim')
 const { options } = state
 </script>
 
 <template>
-  <BerryRadio :options="options">1</BerryRadio>
+  <BerryRadio :options="options" v-model="radioVal">1</BerryRadio>
 </template>
 
 <style lang="scss" scoped></style>

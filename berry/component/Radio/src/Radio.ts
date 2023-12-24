@@ -14,7 +14,7 @@ interface optionsType {
 }
 type options = optionsType[]
 export const RadioProps = {
-  modelValue: [String, Number] as PropType <string | number>,
+  modelValue: [String, Number, Boolean] as PropType<string | number | boolean>,
   /**
    * @descript radio 大小
    */
@@ -22,7 +22,7 @@ export const RadioProps = {
   /**
    * @descript radio 的主题  <ghost> <button>
    */
-  variant: String as PropType< 'ghost'| 'button'>,
+  variant: String as PropType<'ghost' | 'button'>,
   /**
    * @descript 按钮组默认排列方式
    */
@@ -41,8 +41,10 @@ export const RadioProps = {
 } as const
 
 export const RadioEmits = {
+  "update:modelValue": (val: string | number | boolean) => String(val),
   /**
    * @descipt 按钮发生改变的时候触发
    */
-  change: (value: string) => value
+  change: (value: string) => value,
+
 }

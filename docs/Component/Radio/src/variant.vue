@@ -7,29 +7,16 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue"
 
-const state = reactive({
-  options: [
-    {
-      label: 'tim',
-      value: '2'
-    },
-    {
-      label: 'see',
-      value: '3'
-    }
-  ]
-})
-
 const state2 = reactive({
   opt: [
     {
       label: 'ShamkerMaker',
-      value: '2',
+      value: '1',
       disabled: true
     },
     {
       label: 'RocknRoll Star',
-      value: '3'
+      value: '2'
     },
     {
       label: 'Live Forever',
@@ -37,21 +24,21 @@ const state2 = reactive({
     },
     {
       label: '...',
-      value: '3'
+      value: '4'
     }
   ]
 })
 const chan = (item) => {
   console.log(item.label)
 }
-const { options } = state
+const val = ref('3')
 const { opt} = state2
 </script>
 
 <template>
   <div class="gap">
-    <BerryRadio variant="ghost" :options="options" @change="chan"></BerryRadio>
-    <BerryRadio variant="button" :options="opt" @change="chan"></BerryRadio>
+    <BerryRadio variant="ghost" :options="opt" @change="chan" v-model="val"></BerryRadio>
+    <BerryRadio variant="button" :options="opt" @change="chan"  v-model="val"></BerryRadio>
   </div>
 </template>
 
