@@ -16,11 +16,12 @@ const state = reactive({
     },
     {
       label: 'see',
-      value: 'see'
+      value: 'see',
+      disabled: true
     }
   ]
 })
-const radioVal = ref('tim')
+// const radioVal = ref('tim')
 const { options } = state
 </script>
 
