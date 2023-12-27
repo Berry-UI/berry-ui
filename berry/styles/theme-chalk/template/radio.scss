@@ -1,10 +1,10 @@
 @import '../../mixin/';
 
 .#{$ns_radio} {
-  
+
   --costom-color: var(--ber-color-primary);
   --costom-color-hover: inset 0 0 0 1px #4338ca;
-   
+
   width: 100%;
   height: auto;
   cursor: pointer;
@@ -26,45 +26,50 @@
       height: 14px;
       display: inline-block;
       position: relative;
-      margin:3px 8px 0 0;
+      margin: 3px 8px 0 0;
       background-color: transparent;
       box-shadow: var(--ber-shadow);
       border-radius: 50%;
       transition: tranfrom .15s ease-in;
 
+      &:hover {
+        box-shadow: var(--costom-color-hover);
+        transition: all .3s linear;
+        // border: 1px solid pink;
+      }
 
-    }
-
-    & span:hover {
-      box-shadow: var(--costom-color-hover);
-      transition: all .3s linear;
-      // border: 1px solid pink;
-    }
-
-    & span.active {
-      box-shadow: var(--ber-shadow-active);
-      background-color: var(--costom-color);
-      &::after {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 5px;
-        width: 4px;
-        height: 4px;
-        background-color: var(--ber-color-bg);
-        border-radius: 50%;
-        transition: all 1s;
+      &.active {
+        box-shadow: var(--ber-shadow-active);
+        background-color: var(--costom-color);
+        position: relative;
+  
+        &::after {
+          content: "";
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: var(--ber-color-bg);
+          border-radius: 50%;
+          transition: all 1s;
+        }
       }
     }
   }
+
   .is-disabled {
     cursor: no-drop;
     color: var(--ber-color-gray);
+
     & span:hover {
       box-shadow: var(--ber-shadow);
     }
+
     span {
-      background-color: var(--ber-color-gray)!important;
+      background-color: var(--ber-color-gray) !important;
+
       &::after {
         content: "";
         position: absolute;

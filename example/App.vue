@@ -19,7 +19,6 @@ const click = (ent: MouseEvent) => {
       <BerryButton type="info" variant="ghost" status="round" size="normal" prefixIcon="jubao">Default</BerryButton>
       <BerryButton type="success" status="round" size="small">Success</BerryButton>
       <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
-     
     </div>
   </div> -->
   <BerryButton type="primary">Default</BerryButton>

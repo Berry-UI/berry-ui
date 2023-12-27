@@ -27,7 +27,10 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    // "berry/**/*.vue"
+    "berry/**/*.ts",
+    "berry/**/*.d.ts",
+    "berry/**/*.tsx",
+    "berry/**/*.vue",
   ],
   "references": [
     {
