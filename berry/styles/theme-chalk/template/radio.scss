@@ -5,12 +5,6 @@
   --costom-color: var(--ber-color-primary);
   --costom-color-hover: inset 0 0 0 1px #4338ca;
 
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  vertical-align: middle;
-  line-height: 1;
-
   --ber-radio-dft-width: 14px;
   --ber-radio-dft-height: 14px;
 
@@ -52,47 +46,99 @@
 
     // border: 1px solid var(--ber-color-primary);
     & span {
-      width: 14px;
-      height: 14px;
-      display: inline-block;
+      @include useRadioDot;
+    }
+
+    & span:hover {
+      box-shadow: var(--costom-color-hover);
+      transition: all .3s linear;
+      // border: 1px solid pink;
+    }
+
+    & span.active {
+      box-shadow: var(--ber-shadow-active);
+      background-color: var(--costom-color);
       position: relative;
-      margin: 3px 8px 0 0;
-      background-color: transparent;
-      box-shadow: var(--ber-shadow);
-      border-radius: 50%;
-      transition: tranfrom .15s ease-in;
 
-      &:hover {
-        box-shadow: var(--costom-color-hover);
-        transition: all .3s linear;
-        // border: 1px solid pink;
-      }
-
-      &.active {
-        box-shadow: var(--ber-shadow-active);
-        background-color: var(--costom-color);
-        position: relative;
-  
-        &::after {
-          content: "";
-          position: absolute;
-          width: 5px;
-          height: 5px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: var(--ber-color-bg);
-          border-radius: 50%;
-          transition: all 1s;
-        }
+      &::after {
+        @include useBlockCenter;
+        content: "";
+        width: calc(var(--ber-radio-dft-width) / 3);
+        height: calc(var(--ber-radio-dft-height) / 3);
+        background-color: var(--ber-color-bg);
+        border-radius: 50%;
+        transition: all 1s;
       }
     }
 
   }
 
+  & .#{$ns_radio}-ghost {
+    @include useRadioDft;
+
+    & span {
+      @include useRadioDot;
+    }
+
+    & span:hover {
+      box-shadow: var(--costom-color-hover);
+      transition: all .3s linear;
+    }
+
+    & span.active {
+      box-shadow: var(--costom-color-hover);
+      background-color: #0000;
+      position: relative;
+
+      &::after {
+        @include useBlockCenter;
+        content: "";
+        width: calc(var(--ber-radio-dft-width) - 6px);
+        height: calc(var(--ber-radio-dft-height) - 6px);
+        background-color: var(--costom-color);
+      }
+    }
+  }
+
+  & .#{$ns_radio}-button {
+    @include useSizeDft(0);
+    @include useBorderRadius(0);
+    @include useBorderBox;
+
+    // min-height: var(--ber-compontion-height);
+    margin-right: -1px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    line-height: 1;
+    vertical-align: middle;
+
+    border: var(--ber-solid);
+
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    &.radio-button-active {
+      transition: all .3s;
+      color: var(--ber-radio-button-active-color);
+      background-color: var(--ber-color-primary);
+    }
+
+
+    & span {
+      display: none;
+    }
+  }
+  
   .is-disabled {
     cursor: no-drop;
-    color: var(--ber-color-gray);
+    color: var(--ber-radio-disabled-color);
 
     & span:hover {
       box-shadow: var(--ber-shadow);
@@ -100,18 +146,15 @@
 
     span {
       background-color: var(--ber-color-gray) !important;
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 5px;
-        width: 4px;
-        height: 4px;
-        background-color: var(--ber-color-bg);
-        border-radius: 50%;
-        transition: all 1s;
-      }
+      // &::after {
+      //   @include useBlockCenter;
+      //   content: "";
+      //   width: 4px;
+      //   height: 4px;
+      //   background-color: var(--ber-color-bg);
+      //   border-radius: 50%;
+      //   transition: all 1s;
+      // }
     }
   }
 
