@@ -10,6 +10,8 @@ const dis = ref(true)
 const click = (ent: MouseEvent) => {
   dis.value = !dis.value
 }
+const change = e => console.log("input值改变了")
+const inputValue = ref('tim')
 </script>
 
 <template>
@@ -21,18 +23,8 @@ const click = (ent: MouseEvent) => {
       <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
     </div>
   </div> -->
-  <BerryButton type="primary">Default</BerryButton>
-
-  <BerryInput icon="prefix" size="small" disabled></BerryInput>
-  <BerryInput icon="prefix">
-    <template #header>
-      <BerryIcon name="rotate" color="rgb(15,15,15)" :rotate="true"></BerryIcon>
-    </template>
-  </BerryInput>
-  <BerryInput icon="prefix" size="large">
-  </BerryInput>
-
-
+  <!-- <BerryButton type="primary">Default</BerryButton> -->
+  <BerryInput size="small" v-model="inputValue" @change="change" placeholder="write something"></BerryInput>
 </template>
 
 <style scoped lang="scss" ></style> 

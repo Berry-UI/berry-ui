@@ -37,6 +37,7 @@ export default defineConfig({
                     { text: 'Icon', link: '/Component/Icon/icon.md' },
                     { text: 'Button', link: '/Component/Button/button.md' },
                     { text: 'ButtonGroup', link: '/Component/ButtonGroup/buttongroup.md' },
+                    { text: 'Input', link: '/Component/Input/input.md' },
                     { text: 'Radio', link: '/Component/Radio/radio.md' },
                 ],
             },

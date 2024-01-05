@@ -1,39 +1,63 @@
 @import '../../mixin/';
 
+@mixin invalid($w, $i: null) {
+    border-color: #fc3d49 $i;
+    box-shadow: 0 0 $w #F56C6C $i;
+    transition: border-color, box-shadow .4s ease;
+}
+
 .#{$ns_input} {
-    width: 200px;
+    width: 100%;
     display: inline-flex;
+    flex-wrap: nowrap;
     flex-grow: 1;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
     border: 1px solid #e0e0e6;
     border-radius: 2px;
     margin: 4px 8px;
+    padding: 2px 4px;
 
     .#{$ns_input}-el {
         outline: none;
+        color: #606266;
         border: none;
         box-sizing: inherit;
         width: 100%;
         overflow: hidden;
+        padding: 2px 4px !important;
+        letter-spacing: .5px;
+        font-family: Arial;
     }
 
+    // issue: focus不生效，原因疑似div盒子无法触发focus状态
     &:hover:not(.#{$ns_input}-disabled),
+    &:focus-within:not(.#{$ns_input}-disabled) {
+        border-color: var(--ber-color-primary);
+        box-shadow: 0 0 2px var(--ber-color-primary);
+        transition: border-color .4s ease;
+    }
+
     &:focus:not(.#{$ns_input}-disabled) {
         border-color: var(--ber-color-primary);
-        transition: border-color .3s ease;
-    }
-
-    &:focus:not(.#{$ns_input}-disabled) {
-        box-shadow: 0 0 2px var(--ber-color-primary);
     }
 
     &.#{$ns_input}-disabled {
         cursor: no-drop;
+        background-color: #f4f7faaa;
+        user-select: none;
 
         .#{$ns_input}-el {
             z-index: -1;
         }
+    }
+
+    .#{$ns_input}-length {
+        // margin: 0;
+        user-select: none;
+        color: #838a89;
+        font-size: .85em;
     }
 
     // 设置input大小
@@ -43,3 +67,53 @@
         }
     }
 }
+
+.#{$ns_input}-required {
+    position: relative;
+
+    &::before {
+        content: "*";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-200%, -45%);
+        color: #F56C6C;
+
+    }
+}
+
+.#{$ns_input}-invalid {
+    @include invalid(1px);
+
+    &:hover {
+        @include invalid(4px, !important);
+    }
+}
+
+// @media (prefers-color-scheme: light) {
+//     /*light : 浅色*/
+//     /*主题设置为深色。*/
+//     .#{$ns_input} {
+
+//         &.#{$ns_input}-disabled {
+//             background-color: #f4f7fa;
+//         }
+//     }
+// }
+
+// @media (prefers-color-scheme: dark) {
+//     /*dark : 深色*/
+//     /*主题设置为浅色。*/
+
+//     .#{$ns_input} {
+//         border-color: #4c4d4f;
+
+//         .#{$ns_input}-el {
+//             color: #83858b;
+//         }
+
+//         &.#{$ns_input}-disabled {
+//             background-color: #262727;
+//         }
+//     }
+// }

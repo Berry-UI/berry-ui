@@ -11,7 +11,15 @@
   vertical-align: middle;
   line-height: 1;
 
-  & .#{$ns_radio}__item {
+  --ber-radio-dft-width: 14px;
+  --ber-radio-dft-height: 14px;
+
+  --ber-radio-button-checked-bg-color: var(--ber-parmary-color);
+  --ber-radio-button-active-color: var(--ber-color-bg);
+  --ber-radio-disabled-color : #6c6e71;
+
+  @mixin useRadioDft {
+    display: inline-flex;
     width: auto;
     height: auto;
     align-items: center;
@@ -19,8 +27,30 @@
     cursor: pointer;
     margin-right: 15px;
     user-select: none;
-    // border: 1px solid var(--ber-color-primary);
+  }
 
+  @mixin useRadioDot {
+    width: var(--ber-radio-dft-width);
+    height: var(--ber-radio-dft-height);
+    display: inline-block;
+    position: relative;
+    margin: 3px 8px 0 0;
+    background-color: transparent;
+    box-shadow: var(--ber-shadow);
+    border-radius: 50%;
+    transition: tranfrom .15s ease-in;
+  }
+
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+
+  & .#{$ns_radio}__item {
+    @include useRadioDft;
+
+    // border: 1px solid var(--ber-color-primary);
     & span {
       width: 14px;
       height: 14px;
@@ -57,6 +87,7 @@
         }
       }
     }
+
   }
 
   .is-disabled {
@@ -83,4 +114,5 @@
       }
     }
   }
+
 }

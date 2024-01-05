@@ -42,6 +42,9 @@ export const useNS = function (name: string) {
     }
     return ''
   }
+  const fo = (status: boolean, name: string) => {
+    return status ? name : ''
+  }
 
 
   return {
@@ -51,6 +54,7 @@ export const useNS = function (name: string) {
     m,
     is,
     ew,
-    mt
+    mt,
+    fo
   }
 }

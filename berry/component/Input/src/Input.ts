@@ -1,33 +1,42 @@
 import { PropType } from "vue"
-import { ElementSize } from 'berry-ui/typings'
+import { ElementSize } from "berry-ui/typings"
 type defaultTypes = false | true
-type inputTypes = 'text' | 'password' | 'textarea'
-type iconTypes = 'pre' | 'suf'
-type iconAddress<T extends iconTypes> = `${T}fix`
+type inputTypes = "text" | "password" | "textarea"
+type passwordOn = "click" | "mousedown"
+// type iconTypes = "pre" | "suf"
+// type iconAddress<T extends iconTypes> = `${T}fix`
 
 export const InputProps = {
     /**
      * @description 输入框类型，如text、password、textarea
+     * @param {text | password | textarea}
      */
     type: {
         type: String as PropType<inputTypes>,
-        default: 'text'
+        default: "text"
     },
     /**
-     * @description 输入框大小
+     * @description  输入框大小
+     * @param {small | normal | large}
      * */
     size: {
         type: String as PropType<ElementSize>,
-        default: 'normal'
+        default: "normal"
     },
     /**
      * @description 输入框圆角
      */
-    raidus: Number,
+    raidus: {
+        type: Number,
+        default: 2
+    },
     /**
     * @description 输入框校验规则
     */
-    rule: String,
+    rule: {
+        type: String,
+        default: ""
+    },
     /**
      * @description 是否一键清空
      */
@@ -43,9 +52,75 @@ export const InputProps = {
         default: false
     },
     /**
-    * @description 前后图标
-    */
-    icon: {
-        type: String as PropType<iconAddress<iconTypes>>,
+   * @description 绑定值
+   */
+    modelValue: {
+        type: String,
+        default: ""
+    },
+    /**
+   * @description 显示值
+   */
+    placeholder: {
+        type: String,
+        default: ""
+    },
+    /** 
+     * @description 密码打开方式
+     * @param { click | mousedown }
+     */
+    passwordOn: {
+        type: String as PropType<passwordOn>,
+        default: "click"
+    },
+    /** 
+     * @description 最小长度
+     */
+    minLength: {
+        type: [String, Number],
+        default: "524288"
+    },
+    /** 
+     * @description 最大长度
+     */
+    maxLength: {
+        type: [String, Number],
+        default: "524288"
+    },
+    /** 
+     * @description 是否显示输入长度
+     */
+    showCount: {
+        type: Boolean as PropType<defaultTypes>,
+        default: false
+    },
+    /** 
+     * @description 是否自动完成
+     */
+    autocomplete: {
+        type: Boolean as PropType<defaultTypes>,
+        default: false
+    },
+    /** 
+     * @description 是否必填
+     */
+    required: {
+        type: Boolean as PropType<defaultTypes>,
+        default: false
     }
+}
+export const InputEmits = {
+    "update:modelValue": (value: String) => value || true,
+    /**
+     * @descipt 输入值发生改变的时候触发
+     */
+    change: (value: String) => value || true,
+    /**
+     * @descipt 聚焦时触发
+     */
+    focus: (event: FocusEvent) => event,
+    /**
+     * @descipt 失焦时触发
+     */
+    blur: (event: FocusEvent) => event,
 }

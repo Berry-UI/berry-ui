@@ -4,9 +4,9 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed, ref } from "vue"
 import { useNS } from "berry-ui/hooks/useNS"
-import { InputProps } from "./Input"
+import { InputProps, InputEmits } from "./Input"
 
 defineOptions({
     name: "BerryInput"
@@ -14,13 +14,15 @@ defineOptions({
 
 const ns = useNS("input")
 const props = defineProps({ ...InputProps })
-console.log(props.disabled)
+let staging = ref<String>("")
+
 
 const ber_input = computed(() => {
     return [
         ns.namespace,
-        ns.m(props.disabled ? "disabled" : "")
-
+        ns.m(props.disabled ? "disabled" : ""),
+        ns.fo(props.required, ns.namespace + '-required'),
+        ns.fo(props.required && staging.value === "", ns.namespace + '-invalid')
     ]
 })
 const ber_input_el = computed(() => {
@@ -29,18 +31,63 @@ const ber_input_el = computed(() => {
         ns.m(props.size),
     ]
 })
+const ber_input_length = computed(() => {
+    return [
+        ns.m("length"),
+    ]
+})
 
+const emits = defineEmits({ ...InputEmits })
+const inputChange = (e: any) => {
+    staging.value = e.target.value
+    /**
+     * @description issue: 当input删除至内容为空时将会提示警告,newValue.value为true时不发出警告
+     */
+    emits('update:modelValue', staging.value)
+    emits('change', staging.value)
+}
 
+const passwordView = ref(false)
+const input = ref<HTMLInputElement | null>(null);
+
+function mousedown(): void {
+    props.passwordOn == "click" ? passwordView.value = !passwordView.value : passwordView.value = true
+    passwordView.value ? input.value!.type = 'text' : input.value!.type = 'password'
+
+}
+function mouseup(): void {
+    props.passwordOn == "click" ? void 0 : passwordView.value = false
+    passwordView.value ? input.value!.type = 'text' : input.value!.type = 'password'
+}
+function focus(e: FocusEvent) {
+    emits('focus', e)
+}
+function blur(e: FocusEvent): void {
+    emits('blur', e)
+}
 </script>
 
 <template>
     <div :class="ber_input">
-        <slot name="header"></slot>
-        <input :class="ber_input_el" :type="props.type" :disabled="props.disabled">
-        <slot></slot>
+        <slot name="prefix"></slot>
+        <input v-if="type != 'textarea'" ref="input" :class="ber_input_el" :type="type" :placeholder="placeholder"
+            :disabled="disabled" :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
+            :minlength="minLength" :autocomplete="autocomplete ? 'on' : 'off'" :required="required">
+        <!-- cols="30" rows="10" -->
+        <textarea v-else name="" id=""  rows="20" :class="ber_input_el" :type="type" :placeholder="placeholder"
+            :disabled="disabled" :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
+            :minlength="minLength"></textarea>
+        <slot name="suffix" v-if="type == 'text'"></slot>
+        <span :class="ber_input_length" v-if="showCount">{{ +maxLength >= 100 ? `99+` : modelValue.length + '/' + maxLength
+        }}</span>
+        <BerryIcon class="ber_icon_hover" v-if="type == 'password'" :name="passwordView ? 'view' : 'hide'"
+            @mousedown="mousedown" @mouseup="mouseup" size="18px">
+        </BerryIcon>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
+.ber_icon_hover:hover {
+    cursor: pointer;
+}
 </style>
