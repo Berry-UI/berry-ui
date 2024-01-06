@@ -39,6 +39,7 @@ export default defineConfig({
                     { text: 'ButtonGroup', link: '/Component/ButtonGroup/buttongroup.md' },
                     { text: 'Input', link: '/Component/Input/input.md' },
                     { text: 'Radio', link: '/Component/Radio/radio.md' },
+                    { text: 'CheckBox', link: '/Component/CheckBox/checkbox.md' },
                 ],
             },
         ],

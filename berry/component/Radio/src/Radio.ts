@@ -7,7 +7,7 @@ import { ElementSize, ElementColors } from 'berry-ui/typings'
  * value 单选框默认的value值 可以创建自定义属性从新创建关联
  * disabled 当前单选框是否禁用
  */
-interface optionsType {
+export interface optionsType {
   label: string | number | boolean,
   value: string | number | boolean,
   disabled: boolean,
@@ -45,6 +45,6 @@ export const RadioEmits = {
   /**
    * @descipt 按钮发生改变的时候触发
    */
-  change: (value: string) => value,
+  change: (value: optionsType) => value,
 
 }

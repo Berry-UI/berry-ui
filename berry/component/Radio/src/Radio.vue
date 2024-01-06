@@ -6,8 +6,8 @@
 -->
 <script setup lang="ts">
 import { useNS } from 'berry-ui/hooks/useNS'
-import { RadioProps, RadioEmits } from './Radio'
-import { computed, defineProps, ref } from 'vue'
+import { RadioProps, RadioEmits,optionsType } from './Radio'
+import { computed, defineProps } from 'vue'
 
 defineOptions({
   name: 'BerryRadio',
@@ -18,7 +18,6 @@ const ns = useNS("radio");
 const props = defineProps({ ...RadioProps })
 const emits = defineEmits({ ...RadioEmits })
 
-let radioIndex = ref(0)
 const scl = computed(() => {
   const vertical = props.vertical ? 'flex' : 'inlen-flex'
   if (props.customColor !== undefined) {
@@ -35,7 +34,8 @@ const scl = computed(() => {
 
 })
 // console.log(props.mode,'props.mode')
-const change = (item, index) => {
+
+const change = (item:optionsType) => {
   if (!item.disabled) {
     emits('update:modelValue',item.value)
     emits('change', item)
@@ -46,7 +46,7 @@ const change = (item, index) => {
 
 <template>
   <div :class="ns.namespace" :value="modelValue">
-    <label v-for="(item, index) in options" :key="index" @click="change(item, index)" :style="scl" :class="[
+    <label v-for="(item, index) in options" :key="index" @click="change(item)" :style="scl" :class="[
       ns.e('item'),
       ns.is(item.disabled, 'disabled'),
       ns.b(props.variant as string),

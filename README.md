@@ -130,23 +130,24 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [√] Icon 图标 `level max`
 - [√] Button 按钮  //
 - [√] Button Group 按钮组
-- [*] Input 输入框
-- [*] Radio 单选框
+- [√] Input 输入框
+- [√] Radio 单选框
 - [ ] Checkbox 复选框
-- [ ] Input Group 输入框组
+- [√] Input Group 输入框组
 - [ ] Select 选择器
 - [ ] Carousel 轮播图
 - [ ] Dropdown 下拉菜单
 - [ ] Image 图像 `level max`
 - [ ] Table 表格 `level max`
-- [ ] Time Picker 时间选择器 `level max`
-- [ ] Date Picker 日期选择器 `level max`
-- [ ] DateTime Picker 日期时间选择器 `level max`
+- [ ] Time Picker 时间选择器 
+- [ ] Date Picker 日期选择器 
+- [ ] DateTime Picker 日期时间选择器 
 - [ ] Upload 上传 `level max`
 - [ ] Form 表单 --带自定义验证 `level max`
 ---
 - [ ] Card 卡片
 - [ ] Divider 分割线
+- [ ] QRCode 二维码
 - [ ] PageHeader 页头/面包屑
 - [ ] Tag 标签
 - [ ] Watermark 水印
