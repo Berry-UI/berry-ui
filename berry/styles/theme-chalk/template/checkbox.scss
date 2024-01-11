@@ -1,0 +1,20 @@
+@import '../../mixin/';
+
+.#{$ns_checkbox} {
+    width: fit-content;
+    
+    user-select: none;
+
+    .#{$ns_checkbox}-el {
+        cursor: pointer;
+
+    }
+}
+
+.#{$ns_checkbox}-contain {
+    appearance: none;
+    margin: 0;
+    border: 1px solid #e0e0e6;
+    border-radius: 4px;
+    cursor: pointer;
+}

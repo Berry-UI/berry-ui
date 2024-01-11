@@ -67,8 +67,8 @@
 
 ## Input Evenets
 
-| 事件名 | 说明                       | 参数              | 参数 |
-| ------ | -------------------------- | ----------------- | ---- |
-| change | Input 值发生改变时触发函数 | `(value) => void` |      |
-| focus  | Input 聚焦时触发函数       | `(event) => void` |      |
-| blur   | Input 失焦时触发函数       | `(event) => void` |      |
+| 事件名 | 说明                       | 参数                         |
+| ------ | -------------------------- | ---------------------------- |
+| change | Input 值发生改变时触发函数 | `(value:string) => void`     |
+| focus  | Input 聚焦时触发函数       | `(event:FocusEvent) => void` |
+| blur   | Input 失焦时触发函数       | `(event:FocusEvent) => void` |

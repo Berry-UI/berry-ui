@@ -4,27 +4,41 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-// import { BerryButton, BerryIcon } from 'berry-ui'
-import { ref } from 'vue'
-const dis = ref(true)
-const click = (ent: MouseEvent) => {
-  dis.value = !dis.value
+import { ref } from "vue"
+interface checkArrayType {
+    label: string,
+    value: string
 }
-const change = e => console.log("input值改变了")
-const inputValue = ref('tim')
+
+let value = ref<String[]>([])
+let value1 = ref<String[]>([])
+let value2 = ref<String[]>([])
+let checkArray = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
+let checkArray1 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
+let checkArray2 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
+
+function c() {
+    value.value = ["normal"]
+    value1.value = ["normal"]
+    value2.value = ["normal"]
+    console.log(value.value)
+}
 </script>
 
 <template>
-  <!-- <div>
-    <div style="width: 40%; display: flex;flex-direction: row;justify-content: space-around;">
-      <BerryButton type="primary" status="round" size="small" variant="ghost" suffixIcon="jubao" @click="cli()">Default</BerryButton>
-      <BerryButton type="info" variant="ghost" status="round" size="normal" prefixIcon="jubao">Default</BerryButton>
-      <BerryButton type="success" status="round" size="small">Success</BerryButton>
-      <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
-    </div>
-  </div> -->
-  <!-- <BerryButton type="primary">Default</BerryButton> -->
-  <BerryInput size="small" v-model="inputValue" @change="change" placeholder="write something"></BerryInput>
+    <BerryCheckBoxGroup v-model="value" size="small">
+        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
+    </BerryCheckBoxGroup>
+
+    <BerryCheckBoxGroup v-model="value1" size="normal">
+        <BerryCheckBox v-for="item in checkArray1" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
+    </BerryCheckBoxGroup>
+
+    <BerryCheckBoxGroup v-model="value2" size="large">
+        <BerryCheckBox v-for="item in checkArray2" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
+    </BerryCheckBoxGroup>
+
+    <div @click="c">123</div>
 </template>
 
 <style scoped lang="scss" ></style> 

@@ -1,0 +1,103 @@
+@import '../../mixin/';
+
+@mixin checkSize($type) {
+    @if($type =='small') {
+        height: var(--ber-check-small);
+        width: var(--ber-check-small);
+    }
+
+    @if($type =='normal') {
+        height: var(--ber-check-normal);
+        width: var(--ber-check-normal);
+    }
+
+    @if($type =='large') {
+        height: var(--ber-check-large);
+        width: var(--ber-check-large);
+    }
+}
+
+@mixin checkFontSize($type) {
+    @if($type =='small') {
+        font-size: var(--ber-check-small);
+    }
+
+    @if($type =='normal') {
+        font-size: var(--ber-check-normal);
+    }
+
+    @if($type =='large') {
+        font-size: var(--ber-check-large);
+    }
+}
+
+@mixin flagAttr($type) {
+    @if($type =='small') {
+        height: calc(var(--ber-check-small) * .2);
+        width: calc(var(--ber-check-small) * .4);
+        top: calc(var(--ber-check-small) * .15);
+        left: calc(var(--ber-check-small) * .15);
+    }
+
+    @if($type =='normal') {
+        height: calc(var(--ber-check-normal) * .25);
+        width: calc(var(--ber-check-normal)* .45);
+        top: calc(var(--ber-check-normal) * .15);
+        left: calc(var(--ber-check-normal) * .15);
+    }
+
+    @if($type =='large') {
+        height: calc(var(--ber-check-large) * .3);
+        width: calc(var(--ber-check-large)* .5);
+        top: calc(var(--ber-check-large) * .15);
+        left: calc(var(--ber-check-large) * .15);
+    }
+}
+
+@mixin checkGap($type) {
+    @if($type =='small') {
+        gap: 2px;
+    }
+
+    @if($type =='normal') {
+        gap: 3px;
+    }
+
+    @if($type =='large') {
+        gap: 4px;
+    }
+}
+
+.#{$ns_checkbox_group} {
+    width: 100%;
+    @include useFlexRCC(flex-start, center, 5px);
+}
+
+@each $item in $sizeList {
+    .#{$ns_checkbox_group}-#{$item} {
+        .#{$ns_checkbox} {
+            @include checkFontSize($item);
+            @include useFlexRCC(flex-start, center);
+            @include checkGap($item);
+
+            .#{$ns_checkbox}-contain {
+                @include checkSize($item);
+                position: relative;
+
+                &:checked {
+                    background-color: #5046e5;
+                }
+
+                &:checked::before {
+                    content: "";
+                    @include flagAttr($item);
+                    position: absolute;
+                    border: 3px solid #fff;
+                    border-top: none;
+                    border-right: none;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

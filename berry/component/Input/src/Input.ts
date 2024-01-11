@@ -1,6 +1,6 @@
 import { PropType } from "vue"
-import { ElementSize } from "berry-ui/typings"
-type defaultTypes = false | true
+import { ElementSize, defaultTypes } from "berry-ui/typings"
+
 type inputTypes = "text" | "password" | "textarea"
 type passwordOn = "click" | "mousedown"
 // type iconTypes = "pre" | "suf"

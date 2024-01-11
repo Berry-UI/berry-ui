@@ -1,18 +1,22 @@
 $variable: "ber";
 $componentPrefix: "ber";
 
-@mixin useFlexRCC() {
+@mixin useFlexRCC($j: center, $a: center, $g: 0px, $w: wrap) {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  justify-content: $j;
+  align-items: $a;
+  // align-content: center;
+  flex-wrap: wrap;
+  gap: $g;
 }
+
 @mixin useBlockCenter {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
+
 @mixin filter-overflow() {
   white-space: nowrap;
   overflow: hidden;
