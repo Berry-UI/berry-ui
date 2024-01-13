@@ -19,5 +19,5 @@ export const CheckBoxGroupEmits = {
     /**
      * @descipt 输入值发生改变的时候触发
      */
-    change: (value: string | number, flag: number) => value,
+    change: (value: string | number, flag: number) => value || flag
 }

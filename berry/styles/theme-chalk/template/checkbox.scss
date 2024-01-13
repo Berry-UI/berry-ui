@@ -1,20 +1,51 @@
 @import '../../mixin/';
+@import '../../variable.scss';
+
+$mixinColor: color-mix(in srgb, var(--ber-color-primary) 60%, #fff);
 
 .#{$ns_checkbox} {
     width: fit-content;
-    
     user-select: none;
 
     .#{$ns_checkbox}-el {
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+    }
 
+    .#{$ns_checkbox}-contain {
+        appearance: none;
+        margin: 0;
+        border: 1px solid #e0e0e6;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all .4s ease;
+
+        &:checked {
+            background-color: var(--ber-color-primary);
+            border-color: var(--ber-color-primary);
+        }
+    }
+
+    &:hover:not(.#{$ns_checkbox}-disabled),
+    &:focus-within:not(.#{$ns_checkbox}-disabled) {
+        .#{$ns_checkbox}-contain {
+            box-shadow: 0 0 4px #4338ca;
+            border: 1px solid var(--ber-color-primary);
+        }
     }
 }
 
-.#{$ns_checkbox}-contain {
-    appearance: none;
-    margin: 0;
-    border: 1px solid #e0e0e6;
-    border-radius: 4px;
-    cursor: pointer;
+.#{$ns_checkbox}~.#{$ns_checkbox}-disabled {
+    & * {
+        color: #c2c2c2;
+        cursor: no-drop;
+    }
+
+    .#{$ns_checkbox}-contain:checked {
+        background-color: $mixinColor;
+        border: $mixinColor;
+    }
 }

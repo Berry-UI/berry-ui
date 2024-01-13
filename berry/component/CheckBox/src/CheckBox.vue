@@ -17,6 +17,7 @@ const props = defineProps({ ...CheckBoxProps })
 const ber_checkbox = computed(() => {
     return [
         ns.namespace,
+        ns.fo(props.disabled, ns.namespace + "-disabled")
     ]
 })
 const ber_checkbox_el = computed(() => {

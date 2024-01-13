@@ -1,7 +1,7 @@
 <!--
 @Project: Berry
 @author: August
-@createDate: 2023
+@createDate: 2024
 -->
 <script setup lang="ts">
 import { ref } from "vue"
@@ -11,25 +11,16 @@ interface checkArrayType {
     disabled?: boolean
 }
 
-let value = ref<String[]>(["normal"])
+let value = ref<String[]>([])
 let value1 = ref<String[]>([])
 let value2 = ref<String[]>([])
-let checkArray = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal", disabled: true }])
+let checkArray = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
 let checkArray1 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
 let checkArray2 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
-
-function c(a: any, b: any) {
-    console.log(a, b)
-}
 </script>
 
 <template>
-    <BerryCheckBoxGroup v-model="value">
-        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value" :disabled="item.disabled">{{
-            item.label }}
-        </BerryCheckBox>
-    </BerryCheckBoxGroup>
-    <BerryCheckBoxGroup v-model="value" size="small" @change="c">
+    <BerryCheckBoxGroup v-model="value" size="small">
         <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
     </BerryCheckBoxGroup>
 

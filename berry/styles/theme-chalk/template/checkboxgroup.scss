@@ -33,44 +33,33 @@
 
 @mixin flagAttr($type) {
     @if($type =='small') {
-        height: calc(var(--ber-check-small) * .2);
-        width: calc(var(--ber-check-small) * .4);
-        top: calc(var(--ber-check-small) * .15);
-        left: calc(var(--ber-check-small) * .15);
+        // height: calc(var(--ber-check-small) * .25);
+        // width: calc(var(--ber-check-small) * .5);
+        top: calc(var(--ber-check-small) * .1);
+        left: calc(var(--ber-check-small) * .1);
+        border: calc(2px * 1.25) solid #fff;
     }
 
     @if($type =='normal') {
-        height: calc(var(--ber-check-normal) * .25);
-        width: calc(var(--ber-check-normal)* .45);
-        top: calc(var(--ber-check-normal) * .15);
-        left: calc(var(--ber-check-normal) * .15);
+        // height: calc(var(--ber-check-normal) * .25);
+        // width: calc(var(--ber-check-normal)* .5);
+        top: calc(var(--ber-check-normal) * .1);
+        left: calc(var(--ber-check-normal) * .1);
+        border: calc(2px * 1.5) solid #fff;
     }
 
     @if($type =='large') {
-        height: calc(var(--ber-check-large) * .3);
-        width: calc(var(--ber-check-large)* .5);
-        top: calc(var(--ber-check-large) * .15);
-        left: calc(var(--ber-check-large) * .15);
-    }
-}
-
-@mixin checkGap($type) {
-    @if($type =='small') {
-        gap: 2px;
-    }
-
-    @if($type =='normal') {
-        gap: 3px;
-    }
-
-    @if($type =='large') {
-        gap: 4px;
+        // height: calc(var(--ber-check-large) * .25);
+        // width: calc(var(--ber-check-large)* .5);
+        top: calc(var(--ber-check-large) * .1);
+        left: calc(var(--ber-check-large) * .1);
+        border: calc(2px * 1.75) solid #fff;
     }
 }
 
 .#{$ns_checkbox_group} {
     width: 100%;
-    @include useFlexRCC(flex-start, center, 5px);
+    @include useFlexRCC(flex-start, center, 25px);
 }
 
 @each $item in $sizeList {
@@ -78,24 +67,30 @@
         .#{$ns_checkbox} {
             @include checkFontSize($item);
             @include useFlexRCC(flex-start, center);
-            @include checkGap($item);
+            gap: 6px;
 
             .#{$ns_checkbox}-contain {
                 @include checkSize($item);
                 position: relative;
 
-                &:checked {
-                    background-color: #5046e5;
-                }
+
 
                 &:checked::before {
                     content: "";
                     @include flagAttr($item);
+                    border-bottom-left-radius: 1px;
                     position: absolute;
-                    border: 3px solid #fff;
                     border-top: none;
                     border-right: none;
                     transform: rotate(-45deg);
+
+                    width: 60%;
+                    height: 30%;
+
+                    // top: 50%;
+                    // left: 50%;
+                    // margin-top: -25%;
+                    // margin-left: -30%;
                 }
             }
         }

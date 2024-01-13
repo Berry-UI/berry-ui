@@ -16,7 +16,9 @@ const checkArray = reactive<checkArrayType[]>([{ label: "small", value: "small" 
 
 <template>
     <BerryCheckBoxGroup v-model="value">
-        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value"></BerryCheckBox>
+        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value">
+            <BerryIcon name="rotate"></BerryIcon>{{ item.label }}
+        </BerryCheckBox>
     </BerryCheckBoxGroup>
 </template>
 
