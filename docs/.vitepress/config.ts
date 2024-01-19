@@ -40,6 +40,13 @@ export default defineConfig({
                     { text: 'Input', link: '/Component/Input/input.md' },
                     { text: 'Radio', link: '/Component/Radio/radio.md' },
                     { text: 'CheckBox', link: '/Component/CheckBox/checkbox.md' },
+                    { text: 'Switch', link: '/Component/Switch/switch.md' },
+                ],
+            },
+            {
+                text: '反馈组件',
+                items: [
+                    { text: 'Tooltip', link: '/Component/Tooltip/tooltip.md' },
                 ],
             },
         ],

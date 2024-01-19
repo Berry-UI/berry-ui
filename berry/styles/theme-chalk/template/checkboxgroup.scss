@@ -17,43 +17,68 @@
     }
 }
 
-@mixin checkFontSize($type) {
+@mixin flagSize($type) {
     @if($type =='small') {
-        font-size: var(--ber-check-small);
+        height: calc(8px * .4);
+        width: calc(12px * .6);
     }
 
     @if($type =='normal') {
-        font-size: var(--ber-check-normal);
+        height: calc(12px * .4);
+        width: calc(16px * .6);
     }
 
     @if($type =='large') {
-        font-size: var(--ber-check-large);
+        height: calc(16px * .4);
+        width: calc(20px * .6);
+    }
+}
+
+@mixin checkBorderRadius($type) {
+    @if($type =='small') {
+        border-radius: calc(var(--ber-small-font) * .5);
+    }
+
+    @if($type =='normal') {
+        border-radius: calc(var(--ber-normal-font) * .5);
+    }
+
+    @if($type =='large') {
+        border-radius: calc(var(--ber-large-font) * .5);
+    }
+}
+
+@mixin checkFontSize($type) {
+    @if($type =='small') {
+        font-size: var(--ber-small-font);
+    }
+
+    @if($type =='normal') {
+        font-size: var(--ber-normal-font);
+    }
+
+    @if($type =='large') {
+        font-size: var(--ber-large-font);
     }
 }
 
 @mixin flagAttr($type) {
     @if($type =='small') {
-        // height: calc(var(--ber-check-small) * .25);
-        // width: calc(var(--ber-check-small) * .5);
-        top: calc(var(--ber-check-small) * .1);
-        left: calc(var(--ber-check-small) * .1);
-        border: calc(2px * 1.25) solid #fff;
+        top: calc(var(--ber-check-small) * .15);
+        left: calc(var(--ber-check-small) * .15);
+        border: calc(2px * 1.2) solid #fff;
     }
 
     @if($type =='normal') {
-        // height: calc(var(--ber-check-normal) * .25);
-        // width: calc(var(--ber-check-normal)* .5);
-        top: calc(var(--ber-check-normal) * .1);
-        left: calc(var(--ber-check-normal) * .1);
-        border: calc(2px * 1.5) solid #fff;
+        top: calc(var(--ber-check-normal) * .15);
+        left: calc(var(--ber-check-normal) * .15);
+        border: calc(2px * 1.4) solid #fff;
     }
 
     @if($type =='large') {
-        // height: calc(var(--ber-check-large) * .25);
-        // width: calc(var(--ber-check-large)* .5);
-        top: calc(var(--ber-check-large) * .1);
-        left: calc(var(--ber-check-large) * .1);
-        border: calc(2px * 1.75) solid #fff;
+        top: calc(var(--ber-check-large) * .15);
+        left: calc(var(--ber-check-large) * .15);
+        border: calc(2px * 1.6) solid #fff;
     }
 }
 
@@ -71,26 +96,39 @@
 
             .#{$ns_checkbox}-contain {
                 @include checkSize($item);
+                @include checkBorderRadius($item);
                 position: relative;
-
-
 
                 &:checked::before {
                     content: "";
                     @include flagAttr($item);
+                    @include flagSize($item);
                     border-bottom-left-radius: 1px;
                     position: absolute;
                     border-top: none;
                     border-right: none;
+                    top: 50%;
+                    left: 10%;
                     transform: rotate(-45deg);
+                    transform-origin: left top;
+                    animation: checkedAnimate .6s ease both;
+                }
 
-                    width: 60%;
-                    height: 30%;
+                @keyframes checkedAnimate {
+                    0% {
+                        width: 0%;
+                        height: 0%;
+                    }
 
-                    // top: 50%;
-                    // left: 50%;
-                    // margin-top: -25%;
-                    // margin-left: -30%;
+                    33% {
+                        width: 0%;
+                        height: 29%;
+                    }
+
+                    100% {
+                        width: 55%;
+                        height: 29%;
+                    }
                 }
             }
         }

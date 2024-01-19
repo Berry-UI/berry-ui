@@ -1,7 +1,7 @@
 <!--
 @Project: Berry
-@author: August
-@createDate: 2023
+@author: Rain
+@createDate: 2024
 -->
 <script setup lang="ts">
 import { ref } from "vue"
@@ -14,4 +14,4 @@ let value = ref(true)
     <BerrySwitch v-model="value" size="large">Large</BerrySwitch>
 </template>
 
-<style scoped lang="scss" ></style> 
+<style lang="scss" scoped></style>

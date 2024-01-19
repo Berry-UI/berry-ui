@@ -1,8 +1,7 @@
 import { PropType } from "vue"
 import { ElementSize, defaultTypes } from "berry-ui/typings"
-
-type inputTypes = "text" | "password" | "textarea"
-type passwordOn = "click" | "mousedown"
+export declare type inputTypes = "text" | "password" | "textarea"
+export declare type passwordOn = "click" | "mousedown"
 // type iconTypes = "pre" | "suf"
 // type iconAddress<T extends iconTypes> = `${T}fix`
 

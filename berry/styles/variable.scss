@@ -49,13 +49,23 @@
   --ber-size-large: 16px;
   --ber-height-large: 32px;
 
-  --ber-check-small: 14px;
-  --ber-check-normal: 16px;
-  --ber-check-large: 18px;
+  --ber-check-small: 16px;
+  --ber-check-normal: 20px;
+  --ber-check-large: 24px;
+  --ber-small-font: 14px;
+  --ber-normal-font: 16px;
+  --ber-large-font: 18px;
 
+  --ber-switch-small: 32px;
+  --ber-switch-normal: 40px;
+  --ber-switch-large: 48px;
 
   --ber-shadow: inset 0 0 0 1px #DDDEE0;
   --ber-shadow-hover: inset 0 0 0 1px #4338ca;
 
   --ber-solid: 1px solid #dcdfe6;
+
+  :focus {
+    outline: none; /* 移除默认轮廓样式 */
+  }
 }
