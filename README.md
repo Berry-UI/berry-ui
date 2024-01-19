@@ -132,9 +132,9 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [√] Button Group 按钮组
 - [√] Input 输入框
 - [√] Radio 单选框
-- [ ] Checkbox 复选框
+- [Z] Checkbox 复选框
 - [√] Input Group 输入框组
-- [ ] Select 选择器
+- [A] Select 选择器
 - [ ] Carousel 轮播图
 - [ ] Dropdown 下拉菜单
 - [ ] Image 图像 `level max`
@@ -179,6 +179,7 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [ ] Skeleton 骨架屏 `level max`
 - [ ] Spin 加载 `level max`
 - [ ] Scrollbar 滚动条 `level max`
+- [ ] Tag标签
 ```
 
 ## 主题色

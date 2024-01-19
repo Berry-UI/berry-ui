@@ -1,4 +1,4 @@
-import { Prop, PropType } from 'vue'
+import { PropType } from 'vue'
 import { ElementSize, ElementColors } from 'berry-ui/typings'
 
 /**

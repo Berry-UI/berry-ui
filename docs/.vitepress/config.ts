@@ -40,6 +40,7 @@ export default defineConfig({
                     { text: 'Input', link: '/Component/Input/input.md' },
                     { text: 'Radio', link: '/Component/Radio/radio.md' },
                     { text: 'CheckBox', link: '/Component/CheckBox/checkbox.md' },
+<<<<<<< HEAD
                     { text: 'Switch', link: '/Component/Switch/switch.md' },
                 ],
             },
@@ -47,6 +48,9 @@ export default defineConfig({
                 text: '反馈组件',
                 items: [
                     { text: 'Tooltip', link: '/Component/Tooltip/tooltip.md' },
+=======
+                    { text: 'Select', link: '/Component/Select/Select.md' },
+>>>>>>> 407577e00aa703aeadb2c3e877bde8a8c4893a91
                 ],
             },
         ],
