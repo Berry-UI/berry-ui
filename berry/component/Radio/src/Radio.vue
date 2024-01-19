@@ -45,7 +45,7 @@ const change = (item:optionsType) => {
 </script>
 
 <template>
-  <div :class="ns.namespace" :value="modelValue">
+  <div :class="ns.namespace">
     <label v-for="(item, index) in options" :key="index" @click="change(item)" :style="scl" :class="[
       ns.e('item'),
       ns.is(item.disabled, 'disabled'),

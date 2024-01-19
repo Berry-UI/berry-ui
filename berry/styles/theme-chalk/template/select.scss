@@ -1,0 +1,154 @@
+@import "../../mixin";
+
+$--ber-select-height: var(--ber-height-normal);
+
+.#{$ns_select} {
+
+  position: relative;
+  // height: 40px;
+  @include useBorderBox();
+  width: 100%;
+  font-family: Arial;
+  background-color: rgba(255, 255, 255, 1);
+
+  .#{$ns_select}__wrapper {
+    width: 100%;
+    min-height: var(--ber-input-height-normal);
+    line-height: 1;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 2px 11px;
+    cursor: pointer;
+    border: var(--ber-input-solid);
+    @include useBorderRadius(3);
+
+    .#{$ns_select}__content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
+
+      .#{$ns_select}__placeholder {
+        width: 100%;
+
+        .#{$ns_select}__placeholder__inner {
+          font-size: inherit;
+          line-height: inherit;
+          color: var(--ber-input-gray);
+        }
+      }
+
+      .#{$ns_select}__input {
+        width: 100%;
+        display: inline-flex;
+        flex-wrap: wrap;
+
+
+        .#{$ns_select}__input__inner {
+          font-size: inherit;
+          line-height: inherit;
+          margin-right: 5px;
+
+          .select-tag-close {
+            border-radius: 50%;
+            margin-left: 4px;
+            cursor: pointer;
+            transition: background-color .3s ease;
+
+            &:hover {
+              background-color: var(--ber-color-gray);
+            }
+          }
+        }
+
+        .select-tag {
+          height: var(--ber-height-normal);
+          align-items: center;
+          position: relative;
+          box-sizing: border-box;
+          line-height: 1;
+          color: var(--ber-button-font-color);
+          padding: 0px 7px;
+          cursor: default;
+          border: var(--ber-input-solid);
+          background-color: #fafafc;
+        }
+      }
+    }
+  }
+
+  .#{$ns_select}__wrapper:hover:not(.is-disabled) {
+    border-color: var(--ber-color-primary);
+    transition: border-color .3s ease;
+  }
+
+  .select-focus:not(.is-disabled) {
+    border-color: var(--ber-color-primary);
+    box-shadow: 0 0 2px var(--ber-color-primary);
+    transition: border-color .3s ease;
+  }
+
+  .is-disabled {
+    background-color: var(--ber-color-disabled);
+    cursor: no-drop
+  }
+
+  /* 定义关键帧 */
+  // @keyframes fadein {
+  //   0% {
+  //     opacity: 0;
+  //   }
+
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
+
+
+  .select-box {
+    width: 100%;
+    max-height: 100px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 40px;
+    z-index: 99999;
+    border: var(--ber-input-solid);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    // opacity: 0;
+    // transition: all 1s;
+    // animation-duration: .5s;
+    background-color: rgba(255, 255, 255, 1);
+    // /* 动画时间 */
+    // animation-name: ber-animation-fade-enter-active;
+    /* 关键帧名字 */
+
+    // box-shadow: ;
+    ul {
+      padding: 3px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    ul li {
+      list-style: none;
+      padding-left: 9px;
+      line-height: 30px;
+      cursor: pointer;
+    }
+
+    .select-item-active {
+      color: var(--ber-color-primary);
+    }
+
+    ul li:hover {
+      @include useBorderRadius(3);
+
+      background-color: var(--ber-color-select-gray);
+      transition: all .1s ease-in-out;
+    }
+  }
+}

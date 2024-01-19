@@ -20,7 +20,7 @@ const state = reactive({
   ]
 })
 const chan = (item) => {
-  console.log(item.label)
+  console.log(radioVal)
 }
 let radioVal = ref(1)
 const { options } = state
@@ -28,7 +28,7 @@ const { options } = state
 
 <template>
   <div>
-    <BerryRadio variant="ghost" :options="options" customColor="pink" v-model="radioVal"></BerryRadio>
+    <BerryRadio variant="ghost" :options="options" customColor="pink" v-model="radioVal" @change="chan"></BerryRadio>
   </div>
 </template>
 

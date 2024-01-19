@@ -1,0 +1,39 @@
+/* 淡入 */
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter-to, .fade-leave-to {
+  opacity: 1
+}
+
+@keyframes ber-animation-fade-enter-active {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ber-animation-fade-enter-active {
+  animation-name: ber-animation-fade-enter-active;
+  animation-duration: .3s;
+}
+
+/* 淡出 */
+
+@keyframes ber-animation-fade-leave-to {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.ber-animation-fade-leave-to {
+  animation: ber-animation-fade-leave-to 0.5s forwards;
+}
+
+

@@ -1,13 +1,13 @@
 :root {
-  --ber-button-font-color: '';
+  --ber-button-font-color: #333639;
   --ber-button-bg-color: #fff;
   --ber-button-br-color: #ccc;
-
+  --ber-color-disabled: rgba(250, 250, 252);
 
   --ber-component-height-large: 40px;
   --ber-component-height: 32px;
-  --ber-component-small: 24px;
-  --ber-component-mini: 18px;
+  --ber-component-height-small: 24px;
+  --ber-component-height-mini: 18px;
 
 
   --ber-color-primary: #5046e5;
@@ -34,6 +34,7 @@
   --ber-black-color-bg: #000;
 
   --ber-color-gray: #DDDEE0;
+  --ber-color-select-gray: #f3f3f5;
   --ber-color-gray-dark: darken(#DDDEE0, 15%);
   --ber-color-gray-deep-dark: rgb(139, 139, 139);
   --ber-color-gray-fade: rgb(235, 235, 235);
@@ -50,9 +51,13 @@
   --ber-size-large: 16px;
   --ber-height-large: 32px;
 
-
   --ber-shadow: inset 0 0 0 1px #DDDEE0;
   --ber-shadow-hover: inset 0 0 0 1px #4338ca;
 
   --ber-solid: 1px solid #dcdfe6;
+  --ber-input-solid: 1px solid #e0e0e6;
+  --ber-input-gray: #b5b7bd;
+  --ber-input-height-small: 34px;
+  --ber-input-height-normal: 34px;
+  --ber-input-height-large: 40px;
 }
