@@ -1,5 +1,6 @@
 export type ElementTypes = "success" | "info" | "wraning" | "danger" | "error";
 export type ElementSize = "small" | "normal" | "large";
+export type defaultTypes = false | true;
 
 // 颜色断言
 export type RGB = `rgb(${number},${number},${number})`;

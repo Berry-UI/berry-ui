@@ -40,9 +40,6 @@ const ber_input_length = computed(() => {
 const emits = defineEmits({ ...InputEmits })
 const inputChange = (e: any) => {
     staging.value = e.target.value
-    /**
-     * @description issue: 当input删除至内容为空时将会提示警告,newValue.value为true时不发出警告
-     */
     emits('update:modelValue', staging.value)
     emits('change', staging.value)
 }
@@ -74,8 +71,8 @@ function blur(e: FocusEvent): void {
             :disabled="disabled" :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
             :minlength="minLength" :autocomplete="autocomplete ? 'on' : 'off'" :required="required">
         <!-- cols="30" rows="10" -->
-        <textarea v-else name="" id=""  rows="20" :class="ber_input_el" :type="type" :placeholder="placeholder"
-            :disabled="disabled" :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
+        <textarea v-else name="" id="" :class="ber_input_el" :type="type" :placeholder="placeholder" :disabled="disabled"
+            :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
             :minlength="minLength"></textarea>
         <slot name="suffix" v-if="type == 'text'"></slot>
         <span :class="ber_input_length" v-if="showCount">{{ +maxLength >= 100 ? `99+` : modelValue.length + '/' + maxLength

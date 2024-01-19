@@ -3,7 +3,12 @@ $ns_button : #{$componentPrefix}-button;
 $ns_button_group: #{$componentPrefix}-button-group;
 $ns_radio: #{$componentPrefix}-radio;
 $ns_input_group: #{$componentPrefix}-input-group;
+<<<<<<< HEAD
 $ns_select: #{$componentPrefix}-select;
+=======
+$ns_checkbox_group: #{$componentPrefix}-checkbox-group;
+$ns_checkbox: #{$componentPrefix}-checkbox;
+>>>>>>> 80efeeddabcd7a1c7e98774890e82758f0941f21
 
 $sizeList: small, normal, large;
 $typeList: primary, tertiary, primary, info, success, warning, error;

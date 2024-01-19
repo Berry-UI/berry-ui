@@ -1,0 +1,98 @@
+@import '../../mixin/';
+
+@mixin checkSize($type) {
+    @if($type =='small') {
+        height: var(--ber-check-small);
+        width: var(--ber-check-small);
+    }
+
+    @if($type =='normal') {
+        height: var(--ber-check-normal);
+        width: var(--ber-check-normal);
+    }
+
+    @if($type =='large') {
+        height: var(--ber-check-large);
+        width: var(--ber-check-large);
+    }
+}
+
+@mixin checkFontSize($type) {
+    @if($type =='small') {
+        font-size: var(--ber-check-small);
+    }
+
+    @if($type =='normal') {
+        font-size: var(--ber-check-normal);
+    }
+
+    @if($type =='large') {
+        font-size: var(--ber-check-large);
+    }
+}
+
+@mixin flagAttr($type) {
+    @if($type =='small') {
+        // height: calc(var(--ber-check-small) * .25);
+        // width: calc(var(--ber-check-small) * .5);
+        top: calc(var(--ber-check-small) * .1);
+        left: calc(var(--ber-check-small) * .1);
+        border: calc(2px * 1.25) solid #fff;
+    }
+
+    @if($type =='normal') {
+        // height: calc(var(--ber-check-normal) * .25);
+        // width: calc(var(--ber-check-normal)* .5);
+        top: calc(var(--ber-check-normal) * .1);
+        left: calc(var(--ber-check-normal) * .1);
+        border: calc(2px * 1.5) solid #fff;
+    }
+
+    @if($type =='large') {
+        // height: calc(var(--ber-check-large) * .25);
+        // width: calc(var(--ber-check-large)* .5);
+        top: calc(var(--ber-check-large) * .1);
+        left: calc(var(--ber-check-large) * .1);
+        border: calc(2px * 1.75) solid #fff;
+    }
+}
+
+.#{$ns_checkbox_group} {
+    width: 100%;
+    @include useFlexRCC(flex-start, center, 25px);
+}
+
+@each $item in $sizeList {
+    .#{$ns_checkbox_group}-#{$item} {
+        .#{$ns_checkbox} {
+            @include checkFontSize($item);
+            @include useFlexRCC(flex-start, center);
+            gap: 6px;
+
+            .#{$ns_checkbox}-contain {
+                @include checkSize($item);
+                position: relative;
+
+
+
+                &:checked::before {
+                    content: "";
+                    @include flagAttr($item);
+                    border-bottom-left-radius: 1px;
+                    position: absolute;
+                    border-top: none;
+                    border-right: none;
+                    transform: rotate(-45deg);
+
+                    width: 60%;
+                    height: 30%;
+
+                    // top: 50%;
+                    // left: 50%;
+                    // margin-top: -25%;
+                    // margin-left: -30%;
+                }
+            }
+        }
+    }
+}
