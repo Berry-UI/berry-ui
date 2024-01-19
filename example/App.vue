@@ -4,12 +4,9 @@
 @createDate: 2023
 -->
 <script setup lang="ts">
-<<<<<<< HEAD
 // import { BerryButton, BerryIcon } from 'berry-ui'
 import { ref, reactive, watch } from 'vue'
-const dis = ref(true)
 
-const show = ref(true)
 const state = reactive(
   {
     options: [
@@ -82,44 +79,7 @@ const selectVal1 = ref([''])
   <!-- <div>
     <berry-button @click="show = !show">Toggle</berry-button>
   </div> -->
-=======
-import { ref } from "vue"
-interface checkArrayType {
-    label: string,
-    value: string,
-    disabled?: boolean
-}
 
-let value = ref<String[]>(["normal"])
-let value1 = ref<String[]>([])
-let value2 = ref<String[]>([])
-let checkArray = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal", disabled: true }])
-let checkArray1 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
-let checkArray2 = ref<checkArrayType[]>([{ label: "small", value: "small" }, { label: "normal", value: "normal" }])
-
-function c(a: any, b: any) {
-    console.log(a, b)
-}
-</script>
-
-<template>
-    <BerryCheckBoxGroup v-model="value">
-        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value" :disabled="item.disabled">{{
-            item.label }}
-        </BerryCheckBox>
-    </BerryCheckBoxGroup>
-    <BerryCheckBoxGroup v-model="value" size="small" @change="c">
-        <BerryCheckBox v-for="item in checkArray" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
-    </BerryCheckBoxGroup>
-
-    <BerryCheckBoxGroup v-model="value1" size="normal">
-        <BerryCheckBox v-for="item in checkArray1" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
-    </BerryCheckBoxGroup>
-
-    <BerryCheckBoxGroup v-model="value2" size="large">
-        <BerryCheckBox v-for="item in checkArray2" :label="item.label" :value="item.value">{{ item.label }}</BerryCheckBox>
-    </BerryCheckBoxGroup>
->>>>>>> 80efeeddabcd7a1c7e98774890e82758f0941f21
 </template>
 
 <style scoped lang="scss" >

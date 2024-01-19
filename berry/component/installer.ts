@@ -6,11 +6,8 @@ import BerryButtonGroup from "./ButtonGroup";
 import BerryRadio from "./Radio"
 import BerrtInputGroup from "./InputGroup";
 import BerrtCheckBox from "./CheckBox";
-<<<<<<< HEAD
 import BerrySelect from "./Select";
-=======
 import BerrtCheckBoxGroup from "./CheckBoxGroup";
->>>>>>> 80efeeddabcd7a1c7e98774890e82758f0941f21
 
 const comps = [
   BerryButton,
@@ -20,11 +17,8 @@ const comps = [
   BerryButtonGroup,
   BerryRadio,
   BerrtCheckBox,
-<<<<<<< HEAD
-  BerrySelect
-=======
+  BerrySelect,
   BerrtCheckBoxGroup
->>>>>>> 80efeeddabcd7a1c7e98774890e82758f0941f21
 ]
 
 export default function (Vue: App) {
