@@ -138,8 +138,14 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [ ] Dropdown 下拉菜单
 - [ ] Image 图像 `level max`
 - [ ] Table 表格 `level max`
+<<<<<<< HEAD
 - [ ] Date Picker 日期选择器 
 - [ ] DateTime Picker 日期时间选择器 
+=======
+- [ ] Time Picker 时间选择器
+- [ ] Date Picker 日期选择器
+- [ ] DateTime Picker 日期时间选择器
+>>>>>>> f1df2928fd3607cb3b082a06a56352daa8c3cfd9
 - [ ] Upload 上传 `level max`
 - [ ] Form 表单 --带自定义验证 `level max`
 ---
@@ -151,7 +157,7 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [ ] Watermark 水印
 - [ ] Auto Complete 自动填充
 - [ ] Cascader 级联选择器
-- [ ] Switch 开关
+- [√] Switch 开关
 - [ ] Rate 评分
 - [ ] Color Picker 颜色选择器 `level max`
 - [ ] Calendar 日历 `level max`

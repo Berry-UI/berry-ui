@@ -1,6 +1,6 @@
 import { PropType } from "vue"
 import { RGB, RGBA, HEX } from 'berry-ui/typings'
-type actionTypes = false | true
+export declare type actionTypes = false | true
 
 export const IconProps = {
     /**

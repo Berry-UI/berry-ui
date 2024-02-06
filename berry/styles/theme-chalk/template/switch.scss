@@ -1,0 +1,125 @@
+@import '../../mixin/';
+@import '../../variable.scss';
+
+$ber-normal-background: #e4e4e7;
+$ber-normal-shadow: #b7b7b9;
+$ber-selecte-shadow: #575759;
+
+
+
+@mixin switchSize($type, $btn) {
+    @if $btn =="contain" {
+        @if($type =='small') {
+            height: calc(var(--ber-component-height) - 12px);
+        }
+
+        @else if($type =='normal') {
+            height: calc(var(--ber-component-height) - 8px);
+        }
+
+        @else if($type =='large') {
+            height: calc(var(--ber-component-height) - 4px);
+        }
+
+        width: var(--ber-switch-#{$type});
+    }
+
+    @else if $btn =="btn" {
+        @if($type =='small') {
+            height: calc(var(--ber-component-height) - 20px);
+            width: calc(var(--ber-component-height) - 20px);
+        }
+
+        @else if($type =='normal') {
+            height: calc(var(--ber-component-height) - 16px);
+            width: calc(var(--ber-component-height) - 16px);
+        }
+
+        @else if($type =='large') {
+            height: calc(var(--ber-component-height) - 12px);
+            width: calc(var(--ber-component-height) - 12px);
+        }
+
+        border-radius: 50%;
+    }
+}
+
+.#{$ns_switch} {
+    @include useFlexRCC(center, center, 5px, nowrap);
+    width: fit-content;
+    margin:  4px;
+    cursor: pointer;
+
+    .#{$ns_switch}-contain {
+        background-color: $ber-normal-background;
+        border-radius: calc(infinity * 1px);
+
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 2px solid transparent;
+            border-radius: calc(infinity * 1px);
+            z-index: 9;
+            /* 初始时透明 */
+            box-sizing: border-box;
+        }
+
+        &:focus::after {
+            border-color: var(--ber-color-primary-lignter);
+            /* 获得焦点时显示的颜色 */
+        }
+
+    }
+
+    &.isSelected {
+        .#{$ns_switch}-contain {
+            background-color: var(--ber-color-primary);
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                box-shadow: 0 0 2px $ber-selecte-shadow ;
+                left: calc(100% - 4px);
+                transform: translateX(-100%);
+            }
+        }
+    }
+}
+
+@each $item in $sizeList {
+
+    .#{$ns_switch}-#{$item} {
+        font-size: var(--ber-#{$item}-font);
+        font-family: __Inter_39b9c5, __Inter_Fallback_39b9c5, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        .#{$ns_switch}-contain {
+            @include switchSize($item, 'contain');
+            @include useFlexRCC(flex-start, center);
+            box-sizing: border-box;
+            padding: 0 4px;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 4px;
+                right: auto;
+                @include switchSize($item, 'btn');
+                background-color: #fff;
+                box-shadow: 0 0 2px $ber-normal-shadow;
+                transition: all .4s ease;
+            }
+
+            &:active::before {
+                width: 50%;
+                border-radius: 100px;
+            }
+        }
+    }
+}

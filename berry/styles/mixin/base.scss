@@ -6,8 +6,8 @@ $componentPrefix: "ber";
   justify-content: $j;
   align-items: $a;
   // align-content: center;
-  flex-wrap: wrap;
   gap: $g;
+  flex-wrap: wrap;
 }
 
 @mixin useBlockCenter {
