@@ -26,7 +26,8 @@ const state = reactive(
       },
       {
         label: 'Norwegian Wood',
-        value: 'see'
+        value: 'see',
+        disabled: true
       },
       {
         label: 'Nowhere Man',
@@ -43,18 +44,27 @@ const state = reactive(
     ],
   },
 )
-const change = (item) => {
+const change = (item: any) => {
+  // alert(JSON.stringify(item))
+  console.log(selectVal)
   // console.log(selectVal1)
 }
+const cli = ()=>{
+  console.log(selectVal1)
+}
 
-const selectVal = ref('tim')
-const selectVal1 = ref([''])
+const selectVal = ref(['see2'])
+const selectVal1 = ref(['see2'])
+
+watch(selectVal, (newValue, oldValue) => {
+  console.log('New value:', newValue);
+  console.log('Old value:', oldValue);
+}, { deep: true });
 
 // watch(selectVal1, (newValue, oldValue) => {
 //   console.log('New value:', newValue);
 //   console.log('Old value:', oldValue);
 // }, { deep: true });
-
 
 </script>
 
@@ -65,25 +75,33 @@ const selectVal1 = ref([''])
       <BerryButton type="info" variant="ghost" status="round" size="normal" prefixIcon="jubao">Default</BerryButton>
       <BerryButton type="success" status="round" size="small">Success</BerryButton>
       <BerryButton type="success" variant="ghost" status="round" size="normal">Success</BerryButton>
+   <BerryButton type="primary">Default</BerryButton>  
+
     </div>s
   </div> -->
-  <!-- <BerryButton type="primary">Default</BerryButton> -->
-  <!-- <berry-select :options="state.options2" placeholder="选择" @change="change" v-model="selectVal"></berry-select> -->
+  <berry-select :options="state.options2" placeholder="选择" multiple fiterable v-model="selectVal1" size="small"
+    @change="change" @click="cli"></berry-select>
 
-  <berry-select :options="state.options2" v-model="selectVal"></berry-select>
+  <berry-select :options="state.options2" v-model="selectVal1" fiterable multiple @click="cli" @change="change"></berry-select>
 
-  <berry-select :options="state.options2" placeholder="选择" multiple @change="change" v-model="selectVal1"></berry-select>
-  <berry-select :options="state.options2" placeholder="选择" multiple @change="change" v-model="selectVal1"></berry-select>
+  <berry-select :options="state.options2" placeholder="选择歌曲" fiterable multiple v-model="selectVal1"
+    size="large" @click="cli" @change="change"></berry-select>
+  <berry-select :options="state.options2" placeholder="选择" v-model="selectVal" @click="cli" @change="change"></berry-select>
 
 
   <!-- <div>
     <berry-button @click="show = !show">Toggle</berry-button>
   </div> -->
-
 </template>
 
 <style scoped lang="scss" >
 .ber-select {
+  // font-family: v-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  // ;
   margin-bottom: 5px;
+
+
+
+
 }
 </style> 

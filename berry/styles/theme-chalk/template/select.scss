@@ -2,25 +2,77 @@
 
 $--ber-select-height: var(--ber-height-normal);
 
-.#{$ns_select} {
 
+.#{$ns_select} {
   position: relative;
   // height: 40px;
   @include useBorderBox();
   width: 100%;
+
   font-family: Arial;
   background-color: rgba(255, 255, 255, 1);
+
+  // .ber-select-samll {
+  //   min-height: var(--ber-height-samll) !important;
+  //   font-size: 12px!important;
+  //   .select-tag {
+  //     height: var(--ber-height-samll) !important;
+  //   }
+  //   .ber-icon {
+  //     width: 12px !important;
+  //     height: 12px!important;
+  //   }
+  // }
+  @each $item in $sizeList {
+    .ber-select-#{$item} {
+      min-height: var(--ber-input-height-#{$item}) !important;
+      font-size: var(--ber-input-size-#{$item}) !important;
+
+      .select-tag {
+        height: var(--ber-tag-height-#{$item}) !important;
+      }
+
+      .ber-icon {
+        width: var(--ber-input-size-#{$item}) !important;
+        height: var(--ber-input-size-#{$item}) !important;
+      }
+    }
+  }
+
+  // .ber-select-large {
+  //   min-height: var(--ber-input-height-large)!important;
+  //   font-size: 18px!important;
+  // }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px;
+    overflow: overlay;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.15);
+    transition: color 0.2s ease;
+  }
 
   .#{$ns_select}__wrapper {
     width: 100%;
     min-height: var(--ber-input-height-normal);
     line-height: 1;
     font-size: 14px;
+    padding: 2px 11px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    padding: 2px 11px;
     cursor: pointer;
     border: var(--ber-input-solid);
     @include useBorderRadius(3);
@@ -46,14 +98,16 @@ $--ber-select-height: var(--ber-height-normal);
         width: 100%;
         display: inline-flex;
         flex-wrap: wrap;
+        gap: 3px;
 
 
         .#{$ns_select}__input__inner {
           font-size: inherit;
           line-height: inherit;
-          margin-right: 5px;
 
           .select-tag-close {
+            display: flex;
+            align-items: center;
             border-radius: 50%;
             margin-left: 4px;
             cursor: pointer;
@@ -62,6 +116,17 @@ $--ber-select-height: var(--ber-height-normal);
             &:hover {
               background-color: var(--ber-color-gray);
             }
+          }
+        }
+
+        .input__fiter {
+          .select__input {
+            width: 100%;
+            line-height: inherit;
+            font-size: inherit;
+            border: 0;
+            outline: none;
+            caret-color: var(--ber-color-primary);
           }
         }
 
@@ -97,24 +162,11 @@ $--ber-select-height: var(--ber-height-normal);
     cursor: no-drop
   }
 
-  /* 定义关键帧 */
-  // @keyframes fadein {
-  //   0% {
-  //     opacity: 0;
-  //   }
-
-  //   100% {
-  //     opacity: 1;
-  //   }
-  // }
-
-
   .select-box {
     width: 100%;
     max-height: 100px;
-    overflow-y: scroll;
+    overflow-y: overlay;
     position: absolute;
-    top: 40px;
     z-index: 99999;
     border: var(--ber-input-solid);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -131,6 +183,21 @@ $--ber-select-height: var(--ber-height-normal);
       padding: 3px;
       margin: 0;
       font-size: 14px;
+
+      .is-empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .select-dropdown__empty {
+          color: var(--ber-input-gray);
+
+          span {
+            font-size: 12px;
+            line-height: 30px;
+          }
+        }
+      }
     }
 
     ul li {
@@ -141,7 +208,18 @@ $--ber-select-height: var(--ber-height-normal);
     }
 
     .select-item-active {
+      position: relative;
       color: var(--ber-color-primary);
+
+      &::after {
+        content: '\2714';
+        position: absolute;
+        // top: 50%;
+        right: 5px;
+        width: 12px;
+        height: 12px;
+        // background-color: var(--ber-color-primary);
+      }
     }
 
     ul li:hover {
@@ -150,5 +228,6 @@ $--ber-select-height: var(--ber-height-normal);
       background-color: var(--ber-color-select-gray);
       transition: all .1s ease-in-out;
     }
+
   }
 }

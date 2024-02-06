@@ -1,4 +1,5 @@
-import { PropType } from 'vue'
+import { PropType } from "vue"
+import { ElementSize } from "berry-ui/typings"
 
 /**
  * @description select option 得配置项 
@@ -7,14 +8,14 @@ import { PropType } from 'vue'
  *  disabled 选项是否禁用
  */
 export interface optionsType {
-  label: string | number | boolean,
+  label: string | number,
   value: string | number | boolean,
   disabled: boolean
 }
 export type options = optionsType[]
 export const SelectProps = {
   // 数据绑定
-  modelValue: [String, Number, Boolean, Array<(String | Number)[]>] as PropType<string | number | boolean | (string | number)[]>,
+  modelValue: Array as PropType<(string | number)[]>,
   placeholder: {
     type: String as PropType<string>,
     default: '请选择'
@@ -33,10 +34,18 @@ export const SelectProps = {
   /**
    * @descript disabled 当前下拉框是否禁用
    */
-  disabled: Boolean
+  disabled: Boolean,
+  /**
+   * @description size Select 组件的尺寸
+   */
+  size: {
+    type: String as PropType<ElementSize>,
+    default: "normal"
+  },
+  fiterable: Boolean
 }
 
 export const SelectEmits = {
-  "update:modelValue": (val: String | Boolean | Number | (String | number)[]) => val,
+  "update:modelValue": (val: (string | number)[]) => val,
   change: (value: optionsType[]) => value
 }
