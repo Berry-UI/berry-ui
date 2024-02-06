@@ -18,13 +18,10 @@ const comps = [
   BerryButtonGroup,
   BerryRadio,
   BerrtCheckBox,
-<<<<<<< HEAD
   BerrtCheckBoxGroup,
-  BerrySwitch
-=======
+  BerrySwitch,
   BerrySelect,
   BerrtCheckBoxGroup
->>>>>>> 407577e00aa703aeadb2c3e877bde8a8c4893a91
 ]
 
 export default function (Vue: App) {
