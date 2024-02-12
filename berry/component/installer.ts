@@ -21,7 +21,6 @@ const comps = [
   BerrtCheckBoxGroup,
   BerrySwitch,
   BerrySelect,
-  BerrtCheckBoxGroup
 ]
 
 export default function (Vue: App) {

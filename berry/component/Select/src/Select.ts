@@ -7,11 +7,20 @@ import { ElementSize } from "berry-ui/typings"
  *  value 选项得唯一值
  *  disabled 选项是否禁用
  */
-export interface optionsType {
+interface childrenOption {
   label: string | number,
-  value: string | number | boolean,
+  value: string | number,
   disabled: boolean
 }
+export interface optionsType {
+  type?: string,
+  key?: string | number,
+  label: string | number,
+  value?: string | number,
+  disabled?: boolean,
+  children?: childrenOption[]
+}
+
 export type options = optionsType[]
 export const SelectProps = {
   // 数据绑定
@@ -42,7 +51,18 @@ export const SelectProps = {
     type: String as PropType<ElementSize>,
     default: "normal"
   },
-  fiterable: Boolean
+  /**
+   * @description 可以过滤的元素哦！ 
+   */
+  filterable: Boolean as PropType<boolean>,
+  /**
+ * @description 可动态创建选项
+ */
+  tag: Boolean as PropType<boolean>,
+  /**
+   * @description 是否可清空 
+   */
+  clearable: Boolean as PropType<boolean>
 }
 
 export const SelectEmits = {

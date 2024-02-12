@@ -75,6 +75,7 @@ $--ber-select-height: var(--ber-height-normal);
     background-color: transparent;
     cursor: pointer;
     border: var(--ber-input-solid);
+    transition: all .3s ease;
     @include useBorderRadius(3);
 
     .#{$ns_select}__content {
@@ -91,6 +92,7 @@ $--ber-select-height: var(--ber-height-normal);
           font-size: inherit;
           line-height: inherit;
           color: var(--ber-input-gray);
+          transition: opacity 3s ease;
         }
       }
 
@@ -108,8 +110,9 @@ $--ber-select-height: var(--ber-height-normal);
           .select-tag-close {
             display: flex;
             align-items: center;
-            border-radius: 50%;
+            border-radius: 3px;
             margin-left: 4px;
+            padding: 2px;
             cursor: pointer;
             transition: background-color .3s ease;
 
@@ -119,7 +122,7 @@ $--ber-select-height: var(--ber-height-normal);
           }
         }
 
-        .input__fiter {
+        .input__filter {
           .select__input {
             width: 100%;
             line-height: inherit;
@@ -144,6 +147,23 @@ $--ber-select-height: var(--ber-height-normal);
         }
       }
     }
+
+    .#{$ns_select}__suffix-inner {
+      transition: all .3s ease;
+
+      .clear_icon {
+        @include useBorderRadius(50);
+        opacity: 1;
+        padding: 2px;
+        background-color: var(--ber-color-gray);
+      }
+
+      .clear_icon:hover {
+        @include useBorderRadius(50);
+        transition: opacity, background-color .3s ease;
+        background-color: #c2c2c2;
+      }
+    }
   }
 
   .#{$ns_select}__wrapper:hover:not(.is-disabled) {
@@ -162,7 +182,7 @@ $--ber-select-height: var(--ber-height-normal);
     cursor: no-drop
   }
 
-  .select-box {
+  .select-dropdown__wrapper {
     width: 100%;
     max-height: 100px;
     overflow-y: overlay;
@@ -170,45 +190,48 @@ $--ber-select-height: var(--ber-height-normal);
     z-index: 99999;
     border: var(--ber-input-solid);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 1);
+
     // opacity: 0;
     // transition: all 1s;
     // animation-duration: .5s;
-    background-color: rgba(255, 255, 255, 1);
     // /* 动画时间 */
     // animation-name: ber-animation-fade-enter-active;
     /* 关键帧名字 */
+    .is-empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    // box-shadow: ;
-    ul {
-      padding: 3px;
-      margin: 0;
-      font-size: 14px;
+      .select-dropdown__empty {
+        color: var(--ber-input-gray);
 
-      .is-empty {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .select-dropdown__empty {
-          color: var(--ber-input-gray);
-
-          span {
-            font-size: 12px;
-            line-height: 30px;
-          }
+        span {
+          font-size: 12px;
+          line-height: 30px;
         }
       }
     }
 
-    ul li {
-      list-style: none;
-      padding-left: 9px;
-      line-height: 30px;
-      cursor: pointer;
+    ul {
+      padding: 3px;
+      margin: 0;
+      font-size: 14px;
     }
 
+    ul li {
+      list-style: none;
+      line-height: 30px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+
+
     .select-item-active {
+      @include useBorderRadius(3);
+
       position: relative;
+      background-color: #e6f4ff !important;
       color: var(--ber-color-primary);
 
       &::after {
@@ -222,11 +245,39 @@ $--ber-select-height: var(--ber-height-normal);
       }
     }
 
-    ul li:hover {
-      @include useBorderRadius(3);
+    .select-dropdown {
+      .select-dropdown__item {
+        padding-left: 9px;
+      }
 
-      background-color: var(--ber-color-select-gray);
-      transition: all .1s ease-in-out;
+      .select-dropdown__item:hover {
+        @include useBorderRadius(3);
+
+        background-color: var(--ber-color-select-gray);
+        transition: all .1s ease-in-out;
+      }
+    }
+
+    .select-dropdown-group__wrap {
+      .select-dropdown-group__title {
+        color: var(--ber-font-gray);
+        cursor: default;
+        padding-left: 5px;
+      }
+
+      .select-dropdown-group {
+        .select-dropdown__item {
+          padding-left: 8px;
+          color: var(--ber-button-font-color);
+        }
+
+        .select-dropdown__item:hover {
+          @include useBorderRadius(3);
+
+          background-color: var(--ber-color-select-gray);
+          transition: all .1s ease-in-out;
+        }
+      }
     }
 
   }
