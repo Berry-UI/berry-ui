@@ -149,8 +149,8 @@ $--ber-select-height: var(--ber-height-normal);
     }
 
     .#{$ns_select}__suffix-inner {
-      transition: all .3s ease;
-
+      transition: all 999s ease;
+      
       .clear_icon {
         @include useBorderRadius(50);
         opacity: 1;

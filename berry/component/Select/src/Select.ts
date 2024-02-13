@@ -1,5 +1,7 @@
 import { PropType } from "vue"
-import { ElementSize } from "berry-ui/typings"
+import { ElementSize, ElementTypes } from "berry-ui/typings"
+
+type selectTagType = ElementTypes
 
 /**
  * @description select option 得配置项 
@@ -10,18 +12,21 @@ import { ElementSize } from "berry-ui/typings"
 interface childrenOption {
   label: string | number,
   value: string | number,
+  type?: selectTagType,
   disabled: boolean
 }
 export interface optionsType {
+  [filed: string]: any,
   type?: string,
   key?: string | number,
-  label: string | number,
+  label?: string | number,
   value?: string | number,
   disabled?: boolean,
   children?: childrenOption[]
 }
 
 export type options = optionsType[]
+
 export const SelectProps = {
   // 数据绑定
   modelValue: Array as PropType<(string | number)[]>,
@@ -62,7 +67,25 @@ export const SelectProps = {
   /**
    * @description 是否可清空 
    */
-  clearable: Boolean as PropType<boolean>
+  clearable: Boolean as PropType<boolean>,
+  /**
+   * @description 最多显示的标签数量
+   */
+  maxTagCount: Number as PropType<number>,
+  /**
+   * @description 自定义label
+   */
+  filedLabel: {
+    type: String as PropType<string>,
+    default: "label"
+  },
+  /**
+   * @description 自定义value
+   */
+  filedValue: {
+    type: String as PropType<string>,
+    default: "value"
+  }
 }
 
 export const SelectEmits = {

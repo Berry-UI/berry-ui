@@ -32,14 +32,12 @@ onMounted(() => {
   resizeObserver.observe(container.value!)
 })
 let selectOptions = reactive(props.options)
-console.log(selectOptions)
 selectOptions.forEach(option => {
   if (option.hasOwnProperty('type')) {
     hasChildType.value = true
   }
 });
 
-console.log(hasChildType.value)
 const selectCls = computed(() => {
   return [
     ns.namespace,
@@ -74,7 +72,7 @@ let selectModel = reactive<(string | number)[]>([])
 watch(() => props.modelValue as (string | number)[], (newValue) => {
   selectModel = newValue
   selectVal = selectModel.map(item => {
-    const index = props.options.findIndex(val => val.label === item)
+    const index = props.options.findIndex(val => val[props.filedLabel] === item)
     return props.options[index]
   })
 
@@ -96,14 +94,13 @@ const change = ((item: any) => {
       selectVal.splice(index, 1)
       selectModel.splice(index, 1)
     } else {
-      console.log(item)
       selectVal.push(item)
-      selectModel.push(item.label)
+      selectModel.push(item[props.filedLabel])
     }
 
   } else {
     selectVal = item
-    selectModel[0] = item.label
+    selectModel[0] = item[props.filedLabel]
     postionShow.value = false
   }
 })
@@ -121,7 +118,7 @@ const handleInput = function (event: Event) {
     selectOptions = props.options
     postionShow.value = true
   } else {
-    selectOptions = selectOptions.filter(item => (item.label as string).includes(curTargetValue))
+    selectOptions = selectOptions.filter(item => (item[props.filedLabel] as string).includes(curTargetValue))
     postionShow.value = true
   }
 }
@@ -131,13 +128,14 @@ const inputEnter = (event: Event) => {
   const curTargetValue = (event.currentTarget as HTMLInputElement).value
   if (curTargetValue.trim() !== '') {
     const curValue: optionsType = {
-      label: curTargetValue,
-      value: curTargetValue,
+      [props.filedLabel]: curTargetValue,
+      [props.filedValue]: curTargetValue,
       disabled: true
     }
+    console.log(curValue)
     if (props.filterable && props.tag) {
       selectVal.push(curValue)
-      selectModel.push(curValue.label)
+      selectModel.push(curValue[props.filedLabel])
       props.options.unshift(curValue)
       selectOptions = props.options
       inputValue.value = ''
@@ -147,7 +145,7 @@ const inputEnter = (event: Event) => {
 // 鼠标移入Select事件
 let clearIcon = ref(false)
 const selectMouseEnter = () => {
-  if (selectModel.length >= 0) {
+  if (selectModel.length > 0 && props.clearable) {
     clearIcon.value = true
   }
 }
@@ -169,7 +167,9 @@ const clearClick = () => {
         <div :class="ns.e('input')">
           <div class="flex flex--space--between" :class="[ns.e('input__inner'),
           props.multiple ? 'select-tag' : '']" v-for="(item, index) in props.modelValue">
-            {{ item }}
+            <span>
+              {{ item }}
+            </span>
             <div class="select-tag-close" v-if="props.multiple" style="width: 14px; height: 14px;">
               <berry-icon name="close" size="14px" @click="handleDeleteTag(index)"></berry-icon>
             </div>
@@ -180,11 +180,13 @@ const clearClick = () => {
           </div>
         </div>
       </div>
-
       <div :class="ns.e('suffix-inner')">
-        <berry-icon name="xiala" v-if="!clearIcon"></berry-icon>
+        <slot name="suffixIcon" v-if="!clearIcon">
+          <berry-icon name="xiala"></berry-icon>
+        </slot>
         <berry-icon class="clear_icon" size="12px" name="close" v-else @click="clearClick"></berry-icon>
       </div>
+
     </div>
     <div class="select-dropdown__wrapper" v-if="postionShow" :style="[
       {
@@ -193,8 +195,8 @@ const clearClick = () => {
     ]">
       <ul class="select-dropdown" v-if="!hasChildType">
         <li class="select-dropdown__item" v-for="(item, key) in selectOptions" :index="key" @click="change(item)"
-          :class="props.modelValue!.includes(item.label) ? 'select-item-active' : ''">
-          {{ item['label'] }}
+          :class="props.modelValue!.includes(item[props.filedLabel as string]) ? 'select-item-active' : ''">
+          {{ (item as any)[props.filedLabel] }}
           <!-- {{ props.modelValue }} -->
         </li>
 
@@ -204,7 +206,7 @@ const clearClick = () => {
           {{ group.label }}
           <ul class="select-dropdown-group">
             <li class="select-dropdown__item" v-for="item in group.children" @click="change(item)"
-              :class="props.modelValue!.includes(item.label) ? 'select-item-active' : ''">
+              :class="props.modelValue!.includes((item as any)[props.filedLabel]) ? 'select-item-active' : ''">
               {{ item.label }}
             </li>
           </ul>
@@ -222,4 +224,14 @@ const clearClick = () => {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

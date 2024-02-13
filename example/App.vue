@@ -70,7 +70,30 @@ const state = reactive(
           },
         ]
       }
-    ]
+    ],
+    options4: [
+      {
+        key: 'You Wont See',
+        value: 'tim'
+      },
+      {
+        key: 'Norwegian Wood',
+        value: 'see',
+        disabled: true
+      },
+      {
+        key: 'Nowhere Man',
+        value: 'see1'
+      },
+      {
+        key: 'Drive My Car',
+        value: 'tim1'
+      },
+      {
+        key: 'You Won\'t Se',
+        value: 'see2'
+      }
+    ],
   },
 )
 const change = (item: any) => {
@@ -114,12 +137,16 @@ watch(selectVal, (newValue, oldValue) => {
   <berry-select :options="state.options2" v-model="selectVal1" filterable multiple @click="cli"
     @change="change"></berry-select>
 
-  <berry-select :options="state.options2" placeholder="选择歌曲" filterable multiple v-model="selectVal1" size="large"
-    @click="cli" @change="change" tag></berry-select>
+  <berry-select :options="state.options4" placeholder="选择歌曲" filterable multiple v-model="selectVal1" size="large"
+    @click="cli" @change="change" tag filedLabel="key" filedValue="fvalue"></berry-select>
+  <!-- <berry-select :options="state.options3" placeholder="选择" v-model="selectVal" @click="cli" @change="change" multiple
+    filterable clearable :maxTagCount=2></berry-select>
   <berry-select :options="state.options3" placeholder="选择" v-model="selectVal" @click="cli" @change="change" multiple
-    filterable></berry-select>
-  <berry-select :options="state.options3" placeholder="选择" v-model="selectVal" @click="cli" @change="change" multiple
-    filterable></berry-select>
+    filterable clearable :maxTagCount=1>
+   <template #suffixIcon>
+     <BerryIcon name="yinle"/>
+   </template>
+  </berry-select> -->
 
 
   <!-- <div>
