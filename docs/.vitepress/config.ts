@@ -41,6 +41,7 @@ export default defineConfig({
                     { text: 'Radio', link: '/Component/Radio/radio.md' },
                     { text: 'CheckBox', link: '/Component/CheckBox/checkbox.md' },
                     { text: 'Switch', link: '/Component/Switch/switch.md' },
+                    { text: 'Select', link: '/Component/Select/select.md' },
                 ],
             },
             {

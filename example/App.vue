@@ -152,6 +152,7 @@ watch(selectVal, (newValue, oldValue) => {
   <!-- <div>
     <berry-button @click="show = !show">Toggle</berry-button>
   </div> -->
+  <berry-switch></berry-switch>
 </template>
 
 <style scoped lang="scss" >

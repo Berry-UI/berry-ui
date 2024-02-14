@@ -1,3 +1,3 @@
 ## Select
 
-<preview path="./src/basic.vue"></preview>
+<preview path="./src/basic.vue" height="120px"></preview>

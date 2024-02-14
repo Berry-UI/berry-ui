@@ -10,7 +10,6 @@ $--ber-select-height: var(--ber-height-normal);
   width: 100%;
 
   font-family: Arial;
-  background-color: rgba(255, 255, 255, 1);
 
   // .ber-select-samll {
   //   min-height: var(--ber-height-samll) !important;
@@ -150,7 +149,7 @@ $--ber-select-height: var(--ber-height-normal);
 
     .#{$ns_select}__suffix-inner {
       transition: all 999s ease;
-      
+
       .clear_icon {
         @include useBorderRadius(50);
         opacity: 1;
@@ -179,20 +178,23 @@ $--ber-select-height: var(--ber-height-normal);
 
   .is-disabled {
     background-color: var(--ber-color-disabled);
-    cursor: no-drop
+    cursor: no-drop;
+    color: #626265;
   }
 
   .select-dropdown__wrapper {
+    @include useBorderRadius(3);
     width: 100%;
     max-height: 100px;
     overflow-y: overlay;
     position: absolute;
     z-index: 99999;
-    border: var(--ber-input-solid);
+    border: #5046e5 solid 1px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 1);
-
+    background: transparent;
+    color: initial;
     // opacity: 0;
+
     // transition: all 1s;
     // animation-duration: .5s;
     // /* 动画时间 */
@@ -231,7 +233,7 @@ $--ber-select-height: var(--ber-height-normal);
       @include useBorderRadius(3);
 
       position: relative;
-      background-color: #e6f4ff !important;
+      // background-color: #e6f4ff !important;
       color: var(--ber-color-primary);
 
       &::after {
@@ -253,7 +255,7 @@ $--ber-select-height: var(--ber-height-normal);
       .select-dropdown__item:hover {
         @include useBorderRadius(3);
 
-        background-color: var(--ber-color-select-gray);
+        background-color: #262727;
         transition: all .1s ease-in-out;
       }
     }
@@ -274,7 +276,7 @@ $--ber-select-height: var(--ber-height-normal);
         .select-dropdown__item:hover {
           @include useBorderRadius(3);
 
-          background-color: var(--ber-color-select-gray);
+          background-color: #262727;
           transition: all .1s ease-in-out;
         }
       }

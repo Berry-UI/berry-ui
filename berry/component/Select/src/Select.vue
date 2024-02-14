@@ -196,8 +196,8 @@ const clearClick = () => {
       <ul class="select-dropdown" v-if="!hasChildType">
         <li class="select-dropdown__item" v-for="(item, key) in selectOptions" :index="key" @click="change(item)"
           :class="props.modelValue!.includes(item[props.filedLabel as string]) ? 'select-item-active' : ''">
-          {{ (item as any)[props.filedLabel] }}
-          <!-- {{ props.modelValue }} -->
+          <!-- {{ (item as any)[props.filedLabel] }} -->
+          {{ item[props.filedLabel] }}
         </li>
 
       </ul>
@@ -207,7 +207,7 @@ const clearClick = () => {
           <ul class="select-dropdown-group">
             <li class="select-dropdown__item" v-for="item in group.children" @click="change(item)"
               :class="props.modelValue!.includes((item as any)[props.filedLabel]) ? 'select-item-active' : ''">
-              {{ item.label }}
+              {{ (item as any)[props.filedLabel] }}
             </li>
           </ul>
         </li>
