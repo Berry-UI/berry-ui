@@ -21,29 +21,6 @@ const state = reactive(
     ],
     options2: [
       {
-        label: 'You Wont See',
-        value: 'tim'
-      },
-      {
-        label: 'Norwegian Wood',
-        value: 'see',
-        disabled: true
-      },
-      {
-        label: 'Nowhere Man',
-        value: 'see1'
-      },
-      {
-        label: 'Drive My Car',
-        value: 'tim1'
-      },
-      {
-        label: 'You Won\'t Se',
-        value: 'see2'
-      }
-    ],
-    options3: [
-      {
         type: 'group',
         label: 'Rubber Soul',
         key: 'Rubber Soul',
@@ -69,6 +46,42 @@ const state = reactive(
             value: 'Dig A Pony'
           },
         ]
+      }
+    ],
+    options3: [
+      {
+        type: 'group',
+        label: 'dangao',
+        key: '工作',
+        children: [{
+          label: '吃饭',
+          value: 'Dangao1'
+        },
+        {
+          label: '睡觉',
+          value: 'Dangao2'
+        },
+        {
+          label: '打豆豆',
+          value: 'Dangao3'
+        }]
+      },
+      {
+        type: 'group',
+        label: 'dangao',
+        key: '娱乐',
+        children: [{
+          label: '洗澡',
+          value: 'Dangao4'
+        },
+        {
+          label: '玩游戏',
+          value: 'Dangao5'
+        },
+        {
+          label: 'ktv',
+          value: 'Dangao6'
+        }]
       }
     ],
     options4: [
@@ -131,14 +144,7 @@ watch(selectVal, (newValue, oldValue) => {
 
     </div>s
   </div> -->
-  <berry-select :options="state.options2" placeholder="选择" multiple fiterable v-model="selectVal1" size="small"
-    @change="change" @click="cli" filterable></berry-select>
 
-  <berry-select :options="state.options2" v-model="selectVal1" filterable multiple @click="cli"
-    @change="change"></berry-select>
-
-  <berry-select :options="state.options4" placeholder="选择歌曲" filterable multiple v-model="selectVal1" size="large"
-    @click="cli" @change="change" tag filedLabel="key" filedValue="fvalue"></berry-select>
   <!-- <berry-select :options="state.options3" placeholder="选择" v-model="selectVal" @click="cli" @change="change" multiple
     filterable clearable :maxTagCount=2></berry-select>
   <berry-select :options="state.options3" placeholder="选择" v-model="selectVal" @click="cli" @change="change" multiple
@@ -152,7 +158,17 @@ watch(selectVal, (newValue, oldValue) => {
   <!-- <div>
     <berry-button @click="show = !show">Toggle</berry-button>
   </div> -->
-  <berry-switch></berry-switch>
+  <div class="flex">
+    <!-- <berry-select :options="state.options2" placeholder="选择" multiple fiterable v-model="selectVal1" size="small"
+    @change="change" @click="cli" filterable></berry-select>
+
+  <berry-select :options="state.options2" v-model="selectVal1" filterable multiple @click="cli"
+    @change="change" clearable></berry-select> -->
+
+    <berry-select :options="state.options3" placeholder="选择歌曲" filterable multiple v-model="selectVal1" size="large"
+      @click="cli" @change="change" tag></berry-select>
+  </div>
+  <!-- <berry-switch></berry-switch> -->
 </template>
 
 <style scoped lang="scss" >

@@ -17,27 +17,24 @@ defineOptions({
 const props = defineProps({ ...SelectProps })
 const emits = defineEmits({ ...SelectEmits })
 let postionShow = ref(false)
-let postionTop = ref('40px')
+let postionTop = ref('')
+let hasChildType = ref(false)
+let selectOptions = reactive(props.options)
+
 
 const container = ref<HTMLElement | null>(null)
 const resizeObserver = new ResizeObserver((entries => {
   //处理 container 元素改变之后的函数 
   for (const entry of entries) {
-    const contentRect = entry.contentRect.height + 6
+    const contentRect = entry.contentRect.height + 8
     postionTop.value = contentRect + 'px'
   }
 }))
-let hasChildType = ref(false)
 onMounted(() => {
   resizeObserver.observe(container.value!)
-})
-let selectOptions = reactive(props.options)
-selectOptions.forEach(option => {
-  if (option.hasOwnProperty('type')) {
-    hasChildType.value = true
-  }
-});
 
+})
+hasChildType.value = selectOptions[0].hasOwnProperty('children') ? true : false
 const selectCls = computed(() => {
   return [
     ns.namespace,
@@ -88,20 +85,23 @@ watch([() => selectModel, () => selectVal], ([newModelValue, newSelectValue]) =>
 })
 // 数据发生改变
 const change = ((item: any) => {
-  if (props.multiple) {
-    const index = findToItem(selectVal, item)
-    if (index !== -1) {
-      selectVal.splice(index, 1)
-      selectModel.splice(index, 1)
-    } else {
-      selectVal.push(item)
-      selectModel.push(item[props.filedLabel])
-    }
-
+  if (item.disabled) {
+    return
   } else {
-    selectVal = item
-    selectModel[0] = item[props.filedLabel]
-    postionShow.value = false
+    if (props.multiple) {
+      const index = findToItem(selectVal, item)
+      if (index !== -1) {
+        selectVal.splice(index, 1)
+        selectModel.splice(index, 1)
+      } else {
+        selectVal.push(item)
+        selectModel.push(item[props.filedLabel])
+      }
+    } else {
+      selectVal = item
+      selectModel[0] = item[props.filedLabel]
+      postionShow.value = false
+    }
   }
 })
 // 点击删除图标
@@ -114,7 +114,6 @@ const handleInput = function (event: Event) {
   const curTargetValue = (event.currentTarget as HTMLInputElement).value
   postionShow.value = false
   if (curTargetValue === '') {
-    console.log(props.options)
     selectOptions = props.options
     postionShow.value = true
   } else {
@@ -132,7 +131,6 @@ const inputEnter = (event: Event) => {
       [props.filedValue]: curTargetValue,
       disabled: true
     }
-    console.log(curValue)
     if (props.filterable && props.tag) {
       selectVal.push(curValue)
       selectModel.push(curValue[props.filedLabel])
@@ -152,12 +150,13 @@ const selectMouseEnter = () => {
 // 点击清除按钮
 const clearClick = () => {
   emits('update:modelValue', [])
+  // emits('change', [])
 }
 </script>
 
 <template>
-  <div ref="container" :class="selectCls" v-clickOutSize>
-    <div
+  <div :class="selectCls" v-clickOutSize>
+    <div ref="container"
       :class="[ns.e('wrapper'), ns.is(props.disabled, 'disabled'), ns.b(props.size), postionShow ? 'select-focus' : '']"
       @mouseenter="selectMouseEnter" @mouseleave="clearIcon = false">
       <div :class="ns.e('content')">
@@ -195,7 +194,7 @@ const clearClick = () => {
     ]">
       <ul class="select-dropdown" v-if="!hasChildType">
         <li class="select-dropdown__item" v-for="(item, key) in selectOptions" :index="key" @click="change(item)"
-          :class="props.modelValue!.includes(item[props.filedLabel as string]) ? 'select-item-active' : ''">
+          :class="[props.modelValue!.includes(item[props.filedLabel as string]) ? 'select-item-active' : '', , item.disabled ? 'is-disabled__item' : '']">
           <!-- {{ (item as any)[props.filedLabel] }} -->
           {{ item[props.filedLabel] }}
         </li>
@@ -206,7 +205,7 @@ const clearClick = () => {
           {{ group.label }}
           <ul class="select-dropdown-group">
             <li class="select-dropdown__item" v-for="item in group.children" @click="change(item)"
-              :class="props.modelValue!.includes((item as any)[props.filedLabel]) ? 'select-item-active' : ''">
+              :class="[props.modelValue!.includes((item as any)[props.filedLabel]) ? 'select-item-active' : '', item.disabled ? 'is-disabled__item' : '']">
               {{ (item as any)[props.filedLabel] }}
             </li>
           </ul>

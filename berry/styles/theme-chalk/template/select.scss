@@ -142,7 +142,7 @@ $--ber-select-height: var(--ber-height-normal);
           padding: 0px 7px;
           cursor: default;
           border: var(--ber-input-solid);
-          background-color: #fafafc;
+          background-color: transparent;
         }
       }
     }
@@ -258,6 +258,12 @@ $--ber-select-height: var(--ber-height-normal);
         background-color: #262727;
         transition: all .1s ease-in-out;
       }
+
+      .is-disabled__item {
+        cursor: no-drop;
+        color: #626265;
+        background-color: transparent !important;
+      }
     }
 
     .select-dropdown-group__wrap {
@@ -278,6 +284,12 @@ $--ber-select-height: var(--ber-height-normal);
 
           background-color: #262727;
           transition: all .1s ease-in-out;
+        }
+
+        .is-disabled__item {
+          cursor: no-drop;
+          color: #626265;
+          background-color: transparent !important;
         }
       }
     }

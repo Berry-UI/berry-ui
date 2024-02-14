@@ -9,7 +9,8 @@ import { ref, reactive, watch } from 'vue'
 
 const options = reactive([{
   label: '选项1',
-  value: 'value2'
+  value: 'value2',
+  disabled: true
 }, {
   label: '选项2',
   value: 'value2'
