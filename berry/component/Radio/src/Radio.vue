@@ -6,8 +6,8 @@
 -->
 <script setup lang="ts">
 import { useNS } from 'berry-ui/hooks/useNS'
-import { RadioProps, RadioEmits,optionsType } from './Radio'
-import { computed, defineProps } from 'vue'
+import { RadioProps, RadioEmits, optionsType } from './Radio'
+import { computed } from 'vue'
 
 defineOptions({
   name: 'BerryRadio',
@@ -35,9 +35,9 @@ const scl = computed(() => {
 })
 // console.log(props.mode,'props.mode')
 
-const change = (item:optionsType) => {
+const change = (item: optionsType) => {
   if (!item.disabled) {
-    emits('update:modelValue',item.value)
+    emits('update:modelValue', item.value)
     emits('change', item)
   }
 

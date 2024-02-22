@@ -1,0 +1,32 @@
+@import '../../mixin/';
+
+.#{$componentPrefix}-tooltip {
+    $tooltip-background: #48484d;
+
+    .#{$componentPrefix}-tooltip-content {
+        position: absolute;
+        background-color: $tooltip-background;
+        color: #fff;
+        box-sizing: border-box;
+        padding: 5px 11px;
+        border-radius: 4px;
+        line-height: 20px;
+        min-width: 10px;
+        z-index: 2024;
+
+        .#{$componentPrefix}-tooltip-triangle {
+            position: absolute;
+            border-top: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid $tooltip-background;
+            border-bottom: 5px solid $tooltip-background;
+            border-end-end-radius: 2px;
+        }
+
+        .font-small {
+            display: inline-block;
+            font-size: 14px;
+            word-break: break-all;
+        }
+    }
+}

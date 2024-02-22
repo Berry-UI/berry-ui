@@ -9,6 +9,7 @@ import BerrtCheckBox from "./CheckBox";
 import BerrySelect from "./Select";
 import BerrtCheckBoxGroup from "./CheckBoxGroup";
 import BerrySwitch from "./Switch";
+import BerryTooltip from "./Tooltip"
 
 const comps = [
   BerryButton,
@@ -18,13 +19,10 @@ const comps = [
   BerryButtonGroup,
   BerryRadio,
   BerrtCheckBox,
-<<<<<<< HEAD
   BerrtCheckBoxGroup,
-  BerrySwitch
-=======
+  BerrySwitch,
   BerrySelect,
-  BerrtCheckBoxGroup
->>>>>>> 407577e00aa703aeadb2c3e877bde8a8c4893a91
+  BerryTooltip
 ]
 
 export default function (Vue: App) {

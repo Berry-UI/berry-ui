@@ -65,16 +65,15 @@
   --ber-shadow-hover: inset 0 0 0 1px #4338ca;
 
   --ber-solid: 1px solid #dcdfe6;
-<<<<<<< HEAD
 
   :focus {
-    outline: none; /* 移除默认轮廓样式 */
+    outline: none;
+    /* 移除默认轮廓样式 */
   }
-=======
+
   --ber-input-solid: 1px solid #e0e0e6;
   --ber-input-gray: #b5b7bd;
   --ber-input-height-small: 34px;
   --ber-input-height-normal: 34px;
   --ber-input-height-large: 40px;
->>>>>>> 407577e00aa703aeadb2c3e877bde8a8c4893a91
 }

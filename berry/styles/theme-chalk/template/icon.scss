@@ -4,8 +4,10 @@
 .#{$componentPrefix}-icon {
   $ns : #{$componentPrefix}-icon;
   $icon-size: var(--icon-size);
+  width: fit-content;
+  height: fit-content;
 
-  & {
+  .#{$componentPrefix}-icon-content {
     width: $icon-size;
     height: $icon-size;
     vertical-align: -0.15em;
