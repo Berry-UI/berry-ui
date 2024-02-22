@@ -126,22 +126,26 @@ npm install vite-plugin-svg-icons fast-glob -D
 
 ## 需求清单
 
-```
-- [√] Icon 图标 `level max`
-- [√] Button 按钮  //
-- [√] Button Group 按钮组
-- [√] Input 输入框
-- [√] Radio 单选框
-- [Z] Checkbox 复选框
-- [√] Input Group 输入框组
-- [A] Select 选择器
+- [x] Icon 图标 `level max`
+- [x] Button 按钮  //
+- [x] Button Group 按钮组
+- [x] Input 输入框
+- [x] Radio 单选框
+- [x] Checkbox 复选框
+- [x] Input Group 输入框组
+- [ ] Select 选择器
 - [ ] Carousel 轮播图
 - [ ] Dropdown 下拉菜单
 - [ ] Image 图像 `level max`
 - [ ] Table 表格 `level max`
+<<<<<<< HEAD
+- [ ] Date Picker 日期选择器 
+- [ ] DateTime Picker 日期时间选择器 
+=======
 - [ ] Time Picker 时间选择器
 - [ ] Date Picker 日期选择器
 - [ ] DateTime Picker 日期时间选择器
+>>>>>>> f1df2928fd3607cb3b082a06a56352daa8c3cfd9
 - [ ] Upload 上传 `level max`
 - [ ] Form 表单 --带自定义验证 `level max`
 ---
@@ -180,7 +184,8 @@ npm install vite-plugin-svg-icons fast-glob -D
 - [ ] Spin 加载 `level max`
 - [ ] Scrollbar 滚动条 `level max`
 - [ ] Tag标签
-```
+  
+
 
 ## 主题色
 

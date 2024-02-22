@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import { useNS } from 'berry-ui/hooks/useNS'
-import { computed, ref, reactive } from 'vue'
+import { computed, ref, reactive, onMounted, watch } from 'vue'
 import { SelectProps, SelectEmits, optionsType } from './Select'
 
 defineOptions({
@@ -16,15 +16,31 @@ defineOptions({
 
 const props = defineProps({ ...SelectProps })
 const emits = defineEmits({ ...SelectEmits })
+let postionShow = ref(false)
+let postionTop = ref('')
+let hasChildType = ref(false)
+let selectOptions = reactive(props.options)
+
+
+const container = ref<HTMLElement | null>(null)
+const resizeObserver = new ResizeObserver((entries => {
+  //处理 container 元素改变之后的函数 
+  for (const entry of entries) {
+    const contentRect = entry.contentRect.height + 8
+    postionTop.value = contentRect + 'px'
+  }
+}))
+onMounted(() => {
+  resizeObserver.observe(container.value!)
+
+})
+hasChildType.value = selectOptions[0].hasOwnProperty('children') ? true : false
 const selectCls = computed(() => {
   return [
     ns.namespace,
   ]
 })
 const ns = useNS('select')
-
-const postionShow = ref(false)
-// const selectState = ref(true)
 
 // 给最外层绑定自定义事件 点击input 弹出选项
 const vClickOutSize = {
@@ -35,9 +51,7 @@ const vClickOutSize = {
       } else {
         postionShow.value = false
       }
-
     }
-
     document.addEventListener('click', handler)
   }
 }
@@ -48,81 +62,175 @@ const findToItem = (list: optionsType[], item: any) => {
   }
   return -1
 }
-
-const updateEmits = () => {
-  console.log(slectModel)
-  emits('update:modelValue', slectModel)
-  emits('change', selectVal)
-}
 // change 点击label 触发
 let selectVal = reactive<optionsType[]>([])
-let slectModel = reactive<(string | number)[]>([])
+let selectModel = reactive<(string | number)[]>([])
 
-const change = ((item: any) => {
-  if (props.multiple) {
-    const index = findToItem(selectVal, item)
-    if (index !== -1) {
-      selectVal.splice(index, 1)
-      slectModel.splice(index, 1)
-      updateEmits()
-    } else {
-      selectVal.push(item)
-      slectModel.push(item.label)
-      updateEmits()
-    }
+watch(() => props.modelValue as (string | number)[], (newValue) => {
+  selectModel = newValue
+  selectVal = selectModel.map(item => {
+    const index = props.options.findIndex(val => val[props.filedLabel] === item)
+    return props.options[index]
+  })
 
-  } else {
-    selectVal[0] = item
-    updateEmits()
-    postionShow.value = false
-  }
+}, {
+  immediate: true
 })
 
-// 点击删除图标
-const delectSelectTag = (item: optionsType) => {
-  const index = findToItem(selectVal, item)
-  if (index !== -1) {
-    selectVal.splice(index, 1)
-    slectModel.splice(index, 1)
-    updateEmits()
+watch([() => selectModel, () => selectVal], ([newModelValue, newSelectValue]) => {
+  emits('update:modelValue', newModelValue)
+  emits('change', newSelectValue)
+}, {
+  deep: true
+})
+// 数据发生改变
+const change = ((item: any) => {
+  if (item.disabled) {
+    return
+  } else {
+    if (props.multiple) {
+      const index = findToItem(selectVal, item)
+      if (index !== -1) {
+        selectVal.splice(index, 1)
+        selectModel.splice(index, 1)
+      } else {
+        selectVal.push(item)
+        selectModel.push(item[props.filedLabel])
+      }
+    } else {
+      selectVal = item
+      selectModel[0] = item[props.filedLabel]
+      postionShow.value = false
+    }
   }
-  updateEmits()
-  return true
+})
+// 点击删除图标
+const handleDeleteTag = (index: number) => {
+  selectVal.splice(index, 1)
+  selectModel.splice(index, 1)
 }
-
+// handleInput  input值发生改变时
+const handleInput = function (event: Event) {
+  const curTargetValue = (event.currentTarget as HTMLInputElement).value
+  postionShow.value = false
+  if (curTargetValue === '') {
+    selectOptions = props.options
+    postionShow.value = true
+  } else {
+    selectOptions = selectOptions.filter(item => (item[props.filedLabel] as string).includes(curTargetValue))
+    postionShow.value = true
+  }
+}
+// 创建动态数据按下
+let inputValue = ref('')
+const inputEnter = (event: Event) => {
+  const curTargetValue = (event.currentTarget as HTMLInputElement).value
+  if (curTargetValue.trim() !== '') {
+    const curValue: optionsType = {
+      [props.filedLabel]: curTargetValue,
+      [props.filedValue]: curTargetValue,
+      disabled: true
+    }
+    if (props.filterable && props.tag) {
+      selectVal.push(curValue)
+      selectModel.push(curValue[props.filedLabel])
+      props.options.unshift(curValue)
+      selectOptions = props.options
+      inputValue.value = ''
+    }
+  }
+}
+// 鼠标移入Select事件
+let clearIcon = ref(false)
+const selectMouseEnter = () => {
+  if (selectModel.length > 0 && props.clearable) {
+    clearIcon.value = true
+  }
+}
+// 点击清除按钮
+const clearClick = () => {
+  emits('update:modelValue', [])
+  // emits('change', [])
+}
 </script>
 
 <template>
-  <div ref="container" :class="selectCls" v-clickOutSize>
-    <div :class="[ns.e('wrapper'), ns.is(props.disabled, 'disabled'), postionShow ? 'select-focus' : '']">
+  <div :class="selectCls" v-clickOutSize>
+    <div ref="container"
+      :class="[ns.e('wrapper'), ns.is(props.disabled, 'disabled'), ns.b(props.size), postionShow ? 'select-focus' : '']"
+      @mouseenter="selectMouseEnter" @mouseleave="clearIcon = false">
       <div :class="ns.e('content')">
-        <div :class="ns.e('placeholder')" v-if="selectVal.length <= 0">
+        <div :class="ns.e('placeholder')" v-if="modelValue!.length <= 0 && !props.filterable">
           <div :class="ns.e('placeholder__inner')">{{ props.placeholder }}</div>
         </div>
         <div :class="ns.e('input')">
           <div class="flex flex--space--between" :class="[ns.e('input__inner'),
-          props.multiple ? 'select-tag' : '']" v-for="item in selectVal">
-            {{ item.label }}
+          props.multiple ? 'select-tag' : '']" v-for="(item, index) in props.modelValue">
+            <span>
+              {{ item }}
+            </span>
             <div class="select-tag-close" v-if="props.multiple" style="width: 14px; height: 14px;">
-              <berry-icon name="close" size="14px" @click="delectSelectTag(item)"></berry-icon>
+              <berry-icon name="close" size="14px" @click="handleDeleteTag(index)"></berry-icon>
             </div>
+          </div>
+          <div class="input__filter flex--acenter flex--1" v-if="props.filterable">
+            <input v-model="inputValue" ref="input" type="text" class="select__input" :placeholder="placeholder"
+              @input="handleInput($event)" @keyup.enter="inputEnter($event)">
           </div>
         </div>
       </div>
+      <div :class="ns.e('suffix-inner')">
+        <slot name="suffixIcon" v-if="!clearIcon">
+          <berry-icon name="xiala"></berry-icon>
+        </slot>
+        <berry-icon class="clear_icon" size="12px" name="close" v-else @click="clearClick"></berry-icon>
+      </div>
 
-      <span :class="ns.e('select__suffix-inner')">
-        <berry-icon name="xiala"></berry-icon>
-      </span>
     </div>
-    <div class="select-box" v-if="postionShow">
-      <ul>
-        <li v-for="(item, key) in options" :index="key" @click="change(item)"
-          :class="selectVal.findIndex(val => val.value === item.value) !== -1 ? 'select-item-active' : ''">
-          {{ item.label }}
+    <div class="select-dropdown__wrapper" v-if="postionShow" :style="[
+      {
+        top: postionTop
+      }
+    ]">
+      <ul class="select-dropdown" v-if="!hasChildType">
+        <li class="select-dropdown__item" v-for="(item, key) in selectOptions" :index="key" @click="change(item)"
+          :class="[props.modelValue!.includes(item[props.filedLabel as string]) ? 'select-item-active' : '', , item.disabled ? 'is-disabled__item' : '']">
+          <!-- {{ (item as any)[props.filedLabel] }} -->
+          {{ item[props.filedLabel] }}
+        </li>
+
+      </ul>
+      <ul class="select-dropdown-group__wrap" v-else>
+        <li v-for="group in selectOptions" class="select-dropdown-group__title">
+          {{ group.label }}
+          <ul class="select-dropdown-group">
+            <li class="select-dropdown__item" v-for="item in group.children" @click="change(item)"
+              :class="[props.modelValue!.includes((item as any)[props.filedLabel]) ? 'select-item-active' : '', item.disabled ? 'is-disabled__item' : '']">
+              {{ (item as any)[props.filedLabel] }}
+            </li>
+          </ul>
         </li>
       </ul>
+      <div class="flex-acenter is-empty" v-if="selectOptions.length <= 0">
+        <div class="select-dropdown__empty">
+          <div class="flex--center empty_icon">
+            <berry-icon name="wushuju" size="32px"></berry-icon>
+          </div>
+          <span class="flex--jcenter">无数据</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

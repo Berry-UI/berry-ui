@@ -22,7 +22,10 @@ const comps = [
   BerrtCheckBoxGroup,
   BerrySwitch,
   BerrySelect,
+<<<<<<< HEAD
   BerryTooltip
+=======
+>>>>>>> a21cd21cb87564daf831c593f5d5239542753b4c
 ]
 
 export default function (Vue: App) {

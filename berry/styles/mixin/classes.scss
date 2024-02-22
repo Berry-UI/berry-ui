@@ -17,7 +17,23 @@
   align-items: center;
 }
 
+.flex--jcenter {
+  display: flex;
+  justify-content: center;
+}
+.flex--acenter {
+  display: flex;
+  align-items: center;
+}
+
 .flex--space--between {
   display: flex;
   justify-content: space-between;
 }
+
+.block {
+  display: block;
+}
+
+
+
