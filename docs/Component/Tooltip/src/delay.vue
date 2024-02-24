@@ -7,11 +7,7 @@
 </script>
 
 <template>
-  <div style="width: 400px; height: 400px; overflow: hidden;margin: 400px;padding:50px;background-color: #1788;">
     <BerryTooltip descirption="This is a description" placement="top-start" delay="0.5">
-      <BerryButton type="success">top-start</BerryButton>
+        <BerryButton type="success">top-start</BerryButton>
     </BerryTooltip>
-  </div>
 </template>
-
-<style scoped lang="scss" ></style> 

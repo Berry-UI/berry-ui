@@ -15,11 +15,28 @@ export const TooltipProps = {
         type: String as PropType<Placement>,
         default: "top"
     },
+    /** 
+     * @description tooltip内容
+     */
     descirption: {
         type: String,
-    }
+    },
+    /** 
+     * @description 触发方式
+     */
+    trigger: {
+        type: String as PropType<"hover" | "click">,
+        default: "hover"
+    },
+    /** 
+     * @description 延迟关闭时间
+     */
+    delay: {
+        type: [Number,String],
+        default: 0.3
+    },
 }
 
-
 export const TooltipEmits = {
+    click: (value: boolean) => void 0,
 }

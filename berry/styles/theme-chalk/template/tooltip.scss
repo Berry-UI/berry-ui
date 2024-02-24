@@ -2,6 +2,12 @@
 
 .#{$componentPrefix}-tooltip {
     $tooltip-background: #48484d;
+    position: relative;
+    width: fit-content;
+
+    #slot {
+        width: fit-content;
+    }
 
     .#{$componentPrefix}-tooltip-content {
         position: absolute;
@@ -12,6 +18,7 @@
         border-radius: 4px;
         line-height: 20px;
         min-width: 10px;
+        width: max-content;
         z-index: 2024;
 
         .#{$componentPrefix}-tooltip-triangle {
@@ -29,4 +36,18 @@
             word-break: break-all;
         }
     }
+}
+
+
+.tooltip-fade-enter-active {
+    transition: all var(--delay) ease-out;
+}
+
+.tooltip-fade-leave-active {
+    transition: all var(--delay) cubic-bezier(1, 0.3, 0.7, 1);
+}
+
+.tooltip-fade-enter-from,
+.tooltip-fade-leave-to {
+    opacity: 0;
 }

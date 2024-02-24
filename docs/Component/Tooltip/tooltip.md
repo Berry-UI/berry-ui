@@ -6,6 +6,14 @@
 
 <preview path="./src/basic.vue" title="基本使用"></preview>
 
+### delay
+
+<preview path="./src/delay.vue" title="基本使用"></preview>
+
+### 触发方式
+
+<preview path="./src/trigger.vue" title="基本使用"></preview>
+
 # Api
 
 ## Tooltip Props
