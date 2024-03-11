@@ -67,7 +67,7 @@ function blur(e: FocusEvent): void {
 <template>
     <div :class="ber_input">
         <slot name="prefix"></slot>
-        <input v-if="type != 'textarea'" ref="input" :class="ber_input_el" :type="type" :placeholder="placeholder"
+        <input v-if="type != 'textarea'" ref="  " :class="ber_input_el" :type="type" :placeholder="placeholder"
             :disabled="disabled" :value="modelValue" @input="inputChange" @focus="focus" @blur="blur" :maxlength="maxLength"
             :minlength="minLength" :autocomplete="autocomplete ? 'on' : 'off'" :required="required">
         <!-- cols="30" rows="10" -->

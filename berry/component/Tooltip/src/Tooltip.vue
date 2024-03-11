@@ -7,7 +7,7 @@
 defineOptions({
     name: "BerryTooltip"
 })
-import { ref, computed } from "vue";
+import { ref, computed, nextTick, onMounted, onBeforeUnmount } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { TooltipProps, TooltipEmits } from "./Tooltip"
 const ns = useNS("tooltip")
@@ -33,9 +33,12 @@ const ber_Tooltip_triangle = computed(() => {
 
 let visible = ref<Boolean>(false)
 function showTooltip(): void {
-
-
     props.trigger == "hover" ? visible.value = true : void 0
+    // nextTick(() => {
+    //     if (visible.value && tooltip.value) {
+    //         document.body.appendChild(tooltip.value)
+    //     }
+    // })
 }
 function hideTooltip(): void {
     // visible.value = false
@@ -44,6 +47,11 @@ function hideTooltip(): void {
 }
 function changeShow(): void {
     props.trigger == "click" ? visible.value = !visible.value : void 0
+    // nextTick(() => {
+    //     if (visible.value && tooltip.value) {
+    //         document.body.appendChild(tooltip.value)
+    //     }
+    // })
 }
 
 const tooltip = ref<HTMLElement | null>(null);
@@ -52,19 +60,35 @@ const keepTwoDecimal = (num: number) => {
     return Number(num.toFixed(2));
 };
 
-const getStyle = (placement: string) => {
+
+//appendBody
+// onBeforeUnmount(() => {
+//     if (tooltip.value) {
+//         document.body.removeChild(tooltip.value)
+//     }
+// })
+
+// onMounted(() => {
+//     // Attach event listeners to update tooltip position
+//     window.addEventListener("resize", getStyle("content"));
+//     window.addEventListener("scroll", getStyle("content"));
+// });
+
+function getStyle(placement: string) {
     if (!tooltip.value || !slot.value) return {};
     const slotRect = slot.value.getBoundingClientRect();
     const tooltipRect = tooltip.value.getBoundingClientRect();
     const offset = 10;
     const triangleOffset = 5;
+    console.log(slotRect)
 
     if (placement === 'content') {
         switch (props.placement) {
             case "top":
                 return { left: `${(slotRect.width - tooltipRect.width) / 2}px`, top: `${-slotRect.height - offset}px` };
             case "top-start":
-                return { left: `${slotRect.width - tooltipRect.width}px`, top: `${-slotRect.height - offset}px` };
+                return { left: `${0}px`, top: `${-slotRect.height - offset}px` };
+            // return { left: `${slotRect.left - tooltipRect.width + slotRect.width}px`, top: `${0}px` };//appendBody
             case "top-end":
                 return { left: `${0}px`, top: `${-slotRect.height - offset}px` };
             case "right":

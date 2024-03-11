@@ -10,6 +10,7 @@ import BerrySelect from "./Select";
 import BerrtCheckBoxGroup from "./CheckBoxGroup";
 import BerrySwitch from "./Switch";
 import BerryTooltip from "./Tooltip"
+import BerryWaterMark from "./WaterMark"
 
 const comps = [
   BerryButton,
@@ -22,7 +23,8 @@ const comps = [
   BerrtCheckBoxGroup,
   BerrySwitch,
   BerrySelect,
-  BerryTooltip
+  BerryTooltip,
+  BerryWaterMark
 ]
 
 export default function (Vue: App) {

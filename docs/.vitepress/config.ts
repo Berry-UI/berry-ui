@@ -51,6 +51,12 @@ export default defineConfig({
                     { text: 'Select', link: '/Component/Select/Select.md' },
                 ],
             },
+            {
+                text: '其他组件',
+                items: [
+                    { text: 'WaterMark', link: '/Component/WaterMark/watermark.md' },
+                ],
+            },
         ],
     },
     markdown: {
