@@ -26,10 +26,7 @@
 </script>
 
 <template>
-  <BerryWaterMark content="Berry WaterMark" >
-    <div style="height: 500px" />
-  </BerryWaterMark>
-  <!-- <div class="box">
+  <div class="box">
     <div class="flex center">
       <BerryTooltip descirption="This is a description" placement="top-start" trigger="click">
         <BerryButton type="success">top-start</BerryButton>
@@ -76,7 +73,7 @@
         <BerryButton type="success">bottom-end</BerryButton>
       </BerryTooltip>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <style scoped lang="scss">

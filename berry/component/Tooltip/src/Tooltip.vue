@@ -7,9 +7,9 @@
 defineOptions({
     name: "BerryTooltip"
 })
-import { ref, computed, nextTick, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
-import { TooltipProps, TooltipEmits } from "./Tooltip"
+import { TooltipProps, TooltipEmits, negation, Placement } from "./Tooltip"
 const ns = useNS("tooltip")
 
 const props = defineProps(TooltipProps)
@@ -33,25 +33,19 @@ const ber_Tooltip_triangle = computed(() => {
 
 let visible = ref<Boolean>(false)
 function showTooltip(): void {
-    props.trigger == "hover" ? visible.value = true : void 0
-    // nextTick(() => {
-    //     if (visible.value && tooltip.value) {
-    //         document.body.appendChild(tooltip.value)
-    //     }
-    // })
+    props.trigger == "hover" ? changeVisibleState(true) : void 0
 }
 function hideTooltip(): void {
     // visible.value = false
 
-    props.trigger == "hover" ? visible.value = false : void 0
+    props.trigger == "hover" ? changeVisibleState(false) : void 0
 }
 function changeShow(): void {
-    props.trigger == "click" ? visible.value = !visible.value : void 0
-    // nextTick(() => {
-    //     if (visible.value && tooltip.value) {
-    //         document.body.appendChild(tooltip.value)
-    //     }
-    // })
+    props.trigger == "click" ? changeVisibleState(!visible.value) : void 0
+}
+function changeVisibleState(value: boolean) {
+    let delay: number = +props.delay
+    return setTimeout(() => { visible.value = value }, delay)
 }
 
 const tooltip = ref<HTMLElement | null>(null);
@@ -60,82 +54,120 @@ const keepTwoDecimal = (num: number) => {
     return Number(num.toFixed(2));
 };
 
-
-//appendBody
-// onBeforeUnmount(() => {
-//     if (tooltip.value) {
-//         document.body.removeChild(tooltip.value)
-//     }
-// })
-
-// onMounted(() => {
-//     // Attach event listeners to update tooltip position
-//     window.addEventListener("resize", getStyle("content"));
-//     window.addEventListener("scroll", getStyle("content"));
-// });
-
 function getStyle(placement: string) {
+    // 返回浏览器窗口的可见高度，包括水平滚动条的高度
+    const clientHeight = document.documentElement.clientHeight
+    // 返回浏览器窗口的可见宽度
+    const clientWidth = document.documentElement.clientWidth
+    // 返回整个文档的实际高度，包括不可见的部分
+    const scrollHeight = document.documentElement.scrollHeight
+    // 返回文档顶部相对于窗口顶部的偏移量
+    const scrollTop = keepTwoDecimal(document.documentElement.scrollTop)
+
     if (!tooltip.value || !slot.value) return {};
     const slotRect = slot.value.getBoundingClientRect();
     const tooltipRect = tooltip.value.getBoundingClientRect();
     const offset = 10;
     const triangleOffset = 5;
-    console.log(slotRect)
+
+    /**
+     * @description
+     * l:left
+     * r:right
+     * t:top
+     * b:bottom
+     * s:start
+     * e:end
+     */
+    const tbLeft: number = slotRect.left + (slotRect.width - tooltipRect.width) / 2
+    const tTop: number = slotRect.top - slotRect.height - offset + scrollTop
+    const tbsLeft: number = slotRect.left - tooltipRect.width + slotRect.width
+    const rLeft: number = slotRect.left + slotRect.width + offset
+    const lrTop: number = slotRect.top + (slotRect.height - tooltipRect.height) / 2 + scrollTop
+    const lrsTop: number = slotRect.top + scrollTop
+    const lreTop: number = slotRect.top + (slotRect.height - tooltipRect.height) + scrollTop
+    const lLeft: number = slotRect.left - tooltipRect.width - offset
+    const bTop: number = slotRect.top + slotRect.height + offset + scrollTop
+    const tbeLeft: number = slotRect.left
+
+    // 上超出
+    let outOfTop: boolean = tTop < scrollTop
+    // 下超出
+    let outOfBottom: boolean = bTop + slotRect.height > clientHeight + scrollTop
+    // 左超出
+    let outOfLeft: boolean = lLeft < 0
+    // 右超出
+    let outOfRight: boolean = rLeft + slotRect.width > clientWidth
+
+    const tT = "rotate(45deg)"
+    const rT = "rotate(-225deg)"
+    const bT = "rotate(-135deg)"
+    const lT = "rotate(-45deg)"
+
+    const _tbLeft = `${(keepTwoDecimal(tooltipRect.width) / 2) - triangleOffset}px`
+    const _tbsLeft = `${keepTwoDecimal(tooltipRect.width) - (keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`
+    const _tbeLeft = `${(keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`
+    const _lrLeft = `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`
+    const _offset = `-4px`
+    // if()
+    let pType: Placement = props.placement
+    if (outOfTop || outOfRight || outOfBottom || outOfLeft) {
+        pType = negation(pType)
+    }
 
     if (placement === 'content') {
-        switch (props.placement) {
+        switch (pType) {
             case "top":
-                return { left: `${(slotRect.width - tooltipRect.width) / 2}px`, top: `${-slotRect.height - offset}px` };
+                return { left: `${tbLeft}px`, top: `${tTop}px` };
             case "top-start":
-                return { left: `${0}px`, top: `${-slotRect.height - offset}px` };
-            // return { left: `${slotRect.left - tooltipRect.width + slotRect.width}px`, top: `${0}px` };//appendBody
+                return { left: `${tbsLeft}px`, top: `${tTop}px` };
             case "top-end":
-                return { left: `${0}px`, top: `${-slotRect.height - offset}px` };
+                return { left: `${tbeLeft}px`, top: `${tTop}px` };
             case "right":
-                return { left: `${slotRect.width + offset}px`, top: `${(slotRect.height - tooltipRect.height) / 2}px` };
+                return { left: `${rLeft}px`, top: `${lrTop}px` };
             case "right-start":
-                return { left: `${slotRect.width + offset}px`, top: `${0}px` };
+                return { left: `${rLeft}px`, top: `${lrsTop}px` };
             case "right-end":
-                return { left: `${slotRect.width + offset}px`, top: `${(slotRect.height - tooltipRect.height)}px` };
+                return { left: `${rLeft}px`, top: `${lreTop}px` };
             case "bottom":
-                return { left: `${(slotRect.width - tooltipRect.width) / 2}px`, top: `${slotRect.height + offset}px` };
+                return { left: `${tbLeft}px`, top: `${bTop}px` };
             case "bottom-start":
-                return { left: `${slotRect.width - tooltipRect.width}px`, top: `${slotRect.height + offset}px` };
+                return { left: `${tbsLeft}px`, top: `${bTop}px` };
             case "bottom-end":
-                return { left: `${0}px`, top: `${slotRect.height + offset}px` };
+                return { left: `${tbeLeft}px`, top: `${bTop}px` };
             case "left":
-                return { left: `${-tooltipRect.width - offset}px`, top: `${(slotRect.height - tooltipRect.height) / 2}px` };
+                return { left: `${lLeft}px`, top: `${lrTop}px` };
             case "left-start":
-                return { left: `${-tooltipRect.width - offset}px`, top: `${0}px` };
+                return { left: `${lLeft}px`, top: `${lrsTop}px` };
             case "left-end":
-                return { left: `${-tooltipRect.width - offset}px`, top: `${(slotRect.height - tooltipRect.height)}px` };
+                return { left: `${lLeft}px`, top: `${lreTop}px` };
         }
     } else if (placement === 'triangle') {
-        switch (props.placement) {
+        switch (pType) {
             case "top":
-                return { left: `${(keepTwoDecimal(tooltipRect.width) / 2) - triangleOffset}px`, bottom: `-4px`, transform: `rotate(45deg)` };
+                return { left: _tbLeft, bottom: _offset, transform: tT };
             case "top-start":
-                return { left: `${keepTwoDecimal(tooltipRect.width) - (keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`, bottom: `-4px`, transform: `rotate(45deg)` };
+                return { left: _tbsLeft, bottom: _offset, transform: tT };
             case "top-end":
-                return { left: `${(keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`, bottom: `-4px`, transform: `rotate(45deg)` };
+                return { left: _tbeLeft, bottom: _offset, transform: tT };
             case "right":
-                return { left: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-225deg)` };
+                return { left: _offset, top: _lrLeft, transform: rT };
             case "right-start":
-                return { left: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-225deg)` };
+                return { left: _offset, top: _lrLeft, transform: rT };
             case "right-end":
-                return { left: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-225deg)` };
+                return { left: _offset, top: _lrLeft, transform: rT };
             case "bottom":
-                return { left: `${(keepTwoDecimal(tooltipRect.width) / 2) - triangleOffset}px`, top: `-4px`, transform: `rotate(-135deg)` };
+                return { left: _tbLeft, top: _offset, transform: bT };
             case "bottom-start":
-                return { left: `${keepTwoDecimal(tooltipRect.width) - (keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`, top: `-4px`, transform: `rotate(-135deg)` };
+                return { left: _tbsLeft, top: _offset, transform: bT };
             case "bottom-end":
-                return { left: `${(keepTwoDecimal(slotRect.width) / 2) - triangleOffset}px`, top: `-4px`, transform: `rotate(-135deg)` };
+                return { left: _tbeLeft, top: _offset, transform: bT };
             case "left":
-                return { right: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-45deg)` };
+                return { right: _offset, top: _lrLeft, transform: lT };
             case "left-start":
-                return { right: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-45deg)` };;
+                return { right: _offset, top: _lrLeft, transform: lT };;
             case "left-end":
-                return { right: `${-4}px`, top: `${keepTwoDecimal(tooltipRect.height) / 2 - triangleOffset}px`, transform: `rotate(-45deg)` };
+                return { right: _offset, top: _lrLeft, transform: lT };
         }
     }
 }
@@ -144,12 +176,14 @@ function getStyle(placement: string) {
 <template>
     <div :class="ber_Tooltip" @mouseover="showTooltip" @mouseleave="hideTooltip" @click="changeShow" id="tooltip"
         :style="{ '--delay': delay + 's' }">
-        <transition :name="`tooltip-fade`">
-            <div v-if="visible" ref="tooltip" :class="ber_Tooltip_content" :style="getStyle('content')">
-                <div :class="ber_Tooltip_triangle" :style="getStyle('triangle')"></div>
-                <span class="font-small">{{ descirption }}</span>
-            </div>
-        </transition>
+        <teleport to="body">
+            <transition :name="`tooltip-fade`">
+                <div v-if="visible" ref="tooltip" :class="ber_Tooltip_content" :style="getStyle('content')">
+                    <div :class="ber_Tooltip_triangle" :style="getStyle('triangle')"></div>
+                    <span class="font-small">{{ descirption }}</span>
+                </div>
+            </transition>
+        </teleport>
         <div ref="slot" id="slot">
             <slot></slot>
         </div>

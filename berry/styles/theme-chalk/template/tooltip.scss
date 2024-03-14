@@ -1,43 +1,43 @@
 @import '../../mixin/';
+$tooltip-background: #48484d;
 
 .#{$componentPrefix}-tooltip {
-    $tooltip-background: #48484d;
     position: relative;
     width: fit-content;
 
     #slot {
         width: fit-content;
     }
-
-    .#{$componentPrefix}-tooltip-content {
-        position: absolute;
-        background-color: $tooltip-background;
-        color: #fff;
-        box-sizing: border-box;
-        padding: 5px 11px;
-        border-radius: 4px;
-        line-height: 20px;
-        min-width: 10px;
-        width: max-content;
-        z-index: 2024;
-
-        .#{$componentPrefix}-tooltip-triangle {
-            position: absolute;
-            border-top: 5px solid transparent;
-            border-left: 5px solid transparent;
-            border-right: 5px solid $tooltip-background;
-            border-bottom: 5px solid $tooltip-background;
-            border-end-end-radius: 2px;
-        }
-
-        .font-small {
-            display: inline-block;
-            font-size: 14px;
-            word-break: break-all;
-        }
-    }
 }
 
+.#{$componentPrefix}-tooltip-content {
+    position: absolute;
+    background-color: $tooltip-background;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 5px 11px;
+    border-radius: 4px;
+    line-height: 20px;
+    min-width: 10px;
+    width: max-content;
+    z-index: 2024;
+    transition: all var(--delay) cubic-bezier(1, 0.3, 0.7, 1);
+
+    .#{$componentPrefix}-tooltip-triangle {
+        position: absolute;
+        border-top: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-right: 5px solid $tooltip-background;
+        border-bottom: 5px solid $tooltip-background;
+        border-end-end-radius: 2px;
+    }
+
+    .font-small {
+        display: inline-block;
+        font-size: 14px;
+        word-break: break-all;
+    }
+}
 
 .tooltip-fade-enter-active {
     transition: all var(--delay) ease-out;

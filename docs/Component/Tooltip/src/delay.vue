@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <BerryTooltip descirption="This is a description" placement="top-start" delay="0.5">
+    <BerryTooltip descirption="This is a description" placement="top-start" delay="300">
         <BerryButton type="success">top-start</BerryButton>
     </BerryTooltip>
 </template>
