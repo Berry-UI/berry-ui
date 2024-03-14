@@ -7,7 +7,7 @@
 defineOptions({
     name: "BerryTooltip"
 })
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import { useNS } from "berry-ui/hooks/useNS"
 import { TooltipProps, TooltipEmits, negation, Placement } from "./Tooltip"
 const ns = useNS("tooltip")
@@ -177,12 +177,10 @@ function getStyle(placement: string) {
     <div :class="ber_Tooltip" @mouseover="showTooltip" @mouseleave="hideTooltip" @click="changeShow" id="tooltip"
         :style="{ '--delay': delay + 's' }">
         <teleport to="body">
-            <transition :name="`tooltip-fade`">
                 <div v-if="visible" ref="tooltip" :class="ber_Tooltip_content" :style="getStyle('content')">
                     <div :class="ber_Tooltip_triangle" :style="getStyle('triangle')"></div>
                     <span class="font-small">{{ descirption }}</span>
                 </div>
-            </transition>
         </teleport>
         <div ref="slot" id="slot">
             <slot></slot>
